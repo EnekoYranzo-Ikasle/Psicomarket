@@ -5,6 +5,7 @@ require_once __DIR__ . '/../models/XxxxxModel.php';
 class XxxxxController extends BaseController {
 
     public function index() {
+        $this->render('index.view.php');
     }
 
     public function show() {
