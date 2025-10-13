@@ -1,0 +1,13 @@
+footer {
+  display: flex;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+}
+
+.copyright img {
+  width: 32px;
+  height: 32px;
+}
