@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet">
 
+    <!-- STYLES -->
+    <link rel="stylesheet" href="">
+    
     <title>PsicoMarket</title>
 </head>
 
