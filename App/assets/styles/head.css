@@ -1,0 +1,33 @@
+header{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #FDFEFF;
+    justify-content: center;
+    align-items: center;
+}
+.logoTitle{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logoImage{
+    width: 74px;
+}
+
+.title h1{
+    font-family: 'Sonsie One';
+    font-size: 24px;
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.icon{
+    width: 40px;
+}
