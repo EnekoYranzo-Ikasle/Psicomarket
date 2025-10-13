@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 13, 2025 at 07:51 AM
+-- Generation Time: Oct 13, 2025 at 06:00 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -31,8 +31,9 @@ CREATE TABLE `comercios` (
   `id` int NOT NULL,
   `Nombre_comercio` varchar(50) DEFAULT NULL,
   `Descripcion` varchar(1000) DEFAULT NULL,
-  `Ubicacion` varchar(100) DEFAULT NULL,
   `Patrocinado` tinyint(1) DEFAULT NULL,
+  `Latitud` decimal(10,7) NOT NULL,
+  `Longitud` decimal(10,7) NOT NULL,
   `Ruta_imagen_comercio` varchar(255) NOT NULL,
   `Valoracion` float DEFAULT NULL,
   `id_usuario` int DEFAULT NULL
