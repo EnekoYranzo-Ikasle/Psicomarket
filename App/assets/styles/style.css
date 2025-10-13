@@ -3,12 +3,14 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
 body {
   margin: 0;
+
 }
 
 h3 {
