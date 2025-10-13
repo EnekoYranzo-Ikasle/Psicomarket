@@ -5,6 +5,7 @@ require_once __DIR__ . '/../models/ComercioModel.php';
 class XxxxxController extends BaseController {
 
     public function index() {
+        $comercios = ComercioModel::getAllPatrocinated();
         $this->render('index.view.php');
     }
 

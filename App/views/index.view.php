@@ -4,6 +4,7 @@
 <h1>Anuncios patrocinados</h1>
   <!-- de 5 en 5 ir cargando más -->
    <?php foreach ($variable as $key => $value):?>
+    <!-- Coger los productos patrocinados e ir cargándolos -->
     <?php endforeach ?>
 
 
