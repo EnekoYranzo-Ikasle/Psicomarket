@@ -1,9 +1,14 @@
 <?php
+
+use function PHPSTORM_META\sql_injection_subst;
+
 require_once __DIR__ . '/Database.php';
 
 class ProductoModel {
+   
 
     public static function getAll() {
+        
     }
 
     public static function getById($id) {
@@ -17,4 +22,8 @@ class ProductoModel {
 
     public static function deleteAll() {
     }
+
+
+
+    
 }
