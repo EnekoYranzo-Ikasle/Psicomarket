@@ -34,7 +34,19 @@
                 <img src="assets/images/user.svg" alt="" class="icon">
             </div>
             <div class="menu">
-                <img src="assets/images/menu-2.svg" alt="" class="icon">
+                <img src="assets/images/menu-2.svg" alt="" class="icon menuIcon">
             </div>
         </div>
     </header>
+    <nav>
+        <ul class="navUl">
+            <li class="ulElement">
+                <span class="homeIcon icon"><img src="assets/images/home.svg" alt=""></span>
+                <a href="">Inicio</a>
+            </li>
+            <li class="ulElement">
+                <span class="acountIcon icon"><img src="assets/images/user.svg" alt=""></span>
+                <a href="">Cuenta</a>
+            </li>
+        </ul>
+    </nav>
