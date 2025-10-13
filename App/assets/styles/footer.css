@@ -1,0 +1,39 @@
+footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f3f3f3;
+  bottom: 0;
+}
+
+.categorias hr {
+  height: 60px;
+  align-self: center;
+}
+
+.categorias {
+  display: flex;
+  width: 40%;
+}
+
+.nosotros {
+  display: flex;
+  flex-direction: column;
+}
+
+.trabajaConNosotros a {
+  text-decoration: none;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.copyright img {
+  width: 32px;
+  height: 32px;
+}
