@@ -31,15 +31,17 @@
             </div>
         </div>
         <div class="buttons">
-            <div class="account">
-                <img src="assets/images/icons/user.svg" alt="" class="icon">
+            <div class="account icon">
+                <img src="assets/images/icons/user.svg" alt="" class="accountIcon">
             </div>
-            <div class="menu">
-                <img src="assets/images/icons/menu-2.svg" alt="" class="icon menuIcon">
+            <div class="menuIcon icon">
+                <div class="menuBar menuBar1"></div>
+                <div class="menuBar menuBar2"></div>
+                <div class="menuBar menuBar3"></div>
             </div>
         </div>
     </header>
-    <nav>
+    <nav class="closed">
         <ul class="navUl">
             <li class="ulElement">
                 <span class="homeIcon icon"><img src="assets/images/icons/home.svg" alt=""></span>
@@ -51,3 +53,5 @@
             </li>
         </ul>
     </nav>
+
+    <script src="assets/scripts/headerNav.js"></script>
