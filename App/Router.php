@@ -3,7 +3,7 @@
 class Router {
 
     public static function dispatch() {
-        $controllerName = $_GET['controller'] ?? 'XxxxxController';
+        $controllerName = $_GET['controller'] ?? 'ComercioController';
         $action = $_GET['accion'] ?? 'index';
 
         self::loadController($controllerName, $action);

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 13, 2025 at 06:00 PM
--- Server version: 8.4.3
--- PHP Version: 8.3.16
+-- Servidor: localhost
+-- Tiempo de generación: 14-10-2025 a las 09:45:50
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,17 +18,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `psicomarket`
+-- Base de datos: `psicomarket`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comercios`
+-- Estructura de tabla para la tabla `comercios`
 --
 
 CREATE TABLE `comercios` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Nombre_comercio` varchar(50) DEFAULT NULL,
   `Descripcion` varchar(1000) DEFAULT NULL,
   `Patrocinado` tinyint(1) DEFAULT NULL,
@@ -36,106 +36,106 @@ CREATE TABLE `comercios` (
   `Longitud` decimal(10,7) NOT NULL,
   `Ruta_imagen_comercio` varchar(255) NOT NULL,
   `Valoracion` float DEFAULT NULL,
-  `id_usuario` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favoritos`
+-- Estructura de tabla para la tabla `favoritos`
 --
 
 CREATE TABLE `favoritos` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Fecha` date DEFAULT NULL,
-  `id_producto` int DEFAULT NULL,
-  `id_usuario` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_producto` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagenes`
+-- Estructura de tabla para la tabla `imagenes`
 --
 
 CREATE TABLE `imagenes` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Ruta_imagen_producto` varchar(255) DEFAULT NULL,
-  `id_producto` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_producto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mensajes`
+-- Estructura de tabla para la tabla `mensajes`
 --
 
 CREATE TABLE `mensajes` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Mensaje` varchar(1000) DEFAULT NULL,
   `Fecha` date DEFAULT NULL,
   `Hora` time DEFAULT NULL,
-  `id_Comprador` int DEFAULT NULL,
-  `id_Comerciante` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_Comprador` int(11) DEFAULT NULL,
+  `id_Comerciante` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productos`
+-- Estructura de tabla para la tabla `productos`
 --
 
 CREATE TABLE `productos` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Nombre` varchar(50) DEFAULT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
   `Categoria` varchar(50) DEFAULT NULL,
   `Estado` varchar(20) DEFAULT NULL,
-  `id_comercio` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_comercio` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `Nombre` varchar(50) DEFAULT NULL,
   `Nombre_usuario` varchar(50) DEFAULT NULL,
   `Apellidos` varchar(50) DEFAULT NULL,
   `Contrasenna` varchar(50) DEFAULT NULL,
-  `num_Tel` int DEFAULT NULL,
+  `num_Tel` int(11) DEFAULT NULL,
   `Tipo` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `valoraciones`
+-- Estructura de tabla para la tabla `valoraciones`
 --
 
 CREATE TABLE `valoraciones` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `estrellas` float DEFAULT NULL,
-  `id_usuario` int DEFAULT NULL,
-  `id_comercio` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_comercio` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `comercios`
+-- Indices de la tabla `comercios`
 --
 ALTER TABLE `comercios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `favoritos`
+-- Indices de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
   ADD PRIMARY KEY (`id`),
@@ -143,14 +143,14 @@ ALTER TABLE `favoritos`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `imagenes`
+-- Indices de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_producto` (`id_producto`);
 
 --
--- Indexes for table `mensajes`
+-- Indices de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
   ADD PRIMARY KEY (`id`),
@@ -158,20 +158,20 @@ ALTER TABLE `mensajes`
   ADD KEY `id_Comerciante` (`id_Comerciante`);
 
 --
--- Indexes for table `productos`
+-- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_comercio` (`id_comercio`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `valoraciones`
+-- Indices de la tabla `valoraciones`
 --
 ALTER TABLE `valoraciones`
   ADD PRIMARY KEY (`id`),
@@ -179,89 +179,89 @@ ALTER TABLE `valoraciones`
   ADD KEY `id_comercio` (`id_comercio`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `comercios`
+-- AUTO_INCREMENT de la tabla `comercios`
 --
 ALTER TABLE `comercios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `favoritos`
+-- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `imagenes`
+-- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mensajes`
+-- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `productos`
+-- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `valoraciones`
+-- AUTO_INCREMENT de la tabla `valoraciones`
 --
 ALTER TABLE `valoraciones`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comercios`
+-- Filtros para la tabla `comercios`
 --
 ALTER TABLE `comercios`
   ADD CONSTRAINT `comercios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
--- Constraints for table `favoritos`
+-- Filtros para la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
   ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`),
   ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
--- Constraints for table `imagenes`
+-- Filtros para la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
   ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`);
 
 --
--- Constraints for table `mensajes`
+-- Filtros para la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
   ADD CONSTRAINT `mensajes_ibfk_1` FOREIGN KEY (`id_Comprador`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `mensajes_ibfk_2` FOREIGN KEY (`id_Comerciante`) REFERENCES `usuarios` (`id`);
 
 --
--- Constraints for table `productos`
+-- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_comercio`) REFERENCES `comercios` (`id`);
 
 --
--- Constraints for table `valoraciones`
+-- Filtros para la tabla `valoraciones`
 --
 ALTER TABLE `valoraciones`
   ADD CONSTRAINT `valoraciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
