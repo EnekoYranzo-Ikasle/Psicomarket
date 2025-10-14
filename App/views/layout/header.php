@@ -43,13 +43,13 @@
     </header>
     <nav class="closed">
         <ul class="navUl">
-            <a href="">
+            <a href="index.php?controller=indexController">
                 <li class="ulElement">
                     <span class="homeIcon icon"><img src="assets/images/icons/home.svg" alt=""></span>
                     Inicio
                 </li>
             </a>
-            <a href="">
+            <a href="index.php?controller=LoginController">
                 <li class="ulElement">
                     <span class="acountIcon icon"><img src="assets/images/icons/user.svg" alt=""></span>
                     Cuenta
