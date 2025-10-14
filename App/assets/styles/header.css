@@ -38,86 +38,93 @@ header {
             cursor: pointer;
         }
 
-        & .accountIcon{
+        & .accountIcon {
             width: 100%;
         }
 
-        & .menuIcon{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 7px;
-            & .menuBar{
+        & .menuIcon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            & .menuBar {
                 width: 100%;
                 height: 3px;
                 border-radius: 5px;
                 background-color: black;
-                transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-              opacity 0.3s ease
+                transition: transform 0.5s ease,
+                    opacity 0.2s ease
             }
         }
 
     }
 }
 
-nav{
+nav {
     background-color: #F3F3F3;
     width: 175px;
     height: 100%;
-    padding: 10px;
-    position:fixed;
+    position: fixed;
     top: 50px;
     right: -200px;
     transition: right .5s ease-in-out;
-    & ul{
+
+    & ul {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-
-        & li{
+        & li {
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 5px;
             cursor: pointer;
-            & .icon{
+            padding: 10px;
+            &:hover{
+                background-color: lightgray;
+            }
+            & .icon {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                & img{
+
+                & img {
                     width: 32px;
 
                 }
+
+
             }
 
-            & a{
-                text-decoration: none;
-                color: black;
-            }
         }
-
+        & a {
+            text-decoration: none;
+            color: black;
+        }
     }
 
 }
 
-.opened{
+.opened {
     right: 0;
 }
 
-.closed{
+.closed {
     right: -200px;
 }
 
 .menuIcon.active .menuBar1 {
-  transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg) translate(7px, 7px);
 }
 
 .menuIcon.active .menuBar2 {
-  opacity: 0;
+    opacity: 0;
 }
 
 .menuIcon.active .menuBar3 {
-  transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
+.menuIcon.active .menuBar {
+    color: red;
+}

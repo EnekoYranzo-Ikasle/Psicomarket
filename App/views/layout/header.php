@@ -43,14 +43,18 @@
     </header>
     <nav class="closed">
         <ul class="navUl">
-            <li class="ulElement">
-                <span class="homeIcon icon"><img src="assets/images/icons/home.svg" alt=""></span>
-                <a href="">Inicio</a>
-            </li>
-            <li class="ulElement">
-                <span class="acountIcon icon"><img src="assets/images/icons/user.svg" alt=""></span>
-                <a href="">Cuenta</a>
-            </li>
+            <a href="">
+                <li class="ulElement">
+                    <span class="homeIcon icon"><img src="assets/images/icons/home.svg" alt=""></span>
+                    Inicio
+                </li>
+            </a>
+            <a href="">
+                <li class="ulElement">
+                    <span class="acountIcon icon"><img src="assets/images/icons/user.svg" alt=""></span>
+                    Cuenta
+                </li>
+            </a>
         </ul>
     </nav>
 
