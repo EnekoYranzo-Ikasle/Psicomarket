@@ -4,8 +4,9 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #f3f3f3;
-  bottom: 0;
+  z-index: 50;
+  grid-area: footer;
+  box-shadow: 1px 0 4px;
 }
 
 .categorias hr {
