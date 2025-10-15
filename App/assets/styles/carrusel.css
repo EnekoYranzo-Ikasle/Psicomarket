@@ -1,51 +1,68 @@
 .carrusel-container {
   position: relative;
   width: 100%;
-  height: 400px;
-  margin: auto;
+  max-width: 100%;
   overflow: hidden;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
+  margin: 0 auto;
 }
 
 .carrusel {
   display: flex;
-  height: 100%;
   transition: transform 0.5s ease-in-out;
-  gap: 20px;
+  width: 100%;
+  height: 400px;
 }
 
 .item {
-  width: 100%;
+  flex: 0 0 100%;
   text-align: center;
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #f0f0f0;
+  position: relative;
+}
+
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .item img {
-  max-width: 100%;
-  height: 100px;
-  object-fit: contain;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.item h1 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  z-index: 1;
 }
 
 .carrusel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #ffffff;
+  background-color: transparent;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border: none;
+  border-radius: 20px;
   padding: 10px;
+  font-size: 2rem;
   cursor: pointer;
-  font-size: 24px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .prev {
-  left: 0;
+  left: 10px;
 }
 
 .next {
-  right: 0;
+  right: 10px;
 }

@@ -4,13 +4,14 @@
   <div class="carrusel" id="carrusel">
     <?php foreach ($comercios as $comercio): ?>
       <div class="item">
-        <a href="<?= $comercio['enlace'] ?>" target="_blank">
-          <img src="<?= $comercio['logo'] ?>">
-          <p><?= $comercio['Nombre_comercio'] ?></p>
-        </a>
+        <div class="item-content">
+          <h1><?= $comercio['Nombre_comercio'] ?></h1>
+          <img src="<?= $comercio['Ruta_imagen_comercio'] ?>">
+        </div>
       </div>
     <?php endforeach; ?>
   </div>
 
   <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+  <script src="assets/scripts/carrusel.js"></script>
 </div>
