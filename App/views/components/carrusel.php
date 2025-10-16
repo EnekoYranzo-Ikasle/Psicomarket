@@ -5,7 +5,7 @@
   <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
 
   <div class="carrusel" id="carrusel">
-    <?php foreach ($comercios as $comercio): ?>
+    <?php foreach ($comerciosPatrocinados as $comercio): ?>
       <div class="item">
         <div class="item-content">
           <img src="<?= $comercio['Ruta_imagen_comercio'] ?>">
