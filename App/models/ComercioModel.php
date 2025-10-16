@@ -40,4 +40,13 @@ class ComercioModel {
         $comerciosPatrocinados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $comerciosPatrocinados;
     }
+
+    public static function getCoords() {
+        $con = Database::getConnection();
+        $sql = "SELECT Nombre_comercio, Latitud, Longitud FROM comercios";
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        $comerciosCoords = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $comerciosCoords;
+    }
 }

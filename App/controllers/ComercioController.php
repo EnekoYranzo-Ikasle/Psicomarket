@@ -5,8 +5,12 @@ require_once __DIR__ . '/../models/ComercioModel.php';
 class ComercioController extends BaseController {
 
     public function index() {
-        $comercios = ComercioModel::getAllPatrocinated();
-        $this->render('index.view.php', ['comercios' => $comercios]);
+        $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
+        $this->render('index.view.php', ['comerciosPatrocinados' => $comerciosPatrocinados]);
+    }
+
+    public function coords() {
+        $comerciosCoords = ComercioModel::getCoords();
     }
 
     public function show() {

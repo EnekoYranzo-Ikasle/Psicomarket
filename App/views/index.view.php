@@ -1,8 +1,10 @@
 
 <?php require_once('layout/header.php'); ?>
 
-<div class="anuncios-patrocinados">
+<section class="anuncios-patrocinados">
   <?php include('components/carrusel.php') ?>
-  <script src="assets/scripts/carrusel.js"></script>
-</div>
+</section>
+<section class="mapa-comercios">
+  <?php include('components/mapaComercios.php') ?>
+</section>
 <?php require_once('layout/footer.php'); ?>

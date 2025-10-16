@@ -1,13 +1,18 @@
+<link rel="stylesheet" href="assets/styles/carrusel.css">
+<script src="assets/scripts/carrusel.js"></script>
+
 <div class="carrusel-container">
   <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
 
   <div class="carrusel" id="carrusel">
-    <?php foreach ($comercios as $comercio): ?>
+    <?php foreach ($comerciosPatrocinados as $comercio): ?>
       <div class="item">
-        <a href="<?= $comercio['enlace'] ?>" target="_blank">
-          <img src="<?= $comercio['logo'] ?>">
-          <p><?= $comercio['Nombre_comercio'] ?></p>
-        </a>
+        <div class="item-content">
+          <img src="<?= $comercio['Ruta_imagen_comercio'] ?>">
+          <div class="overlay"></div>
+          <h1><?= $comercio['Nombre_comercio'] ?></h1>
+          <i>Patrocinado*</i>
+        </div>
       </div>
     <?php endforeach; ?>
   </div>

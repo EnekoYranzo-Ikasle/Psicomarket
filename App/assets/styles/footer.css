@@ -9,14 +9,16 @@ footer {
   box-shadow: 1px 0 4px;
 }
 
-.categorias hr {
-  height: 60px;
-  align-self: center;
-}
-
 .categorias {
   display: flex;
   width: 40%;
+  gap: 4px;
+}
+
+.categorias hr {
+  height: 60px;
+  align-self: center;
+  margin-inline: 16px;
 }
 
 .nosotros {
