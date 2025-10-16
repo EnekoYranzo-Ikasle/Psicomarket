@@ -1,4 +1,9 @@
- <div class="anuncio">
+  <link rel="stylesheet" href="assets/styles/anuncios.css">
+  <h3>Anuncios patrocinados</h3>
+
+  <div class="anuncios-patrocinados">
+    
+    <div class="anuncio">
       <img src="assets/images/Logo.png" alt="Logo">
 
       <h3 class="nombre-comercio">Nombre-comercio</h3>
@@ -18,7 +23,7 @@
       </div>
     </div> <!-- cierre del .anuncio -->
 
-        <div class="anuncio">
+       <div class="anuncio">
       <img src="assets/images/Logo.png" alt="Logo">
 
       <h3 class="nombre-comercio">Nombre-comercio</h3>
@@ -37,3 +42,5 @@
         </div>
       </div>
     </div> <!-- cierre del .anuncio -->
+
+  </div> <!-- cierre de .anuncios-patrocinados -->
