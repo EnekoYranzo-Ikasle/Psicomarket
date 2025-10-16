@@ -5,7 +5,7 @@
         <h1>Mis favoritos</h1>
         <?php
         if (empty($favoritos)): ?>
-            <p>No hay favoritos</p>
+            <p class="title">No hay favoritos</p>
         <?php else: ?>
             <div class="products">
                 <?php foreach ($favoritos as $favorito): ?>
@@ -15,5 +15,7 @@
         <?php endif; ?>
 
 </main>
+
+<script src="assets/scripts/productos.js"></script>
 
 <?php require_once('layout/footer.php'); ?>
