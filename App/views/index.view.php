@@ -1,3 +1,4 @@
+
 <?php require_once('layout/header.php'); ?>
 
 <section class="anuncios-patrocinados">

@@ -8,7 +8,9 @@ header {
   padding: 20px;
   box-shadow: 0 1px 4px;
   position: sticky;
+  z-index: 50;
   top: 0;
+  grid-area: header;
 
   & .logoTitle {
     display: flex;
@@ -79,6 +81,8 @@ nav {
       align-items: center;
       cursor: pointer;
       padding: 10px;
+      width: 100%;
+      gap: 10px;
       &:hover {
         background-color: lightgray;
       }
@@ -88,7 +92,7 @@ nav {
         align-items: center;
 
         & img {
-          width: 32px;
+          object-fit: cover;
         }
       }
     }

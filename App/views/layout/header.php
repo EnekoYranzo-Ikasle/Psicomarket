@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="assets/styles/header.css">
     <link rel="stylesheet" href="assets/styles/footer.css">
 
+    <link rel="stylesheet" href="assets/styles/loginView.css">
+
+
     <title>PsicoMarket</title>
 </head>
 
@@ -41,21 +44,13 @@
             </div>
         </div>
     </header>
-    <nav class="closed">
-        <ul class="navUl">
-            <a href="">
-                <li class="ulElement">
-                    <span class="homeIcon icon"><img src="assets/images/icons/home.svg" alt=""></span>
-                    Inicio
-                </li>
-            </a>
-            <a href="">
-                <li class="ulElement">
-                    <span class="acountIcon icon"><img src="assets/images/icons/user.svg" alt=""></span>
-                    Cuenta
-                </li>
-            </a>
-        </ul>
-    </nav>
+    <?php
+        require_once 'controllers/UsuarioController.php';
+
+        $usuarioController = new UsuarioController();
+        $navFile = $usuarioController->getNav();
+        
+        require_once "views/components/Nav/{$navFile}.html";
+    ?>
 
     <script src="assets/scripts/headerNav.js"></script>

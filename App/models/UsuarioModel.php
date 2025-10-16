@@ -6,6 +6,13 @@ class UsuarioModel {
     public static function getAll() {
     }
 
+    public static function getUserRol($userId){
+        $db = Database::getConnection();
+        $stmt = $db->prepare("SELECT tipo FROM usuarios WHERE id = :id");
+        $stmt->execute(['id' => $userId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public static function getById($id) {
     }
 

@@ -8,6 +8,33 @@ class UsuarioController extends BaseController {
         $this->render('index.view.php');
     }
 
+
+    public function getUserRol($userId){
+        return UsuarioModel::getUserRol($userId);
+    }
+
+     public function getNav() {
+
+        if(isset($_SESSION['user_id'])) {
+            $tipoUsuario = $this->getUserRol($_SESSION['user_id']);
+
+            switch($tipoUsuario['tipo']) {
+                case 'usuario':
+                    $navFile = 'navUsuario';
+                    break;
+                case 'comerciante':
+                    $navFile = 'navComerciante';
+                    break;
+                default:
+                    $navFile = 'navAnonimo';
+            }
+        }
+        error_log("Contenido de la sesión: " . $navFile, 3, "debug.log");
+
+
+        return $navFile;
+    }
+
     public function show() {
     }
 
