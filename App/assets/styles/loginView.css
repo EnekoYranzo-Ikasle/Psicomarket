@@ -1,6 +1,6 @@
 main {
   display: flex;
-  height: calc(100vh - 200px);
+  height: 80.7vh;
   position: relative;
   & .image {
     background-image: var(--bg-url);

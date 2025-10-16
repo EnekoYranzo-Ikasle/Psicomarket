@@ -33,6 +33,7 @@ CREATE TABLE productos (
   Categoria VARCHAR(50),
   Estado VARCHAR(20),
   id_comercio INT,
+  Precio FLOAT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_comercio) REFERENCES comercios(id)
 );

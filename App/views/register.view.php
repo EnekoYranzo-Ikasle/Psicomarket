@@ -1,5 +1,5 @@
 <?php require_once('layout/header.php'); ?>
-
+<link rel="stylesheet" href="assets/styles/loginView.css">
 <main>
   <div class="login">
     <span class="crearCuenta">Crear Cuenta</span>
@@ -34,7 +34,7 @@
             <span>Soy: </span>
             <select name="userRol" id="userRol">
               <option value="Usuario">Usuario</option>
-              <option value="Comeriante">Comeriante</option>              
+              <option value="Comeriante">Comeriante</option>
             </select>
           </div>
         </div>

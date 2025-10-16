@@ -1,0 +1,89 @@
+/* Contenedor principal */
+.misFavoritos {
+    padding: 10px;
+}
+
+.misFavoritos h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Mensaje si no hay favoritos */
+.misFavoritos p {
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+}
+
+/* Contenedor de productos */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Cada producto */
+.producto {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Imagen + icono */
+.imageFlag {
+    position: relative;
+}
+
+.imageFlag img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* SVG favorito */
+.imageFlag svg {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+    color: #ffa502; /* color inicial */
+    cursor: pointer;
+}
+
+/* Información del producto */
+.info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.productName {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.categoria {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.precio {
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+}
