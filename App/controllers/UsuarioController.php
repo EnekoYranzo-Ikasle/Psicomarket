@@ -28,11 +28,11 @@ class UsuarioController extends BaseController {
                 default:
                     $navFile = 'navAnonimo';
             }
+            error_log("Contenido de la sesión: " . $navFile, 3, "debug.log");
         }
-        error_log("Contenido de la sesión: " . $navFile, 3, "debug.log");
 
 
-        return $navFile;
+        return $navFile ?? 'navAnonimo';
     }
 
     public function show() {

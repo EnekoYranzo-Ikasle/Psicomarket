@@ -10,8 +10,6 @@ header {
   position: sticky;
   z-index: 50;
   top: 0;
-  grid-area: header;
-
   & .logoTitle {
     display: flex;
     align-items: center;
@@ -70,8 +68,7 @@ nav {
   top: 50px;
   right: -200px;
   transition: right 0.5s ease-in-out;
-  z-index: 50;
-
+z-index: 10;
   & ul {
     display: flex;
     flex-direction: column;
