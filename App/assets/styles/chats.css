@@ -1,0 +1,31 @@
+.chatContainer {
+  display: flex;
+  width: 100%;
+}
+
+.chatContainer aside {
+  width: 20%;
+  background-color: var(--secundario);
+  padding: 8px;
+}
+
+.item {
+  display: flex;
+  padding: 1em;
+  gap: 8px;
+}
+
+.item img {
+  width: 32px;
+  height: 32px;
+  background-color: var(--acento);
+  border-radius: 50%;
+}
+
+.item h4 {
+  margin: 0;
+}
+
+.item:hover {
+  background-color: lightgrey;
+}

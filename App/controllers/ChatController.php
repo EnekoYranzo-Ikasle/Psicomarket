@@ -1,11 +1,12 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
-require_once __DIR__ . '/../models/MensajeModel.php';
+require_once __DIR__ . '/../models/ChatModel.php';
 
-class MensajeController extends BaseController {
+class ChatController extends BaseController {
 
     public function index() {
-        $this->render('index.view.php');
+        $listaChats = ChatModel::getChatsList($_SESSION['user_id']);
+        $this->render('chat.view.php', ['listaChats' => $listaChats]);
     }
 
     public function show() {
