@@ -1,18 +1,16 @@
-<link rel="stylesheet" href="assets/styles/chats.css">
 <?php require_once('layout/header.php'); ?>
+<link rel="stylesheet" href="assets/styles/chats.css">
 <div class="chatContainer">
   <aside>
     <h4>Mis mensajes</h4>
-    <?php foreach ($listaChats as $chat) : ?>
-      <span class="item">
-        <img src="" alt="">
-        <h4><?= $chat['Nombre_comercio'] ?></h4>
-      </span>
-    <?php endforeach ?>
+    <div id="chatList"></div>
   </aside>
-  <article>
-
+  <article class="chatMessages">
   </article>
+  <script>
+    const userId = <?= json_encode($_SESSION['user_id']); ?>;
+  </script>
+  <script src="assets/scripts/loadChats.js"></script>
 </div>
 
 <?php require_once('layout/footer.php'); ?>

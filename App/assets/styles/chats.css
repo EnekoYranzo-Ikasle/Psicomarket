@@ -11,7 +11,10 @@
 
 .item {
   display: flex;
+  width: 100%;
   padding: 1em;
+  border: 0;
+  background-color: transparent;
   gap: 8px;
 }
 
