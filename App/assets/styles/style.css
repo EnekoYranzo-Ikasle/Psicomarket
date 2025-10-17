@@ -6,6 +6,17 @@
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+
+  /* Variables de colores */
+  --principal: #fdfeff;
+  --secundario: #f3f3f3;
+  --fondo: #f8f9fa;
+  --texto: #212529;
+  --acento: #ffbc03;
+  --botonesBuenos: #62bc7a;
+  --botonesMalos: #ff513a;
+  --botonesBuenosSecundarios: #898989;
+  --botonesMalosSecundarios: #ff3318;
 }
 
 body {
