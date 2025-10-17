@@ -77,3 +77,14 @@ CREATE TABLE valoraciones (
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
   FOREIGN KEY (id_comercio) REFERENCES comercios(id)
 );
+
+CREATE TABLE categorias (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+ALTER TABLE productos
+DROP COLUMN Categoria,
+ADD COLUMN id_categoria INT,
+ADD FOREIGN KEY (id_categoria) REFERENCES categorias(id);
