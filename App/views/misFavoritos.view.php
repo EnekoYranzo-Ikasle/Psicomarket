@@ -7,15 +7,13 @@
         if (empty($favoritos)): ?>
             <p class="title">No hay favoritos</p>
         <?php else: ?>
-            <div class="products">
-                <?php foreach ($favoritos as $producto): ?>
-                    <?php include('components/Productos/producto.php'); ?>
-                <?php endforeach; ?>
+            <div class="products favorito">
+                <script src="assets/scripts/misFavoritos.js"></script>
             </div>
         <?php endif; ?>
+        <script src="assets/scripts/productos.js"></script>
 
 </main>
 
-<script src="assets/scripts/productos.js"></script>
 
 <?php require_once('layout/footer.php'); ?>
