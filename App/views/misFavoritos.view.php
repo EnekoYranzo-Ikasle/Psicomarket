@@ -8,7 +8,7 @@
             <p class="title">No hay favoritos</p>
         <?php else: ?>
             <div class="products">
-                <?php foreach ($favoritos as $favorito): ?>
+                <?php foreach ($favoritos as $producto): ?>
                     <?php include('components/Productos/producto.php'); ?>
                 <?php endforeach; ?>
             </div>
