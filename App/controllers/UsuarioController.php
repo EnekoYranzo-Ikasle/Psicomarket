@@ -8,17 +8,11 @@ class UsuarioController extends BaseController {
         $this->render('index.view.php');
     }
 
-
-    public function getUserRol($userId){
-        return UsuarioModel::getUserRol($userId);
-    }
-
-     public function getNav() {
+     public function getNav($rol) {
 
         if(isset($_SESSION['user_id'])) {
-            $tipoUsuario = $this->getUserRol($_SESSION['user_id']);
 
-            switch($tipoUsuario['tipo']) {
+            switch($rol) {
                 case 'usuario':
                     $navFile = 'navUsuario';
                     break;
@@ -29,7 +23,6 @@ class UsuarioController extends BaseController {
                     $navFile = 'navAnonimo';
             }
         }
-
 
         return $navFile ?? 'navAnonimo';
     }

@@ -29,6 +29,7 @@ class ComercioController extends BaseController
         return null;
     }
 
+
     public function info()
 {
     if (!isset($_GET['id']) || empty($_GET['id'])) {

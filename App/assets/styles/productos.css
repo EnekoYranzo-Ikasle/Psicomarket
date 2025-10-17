@@ -27,14 +27,17 @@
   overflow: hidden;
 }
 
+.favorito .producto svg path{
+  fill: #FFBC03;
+  cursor: pointer;
+}
+
 svg{
     position: absolute;
     top: 0;
     right: 10px;
     width: 48px;
     height: 48px;
-    cursor: pointer;
-
 }
 
 .images {
@@ -49,7 +52,6 @@ svg{
   display: block;
 }
 
-/* Botones del carrusel */
 .imageFlag > button {
   position: absolute;
   top: 50%;
