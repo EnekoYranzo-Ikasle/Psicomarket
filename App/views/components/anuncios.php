@@ -1,46 +1,37 @@
   <link rel="stylesheet" href="assets/styles/anuncios.css">
-  <h3>Anuncios patrocinados</h3>
+  <h3 class="anuncios-title">Todos los Anuncios</h3>
 
+  <div class="filtros">
+    <div class="categorias">
+      <img src="assets/images/icons/categories.svg" alt="Categorias">
+      Categorías
+    </div>
+    <div class="categorias">
+      <img src="assets/images/icons/filter.svg" alt="Filtrar">
+      Ordenar y filtrar
+    </div>
+  </div>
   <div class="anuncios-patrocinados">
-    
-    <div class="anuncio">
-      <img src="assets/images/Logo.png" alt="Logo">
 
-      <h3 class="nombre-comercio">Nombre-comercio</h3>
+    <?php foreach ($comerciosAnunciados as $comercio): ?>
+      <div class="anuncio">
+        <img src="<?= $comercio['Ruta_imagen_comercio'] ?>">
 
-      <div class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae congue nunc. 
-        Ut sit amet erat lectus. Aenean scelerisque enim arcu. Vivamus commodo egestas quam, 
-        id pulvinar elit aliquet sit amet. In urna ligula, pharetra faucibus orci sed, 
-        convallis congue dolor. Donec ut tortor pellentesque enim bibendum pellentesque.
-      </div>
+        <h3 class="nombre-comercio"><?= $comercio['Nombre_comercio'] ?> </h3>
 
-      <div class="valoracion-container">
-        <div class="valoracion">
-          <span>4,9</span>
-          <img src="assets/images/star.svg" alt="estrella">
+        <div class="descripcion">
+          <?= $comercio['Descripcion'] ?>
         </div>
-      </div>
-    </div> <!-- cierre del .anuncio -->
 
-       <div class="anuncio">
-      <img src="assets/images/Logo.png" alt="Logo">
-
-      <h3 class="nombre-comercio">Nombre-comercio</h3>
-
-      <div class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae congue nunc. 
-        Ut sit amet erat lectus. Aenean scelerisque enim arcu. Vivamus commodo egestas quam, 
-        id pulvinar elit aliquet sit amet. In urna ligula, pharetra faucibus orci sed, 
-        convallis congue dolor. Donec ut tortor pellentesque enim bibendum pellentesque.
-      </div>
-
-      <div class="valoracion-container">
-        <div class="valoracion">
-          <span>4,9</span>
-          <img src="assets/images/star.svg" alt="estrella">
+        <div class="valoracion-container">
+          <div class="valoracion">
+            <span> <?= $comercio['Valoracion'] ?> </span>
+            <img src="assets/images/icons/review.svg" alt="estrella">
+          </div>
         </div>
-      </div>
-    </div> <!-- cierre del .anuncio -->
+      </div> <!-- cierre del .anuncio -->
+
+    <?php endforeach ?>
+
 
   </div> <!-- cierre de .anuncios-patrocinados -->
