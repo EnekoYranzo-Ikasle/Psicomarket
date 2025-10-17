@@ -1,12 +1,12 @@
 <div class="producto">
   <div class="imageFlag">
     <div class="images">
-      <?php foreach ($favorito['rutas_imagenes'] as $ruta_imagen_producto): ?>
+      <?php foreach ($producto['rutas_imagenes'] as $ruta_imagen_producto): ?>
         <img src="<?= $ruta_imagen_producto['ruta'] ?>" alt="">
       <?php endforeach; ?>
     </div>
 
-    <?php if (count($favorito['rutas_imagenes']) > 1): ?>
+    <?php if (count($producto['rutas_imagenes']) > 1): ?>
       <button type="button" onclick="moverCarrusel(this, -1)">‹</button>
       <button type="button" onclick="moverCarrusel(this,  1)">›</button>
     <?php endif; ?>
@@ -17,11 +17,11 @@
   </div>
 
   <div class="info">
-    <h3 class="productName"><?= $favorito['Nombre'] ?></h3>
-    <p class="categoria"><?= $favorito['Categoria'] ?></p>
+    <h3 class="productName"><?= $producto['Nombre'] ?></h3>
+    <p class="categoria"><?= $producto['Categoria'] ?></p>
     <span class="precio">
-      <?php if ($favorito['Precio'] > 0): ?>
-        <?= $favorito['Precio'] ?> €
+      <?php if ($producto['Precio'] > 0): ?>
+        <?= $producto['Precio'] ?> €
       <?php else: ?>
         Gratis
       <?php endif; ?>
