@@ -11,7 +11,7 @@
       Ordenar y filtrar
     </div>
   </div>
-  <div class="anuncios-patrocinados">
+  <div class="anuncios-container">
 
     <?php foreach ($comerciosAnunciados as $comercio): ?>
       <div class="anuncio">

@@ -26,7 +26,7 @@
     height: 750px;
     padding: 15px;
     box-sizing: border-box;
-    margin: auto 30px;
+    
 }
 .nombre-comercio {
   margin: 10px 0;
@@ -80,4 +80,11 @@
   width: auto;
   align-items: center;
  
+}
+
+/*-------- Anuncios de 3 en 3 en dos filas -------*/
+.anuncios-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px,1fr));
+  gap: 1.5rem;
 }
