@@ -6,12 +6,15 @@ class ComercioController extends BaseController {
 
     public function index() {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
-        $this->render('index.view.php', ['comerciosPatrocinados' => $comerciosPatrocinados]);
+        $comerciosAnunciados = ComercioModel::getAll();
+
+        $this->render('index.view.php', ['comerciosPatrocinados' => $comerciosPatrocinados, 'comerciosAnunciados' => $comerciosAnunciados]);
     }
 
     public function coords() {
         $comerciosCoords = ComercioModel::getCoords();
     }
+    
 
     public function show() {
     }

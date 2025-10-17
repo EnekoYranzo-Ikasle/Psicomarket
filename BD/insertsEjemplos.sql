@@ -213,6 +213,63 @@ INSERT INTO `mensajes` (`id`,`Mensaje`,`Fecha`,`Hora`,`id_Comprador`,`id_Comerci
 (24,'Sí, en papel y edición ilustrada.','2025-09-12','13:10:00',3,5),
 (25,'¿Pueden instalar la pantalla si la compro?','2025-09-13','15:00:00',9,10);
 
+
+
+
+--------------------------------------------------------------------------------------------------------
+-------------------------CATEGORIAS---------------------------------------------------------------------
+INSERT INTO categorias (nombre) VALUES
+('Electrónica'),
+('Ordenadores y portátiles'),
+('Teléfonos móviles y tablets'),
+('Accesorios tecnológicos'),
+('Audio y vídeo'),
+('Fotografía y cámaras'),
+('Televisores y proyectores'),
+('Videojuegos y consolas'),
+('Tecnología inteligente (IoT y domótica)'),
+('Moda para mujer'),
+('Moda para hombre'),
+('Ropa infantil'),
+('Calzado'),
+('Complementos de moda'),
+('Relojes y joyería'),
+('Belleza y cuidado personal'),
+('Maquillaje'),
+('Perfumes y fragancias'),
+('Cuidado del cabello'),
+('Salud y bienestar'),
+('Vitaminas y suplementos'),
+('Productos naturales'),
+('Hogar y cocina'),
+('Muebles'),
+('Decoración'),
+('Iluminación'),
+('Electrodomésticos'),
+('Organización y almacenamiento'),
+('Limpieza del hogar'),
+('Jardín y exteriores'),
+('Herramientas y ferretería'),
+('Deportes y fitness'),
+('Bicicletas y accesorios'),
+('Camping y aventura'),
+('Natación y playa'),
+('Juguetes y juegos'),
+('Bebés y maternidad'),
+('Mascotas'),
+('Oficina y papelería'),
+('Arte y manualidades'),
+('Libros y revistas'),
+('Instrumentos musicales'),
+('Automoción y motocicletas'),
+('Recambios y accesorios para vehículos'),
+('Seguridad y vigilancia'),
+('Productos ecológicos y sostenibles'),
+('Alimentación y bebidas'),
+('Vinos y licores'),
+('Regalos y ocasiones especiales'),
+('Ofertas y liquidaciones');
+
 COMMIT;
 
 
