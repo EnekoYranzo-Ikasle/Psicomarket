@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
   padding: 0;
+  margin: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 
@@ -19,8 +20,11 @@
   --botonesMalosSecundarios: #ff3318;
 }
 
+*::-webkit-scrollbar{
+  width: 0px;
+}
+
 body {
-  margin: 0;
   height: 100vh;
   width: 100vw;
 }

@@ -14,24 +14,22 @@
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/header.css">
     <link rel="stylesheet" href="assets/styles/footer.css">
-
-    <link rel="stylesheet" href="assets/styles/loginView.css">
-
-
     <title>PsicoMarket</title>
 </head>
 
 <body>
     <header>
         <div class="logoTitle">
-            <div class="logo">
-                <picture>
-                    <img src="assets/images/Logo.png" alt="" class="logoImage">
-                </picture>
-            </div>
-            <div class="title">
-                <h1>PsicoMarket</h1>
-            </div>
+            <a href="index.php">
+                <div class="logo">
+                    <picture>
+                        <img src="assets/images/Logo.png" alt="" class="logoImage">
+                    </picture>
+                </div>
+                <div class="title">
+                    <h1>PsicoMarket</h1>
+                </div>
+            </a>
         </div>
         <div class="buttons">
             <div class="account icon">
@@ -45,12 +43,12 @@
         </div>
     </header>
     <?php
-        require_once 'controllers/UsuarioController.php';
+    require_once 'controllers/UsuarioController.php';
 
-        $usuarioController = new UsuarioController();
-        $navFile = $usuarioController->getNav();
-        
-        require_once "views/components/Nav/{$navFile}.html";
+    $usuarioController = new UsuarioController();
+    $navFile = $usuarioController->getNav();
+
+    require_once "views/components/Nav/{$navFile}.html";
     ?>
 
     <script src="assets/scripts/headerNav.js"></script>

@@ -18,10 +18,6 @@ class LoginController extends BaseController
         if ($user) {
             if ($user['Contrasenna'] === $_POST['userPasswd']) {
                 $_SESSION['user_id'] = $user['id'];
-
-                // en userLogin() justo después de setear la sesión
-                error_log('session_id login: ' . session_id());
-                error_log('session contents before redirect: ' . print_r($_SESSION, true));
                 $this->redirect('index.php');
             } else {
                 $error = 'La contraseña introducida no existe para este usuario';

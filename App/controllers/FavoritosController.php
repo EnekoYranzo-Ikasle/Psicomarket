@@ -2,10 +2,11 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/FavoritoModel.php';
 
-class FavoritController extends BaseController {
+class FavoritosController extends BaseController {
 
     public function index() {
-        $this->render('index.view.php');
+        $favoritos = FavoritoModel::getAll($_SESSION['user_id']);
+        $this->render('misFavoritos.view.php', ['favoritos' => $favoritos]);
     }
 
     public function show() {
