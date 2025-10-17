@@ -9,6 +9,13 @@ class FavoritosController extends BaseController {
         $this->render('misFavoritos.view.php', ['favoritos' => $favoritos]);
     }
 
+    public function apiGetFavoritos()
+    {
+        header('Content-Type: application/json');
+        echo FavoritoModel::getAll($_SESSION['user_id']); // Devuelve JSON
+        exit;
+    }
+    
     public function show() {
     }
 

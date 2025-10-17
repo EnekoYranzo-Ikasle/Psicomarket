@@ -13,3 +13,11 @@ function moverCarrusel(btn, dir) {
   track.dataset.index = idx;
 }
 
+const svgs = document.querySelectorAll('.producto svg');
+
+
+console.log(svgs);
+
+svgs.forEach(svg => {
+    console.log("hola");
+});

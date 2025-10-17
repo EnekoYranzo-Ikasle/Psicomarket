@@ -14,7 +14,7 @@ class ComercioController extends BaseController {
     public function coords() {
         $comerciosCoords = ComercioModel::getCoords();
     }
-    
+
 
     public function show() {
     }

@@ -1,3 +1,8 @@
+<?php
+if (isset($_POST['producto'])) {
+    $producto = json_decode($_POST['producto'], true);
+?>
+
 <div class="producto">
   <div class="imageFlag">
     <div class="images">
@@ -28,3 +33,6 @@
     </span>
   </div>
 </div>
+<?php } ?>
+
+

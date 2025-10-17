@@ -33,7 +33,7 @@ class FavoritoModel
             }
         }
 
-        return $favoritos;
+    return json_encode($favoritos, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
 
     public static function getById($id) {}

@@ -43,12 +43,9 @@
         </div>
     </header>
     <?php
-    require_once 'controllers/UsuarioController.php';
-
-    $usuarioController = new UsuarioController();
-    $navFile = $usuarioController->getNav();
 
     require_once "views/components/Nav/{$navFile}.html";
+
     ?>
 
     <script src="assets/scripts/headerNav.js"></script>
