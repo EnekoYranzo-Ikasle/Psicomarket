@@ -1,30 +1,65 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
+require_once __DIR__ . '/../models/ProductoModel.php';
 
-class ComercioController extends BaseController {
+class ComercioController extends BaseController
+{
 
-    public function index() {
+    public function index()
+    {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
-
-        $this->render('index.view.php', ['comerciosPatrocinados' => $comerciosPatrocinados, 'comerciosAnunciados' => $comerciosAnunciados]);
+        $comercioSeleccionado=$this-> seleccionarComercio();
+        $this->render('index.view.php',
+                 ['comerciosPatrocinados' => $comerciosPatrocinados,
+                  'comerciosAnunciados' => $comerciosAnunciados,
+                    'comercioSeleccionado' => $comercioSeleccionado]      
+                );
     }
 
-    public function coords() {
+    public function seleccionarComercio()
+    {
+        $comercioSeleccionado = null;
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = (int) $_GET['id'];
+            $comercioSeleccionado = ComercioModel::getById($id);
+            return $comercioSeleccionado;
+        }
+        return null;
+    }
+
+    public function info()
+{
+    if (!isset($_GET['id']) || empty($_GET['id'])) {
+        die(" Falta el ID del comercio.");
+    }
+
+    $id = (int) $_GET['id'];
+    $comercio = ComercioModel::getById($id);
+
+    if (!$comercio) {
+        die(" Comercio no encontrado.");
+    }
+    $productosDelComercio= ProductoModel::getByComercioId($id);
+    // Renderizar la vista infoComercio
+    $this->render('infoComercio.view.php', [
+        'comercio' => $comercio,
+        'productosDelComercio' => $productosDelComercio
+    ]);
+}
+
+    public function coords()
+    {
         $comerciosCoords = ComercioModel::getCoords();
     }
-    
 
-    public function show() {
-    }
 
-    public function store() {
-    }
+    public function show() {}
 
-    public function destroy() {
-    }
+    public function store() {}
 
-    public function destroyAll() {
-    }
+    public function destroy() {}
+
+    public function destroyAll() {}
 }

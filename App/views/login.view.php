@@ -1,5 +1,5 @@
 <?php require_once('layout/header.php'); ?>
-
+<link rel="stylesheet" href="assets/styles/loginView.css">
 <main>
   <div class="image" style="--bg-url: url('../images/loginImage.png');"></div>
   <div class="login">
