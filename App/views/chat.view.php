@@ -2,10 +2,15 @@
 <link rel="stylesheet" href="assets/styles/chats.css">
 <div class="chatContainer">
   <aside>
-    <h4>Mis mensajes</h4>
+    <h3>Mis mensajes</h3>
     <div id="chatList"></div>
   </aside>
-  <article class="chatMessages">
+  <article>
+    <div id="chatMessages"></div>
+    <form id="textMessage">
+      <input type="text" name="mensaje" placeholder="Escribe aqui tu mensaje..." required>
+      <input type="submit" value="">
+    </form>
   </article>
   <script>
     const userId = <?= json_encode($_SESSION['user_id']); ?>;

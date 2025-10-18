@@ -4,7 +4,7 @@ require_once __DIR__ . '/Database.php';
 class ComercioModel {
 
     public static function getAll() {
-        $con = Database::getConnection(); //Establecemos la conexion
+        $con = Database::getConnection();
         $sql = "SELECT *FROM comercios"; //Escribimos la sentencia
         $stmt = $con->prepare($sql); //Preparamos la sentencia
         $stmt->execute(); //Ejecutamos las sentencia

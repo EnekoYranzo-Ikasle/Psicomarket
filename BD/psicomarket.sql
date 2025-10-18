@@ -68,6 +68,23 @@ CREATE TABLE mensajes (
   FOREIGN KEY (id_Comerciante) REFERENCES usuarios(id)
 );
 
+CREATE TABLE chat (
+  id INT(11) NOT NULL,
+  comercioID INT(11) NOT NULL,
+  usuarioID INT(11) NOT NULL,
+  PRIMARY KEY (id)
+)
+
+CREATE TABLE mensajes (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  mensaje varchar(1000),
+  fecha TIMESTAMP,
+  userID INT(11),
+  chatID INT(11) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (chatID) REFERENCES chat(id),
+)
+
 CREATE TABLE valoraciones (
   id INT NOT NULL AUTO_INCREMENT,
   estrellas FLOAT,

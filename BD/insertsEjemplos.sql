@@ -183,35 +183,14 @@ INSERT INTO `valoraciones` (`id`,`estrellas`,`id_usuario`,`id_comercio`) VALUES
 (29,4.3,1,12),
 (30,4.5,7,10);
 
--- ----------------------------
--- Mensajes (conversaciones comprador <-> comerciante)
--- ----------------------------
-INSERT INTO `mensajes` (`id`,`Mensaje`,`Fecha`,`Hora`,`id_Comprador`,`id_Comerciante`) VALUES
-(1,'Hola, ¿tenéis ese vestido en talla M?','2025-09-01','09:12:00',1,6),
-(2,'Sí, tenemos talla M y S. ¿Quieres que lo reserve?','2025-09-01','09:15:00',6,1),
-(3,'Buenas, ¿podéis cambiar la correa del reloj?','2025-09-02','11:05:00',9,2),
-(4,'Claro, trae el reloj y miramos diagnóstico.','2025-09-02','11:20:00',2,9),
-(5,'¿Aceptáis pago con tarjeta en la panadería?','2025-09-03','08:45:00',11,6),
-(6,'Sí, tanto tarjeta como efectivo.','2025-09-03','08:48:00',6,11),
-(7,'Tengo una consulta sobre el plan de entrenamiento.','2025-09-04','18:30:00',1,10),
-(8,'Te explico el plan y lo adaptamos a objetivos.','2025-09-04','18:35:00',10,1),
-(9,'¿Podéis traer fruta a domicilio?','2025-09-05','10:00:00',5,3),
-(10,'Sí, hacemos reparto local por la mañana.','2025-09-05','10:10:00',3,5),
-(11,'He tenido un fallo con la lavadora, podéis pasar mañana?','2025-09-06','14:00:00',9,12),
-(12,'Podemos pasar entre 9-12 o 14-17, ¿qué prefieres?','2025-09-06','14:10:00',12,9),
-(13,'¿Ofrecéis reparación de bicis a domicilio?','2025-09-07','12:30:00',1,8),
-(14,'Sí, tenemos servicio móvil con cita previa.','2025-09-07','12:35:00',8,1),
-(15,'¿El cargador es compatible con iPad?','2025-09-08','16:05:00',7,5),
-(16,'Sí, soporta carga PD que funciona con iPad recientes.','2025-09-08','16:10:00',5,7),
-(17,'Quisiera 2 baguettes para recoger en 30 minutos.','2025-09-09','09:20:00',11,6),
-(18,'Perfecto, te las dejamos en mostrador.','2025-09-09','09:23:00',6,11),
-(19,'¿Hacéis mantenimiento oficial de relojes de esa marca?','2025-09-10','10:50:00',1,2),
-(20,'Sí, enviamos al servicio técnico oficial si es necesario.','2025-09-10','11:05:00',2,1),
-(21,'¿Tenéis stock de proteína en sabor chocolate?','2025-09-11','17:15:00',7,10),
-(22,'Hoy solo vainilla, mañana recibimos chocolate.','2025-09-11','17:20:00',10,7),
-(23,'Me interesa ese libro infantil, ¿lo tenéis en papel y tapa dura?','2025-09-12','13:05:00',5,3),
-(24,'Sí, en papel y edición ilustrada.','2025-09-12','13:10:00',3,5),
-(25,'¿Pueden instalar la pantalla si la compro?','2025-09-13','15:00:00',9,10);
+-- ------------
+-- Mensajes
+-- ------------
+INSERT INTO `mensajes` (`id`, `mensaje`, `fecha`, `userID`, `chatID`) VALUES
+(1, '¿Hola teneis disponible el vestido azul en talla M?', '2025-10-17 11:59:00', 1, 1),
+(2, 'Hola', '2025-10-17 12:00:00', 1, 2),
+(3, 'Si, tenemos 10 unidades en stock', '2025-10-17 17:20:00', 6, 1),
+(4, 'Perfecto, reservame uno para el jueves a la tarde. Gracias', '2025-10-18 12:11:00', 1, 1);
 
 
 

@@ -5,10 +5,11 @@ class ChatModel {
 
     public static function getChatsList($idComprador) {
         $con = Database::getConnection();
-        $sql = "SELECT DISTINCT c.id, c.Nombre_comercio
-                    FROM psicomarket.mensajes m
-                    JOIN psicomarket.comercios c ON m.id_Comerciante = c.id_usuario
-                    WHERE m.id_Comprador = :idComprador;
+        $sql = "SELECT c.id, c.comercioID, co.Nombre_comercio
+                    FROM chat c
+                    JOIN comercios co ON c.comercioID = co.id
+                    WHERE c.usuarioID = :idComprador
+                    ORDER BY c.id ASC;
                 ";
         $stmt = $con->prepare($sql);
         $dato = ['idComprador' => $idComprador];
@@ -18,20 +19,31 @@ class ChatModel {
         return $listaChats;
     }
 
-    public static function getChatMessages($idComprador, $idComerciante) {
+    public static function getChatMessages($chatID) {
         $con = Database::getConnection();
-        $sql = "SELECT m.id, m.Mensaje, m.Fecha, m.Hora, m.id_Comprador, m.id_Comerciante, u.Nombre AS nombre_comprador, c.Nombre_comercio AS nombre_comercio
-                        FROM psicomarket.mensajes AS m
-                        JOIN psicomarket.usuarios AS u ON m.id_Comprador = u.id
-                        JOIN psicomarket.comercios AS c ON m.id_Comerciante = c.id_usuario
-                        WHERE m.id_Comprador = :idComprador
-                            AND m.id_Comerciante = :idComerciante
-                            ORDER BY m.Fecha ASC, m.Hora ASC
-                    ";
+        $sql = "SELECT m.id, m.mensaje, m.fecha, m.userID, m.chatID,
+                    u.Nombre AS nombre_usuario, u.Tipo AS tipo_usuario, co.Nombre_comercio
+                FROM mensajes m
+                JOIN usuarios u ON m.userID = u.id
+                JOIN chat ch ON m.chatID = ch.id
+                JOIN comercios co ON ch.comercioID = co.id
+                WHERE m.chatID = :chatID
+                ORDER BY m.fecha ASC;
+        ";
         $stmt = $con->prepare($sql);
-        $dato = ['idComprador' => $idComprador, 'idComerciante' => $idComerciante];
+        $dato = ['chatID' => $chatID];
         $stmt->execute($dato);
+        $mensajes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $mensajes;
+    }
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public static function sendMessage($mensaje, $fecha, $userID, $chatID) {
+        $con = Database::getConnection();
+        $sql = "INSERT INTO mensajes (mensaje, fecha, userID, chatID)
+                    VALUES (:mensaje, :fecha, :userID, :chatID)
+        ";
+        $stmt = $con->prepare($sql);
+        $dato = ['mensaje' => $mensaje, 'fecha' => $fecha, 'userID' => $userID, 'chatID' => $chatID];
+        $stmt->execute($dato);
     }
 }
