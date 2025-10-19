@@ -15,10 +15,20 @@ class ChatController extends BaseController {
         exit;
     }
 
-    public function loadConversation($idComerciante) {
-        $mensajes = ChatModel::getChatMessages($_SESSION['user_id'], $idComerciante);
+    public function loadConversation($chatID) {
+        $mensajes = ChatModel::getChatMessages($chatID);
+
         header('Content-Type: application/json');
         echo json_encode($mensajes);
         exit;
+    }
+
+    public function sendMessage() {
+        $mensaje = $_POST['mensaje'];
+        $fecha = $_POST['fecha'];
+        $userID = $_POST['userID'];
+        $chatID = $_POST['chatID'];
+
+        ChatModel::sendMessage($mensaje, $fecha, $userID, $chatID);
     }
 }

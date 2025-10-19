@@ -56,17 +56,22 @@ CREATE TABLE favoritos (
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
 
+CREATE TABLE chat (
+  id INT(11) NOT NULL,
+  comercioID INT(11) NOT NULL,
+  usuarioID INT(11) NOT NULL,
+  PRIMARY KEY (id)
+)
+
 CREATE TABLE mensajes (
-  id INT NOT NULL AUTO_INCREMENT,
-  Mensaje VARCHAR(1000),
-  Fecha DATE,
-  Hora TIME,
-  id_Comprador INT,
-  id_Comerciante INT,
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  mensaje varchar(1000),
+  fecha TIMESTAMP,
+  userID INT(11),
+  chatID INT(11) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_Comprador) REFERENCES usuarios(id),
-  FOREIGN KEY (id_Comerciante) REFERENCES usuarios(id)
-);
+  FOREIGN KEY (chatID) REFERENCES chat(id),
+)
 
 CREATE TABLE valoraciones (
   id INT NOT NULL AUTO_INCREMENT,

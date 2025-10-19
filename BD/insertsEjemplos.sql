@@ -21,18 +21,19 @@ INSERT INTO `usuarios` (`id`,`Nombre`,`Nombre_usuario`,`Apellidos`,`Contrasenna`
 -- Comercios
 -- ----------------------------
 INSERT INTO `comercios` (`id`,`Nombre_comercio`,`Descripcion`,`Patrocinado`,`Latitud`,`Longitud`,`Ruta_imagen_comercio`,`Valoracion`,`id_usuario`) VALUES
-(1,'La Buena Taza','Cafetería con gran variedad de cafés de especialidad',0,40.4167750,-3.7037900,'/images/comercios/cafeteria1.jpg',4.6,2),
-(2,'Librería Norte','Librería independiente con selección de libros técnicos y literatura',0,40.4234410,-3.6923450,'/images/comercios/libreria1.jpg',4.4,3),
-(3,'Taller Pedro','Taller de reparación de bicicletas y venta de componentes',1,40.4153630,-3.7073980,'/images/comercios/taller1.jpg',4.7,8),
-(4,'Moda Clara','Tienda de ropa sostenible y accesorios',0,40.4180560,-3.7072220,'/images/comercios/moda1.jpg',4.2,6),
-(5,'ElectroVega','Electrónica y reparaciones rápidas',0,40.4123450,-3.7001230,'/images/comercios/electro1.jpg',4.1,10),
-(6,'Frutería La Huerta','Frutería con producto local y ecológico',0,40.4190000,-3.6950000,'/images/comercios/fruteria1.jpg',4.5,3),
-(7,'Joyería Central','Joyería y relojería con larga tradición',1,40.4145000,-3.7060000,'/images/comercios/joyeria1.jpg',4.8,2),
-(8,'Papelería Sol','Papelería, material escolar y oficina',0,40.4200000,-3.7005000,'/images/comercios/papeleria1.jpg',4.0,12),
-(9,'PanaderíaArte','Panadería artesanal con horno propio',0,40.4160000,-3.7040000,'/images/comercios/panaderia1.jpg',4.3,6),
-(10,'FitnessHub','Centro de entrenamiento y venta de suplementación',1,40.4175000,-3.7025000,'/images/comercios/gym1.jpg',4.6,10),
-(11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,40.4197000,-3.6997000,'/images/comercios/mercado1.jpg',4.2,12),
-(12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,40.4112000,-3.7082000,'/images/comercios/tecnica1.jpg',4.0,8);
+(1,'La Buena Taza','Cafetería con gran variedad de cafés de especialidad',0,40.4167750,-3.7037900,'uploads/comercios/cafeteria1.jpg',4.6,2),
+(2,'Librería Norte','Librería independiente con selección de libros técnicos y literatura',0,40.4234410,-3.6923450,'uploads/comercios/libreria1.jpg',4.4,3),
+(3,'Taller Pedro','Taller de reparación de bicicletas y venta de componentes',1,40.4153630,-3.7073980,'uploads/comercios/taller1.jpg',4.7,8),
+(4,'Moda Clara','Tienda de ropa sostenible y accesorios',0,40.4180560,-3.7072220,'uploads/comercios/moda1.jpg',4.2,6),
+(5,'ElectroVega','Electrónica y reparaciones rápidas',0,40.4123450,-3.7001230,'uploads/comercios/electro1.jpg',4.1,10),
+(6,'Frutería La Huerta','Frutería con producto local y ecológico',0,40.4190000,-3.6950000,'uploads/comercios/fruteria1.jpg',4.5,3),
+(7,'Joyería Central','Joyería y relojería con larga tradición',1,40.4145000,-3.7060000,'uploads/comercios/joyeria1.jpg',4.8,2),
+(8,'Papelería Sol','Papelería, material escolar y oficina',0,40.4200000,-3.7005000,'uploads/comercios/papeleria1.jpg',4.0,12),
+(9,'PanaderíaArte','Panadería artesanal con horno propio',0,40.4160000,-3.7040000,'uploads/comercios/panaderia1.jpg',4.3,6),
+(10,'FitnessHub','Centro de entrenamiento y venta de suplementación',1,40.4175000,-3.7025000,'uploads/comercios/gym1.jpg',4.6,10),
+(11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,40.4197000,-3.6997000,'uploads/comercios/mercado1.jpg',4.2,12),
+(12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,40.4112000,-3.7082000,'uploads/comercios/tecnica1.jpg',4.0,8);
+
 
 -- ----------------------------
 -- Productos
@@ -73,55 +74,56 @@ INSERT INTO `productos` (`id`,`Nombre`,`Descripcion`,`Categoria`,`Estado`,`id_co
 -- Imágenes de productos
 -- ----------------------------
 INSERT INTO `imagenes` (`id`,`Ruta_imagen_producto`,`id_producto`) VALUES
-(1,'/images/productos/cafe_250.jpg',1),
-(2,'/images/productos/taza_ceramica.jpg',2),
-(3,'/images/productos/clean_code.jpg',3),
-(4,'/images/productos/la_tarde.jpg',4),
-(5,'/images/productos/cambio_cadena.jpg',5),
-(6,'/images/productos/neumatico26.jpg',6),
-(7,'/images/productos/vestido_verano.jpg',7),
-(8,'/images/productos/camiseta_basica.jpg',8),
-(9,'/images/productos/cargador_30w.jpg',9),
-(10,'/images/productos/monitor24.jpg',10),
-(11,'/images/productos/cesta_frutas.jpg',11),
-(12,'/images/productos/mermelada_fresa.jpg',12),
-(13,'/images/productos/anillo_plata.jpg',13),
-(14,'/images/productos/reloj_clasico.jpg',14),
-(15,'/images/productos/cuaderno_a4.jpg',15),
-(16,'/images/productos/boligrafo_pack.jpg',16),
-(17,'/images/productos/baguette.jpg',17),
-(18,'/images/productos/croissant.jpg',18),
-(19,'/images/productos/plan_entreno.jpg',19),
-(20,'/images/productos/whey1kg.jpg',20),
-(21,'/images/productos/kale.jpg',21),
-(22,'/images/productos/levadura.jpg',22),
-(23,'/images/productos/servicio_lavadora.jpg',23),
-(24,'/images/productos/destornilladores.jpg',24),
-(25,'/images/productos/guantes_ciclismo.jpg',25),
-(26,'/images/productos/libro_infantil.jpg',26),
-(27,'/images/productos/bolso_sostenible.jpg',27),
-(28,'/images/productos/hdmi_2m.jpg',28),
-(29,'/images/productos/pack_frutas.jpg',29),
-(30,'/images/productos/mantenimiento_reloj.jpg',30),
+(1,'uploads/productos/cafe_250.jpg',1),
+(2,'uploads/productos/taza_ceramica.jpg',2),
+(3,'uploads/productos/clean_code.jpg',3),
+(4,'uploads/productos/la_tarde.jpg',4),
+(5,'uploads/productos/cambio_cadena.jpg',5),
+(6,'uploads/productos/neumatico26.jpg',6),
+(7,'uploads/productos/vestido_verano.jpg',7),
+(8,'uploads/productos/camiseta_basica.jpg',8),
+(9,'uploads/productos/cargador_30w.jpg',9),
+(10,'uploads/productos/monitor24.jpg',10),
+(11,'uploads/productos/cesta_frutas.jpg',11),
+(12,'uploads/productos/mermelada_fresa.jpg',12),
+(13,'uploads/productos/anillo_plata.jpg',13),
+(14,'uploads/productos/reloj_clasico.jpg',14),
+(15,'uploads/productos/cuaderno_a4.jpg',15),
+(16,'uploads/productos/boligrafo_pack.jpg',16),
+(17,'uploads/productos/baguette.jpg',17),
+(18,'uploads/productos/croissant.jpg',18),
+(19,'uploads/productos/plan_entreno.jpg',19),
+(20,'uploads/productos/whey1kg.jpg',20),
+(21,'uploads/productos/kale.jpg',21),
+(22,'uploads/productos/levadura.jpg',22),
+(23,'uploads/productos/servicio_lavadora.jpg',23),
+(24,'uploads/productos/destornilladores.jpg',24),
+(25,'uploads/productos/guantes_ciclismo.jpg',25),
+(26,'uploads/productos/libro_infantil.jpg',26),
+(27,'uploads/productos/bolso_sostenible.jpg',27),
+(28,'uploads/productos/hdmi_2m.jpg',28),
+(29,'uploads/productos/pack_frutas.jpg',29),
+(30,'uploads/productos/mantenimiento_reloj.jpg',30),
 -- imágenes adicionales para algunos productos (variedad)
-(31,'/images/productos/cafe_250_side.jpg',1),
-(32,'/images/productos/taza_ceramica_box.jpg',2),
-(33,'/images/productos/monitor24_box.jpg',10),
-(34,'/images/productos/whey1kg_close.jpg',20),
-(35,'/images/productos/anillo_plata_box.jpg',13),
-(36,'/images/productos/vestido_verano_detail.jpg',7),
-(37,'/images/productos/camiseta_basica_fold.jpg',8),
-(38,'/images/productos/bolso_sostenible_detail.jpg',27),
-(39,'/images/productos/pack_frutas_open.jpg',29),
-(40,'/images/productos/mermelada_jar.jpg',12),
-(41,'/images/productos/neumatico26_tread.jpg',6),
-(42,'/images/productos/guantes_ciclismo_pair.jpg',25),
-(43,'/images/productos/cargador_30w_box.jpg',9),
-(44,'/images/productos/cuaderno_a4_cover.jpg',15),
-(45,'/images/productos/libro_infantil_open.jpg',26),
-(46,'/images/productos/baguette_close.jpg',17),
-(47,'/images/productos/reloj_clasico_box.jpg',14),
-(48,'/images/productos/hdmi_plug.jpg',28);
+(31,'uploads/productos/cafe_250_side.jpg',1),
+(32,'uploads/productos/taza_ceramica_box.jpg',2),
+(33,'uploads/productos/monitor24_box.jpg',10),
+(34,'uploads/productos/whey1kg_close.jpg',20),
+(35,'uploads/productos/anillo_plata_box.jpg',13),
+(36,'uploads/productos/vestido_verano_detail.jpg',7),
+(37,'uploads/productos/camiseta_basica_fold.jpg',8),
+(38,'uploads/productos/bolso_sostenible_detail.jpg',27),
+(39,'uploads/productos/pack_frutas_open.jpg',29),
+(40,'uploads/productos/mermelada_jar.jpg',12),
+(41,'uploads/productos/neumatico26_tread.jpg',6),
+(42,'uploads/productos/guantes_ciclismo_pair.jpg',25),
+(43,'uploads/productos/cargador_30w_box.jpg',9),
+(44,'uploads/productos/cuaderno_a4_cover.jpg',15),
+(45,'uploads/productos/libro_infantil_open.jpg',26),
+(46,'uploads/productos/baguette_close.jpg',17),
+(47,'uploads/productos/reloj_clasico_box.jpg',14),
+(48,'uploads/productos/hdmi_plug.jpg',28);
+
 
 -- ----------------------------
 -- Favoritos
@@ -183,35 +185,14 @@ INSERT INTO `valoraciones` (`id`,`estrellas`,`id_usuario`,`id_comercio`) VALUES
 (29,4.3,1,12),
 (30,4.5,7,10);
 
--- ----------------------------
--- Mensajes (conversaciones comprador <-> comerciante)
--- ----------------------------
-INSERT INTO `mensajes` (`id`,`Mensaje`,`Fecha`,`Hora`,`id_Comprador`,`id_Comerciante`) VALUES
-(1,'Hola, ¿tenéis ese vestido en talla M?','2025-09-01','09:12:00',1,6),
-(2,'Sí, tenemos talla M y S. ¿Quieres que lo reserve?','2025-09-01','09:15:00',6,1),
-(3,'Buenas, ¿podéis cambiar la correa del reloj?','2025-09-02','11:05:00',9,2),
-(4,'Claro, trae el reloj y miramos diagnóstico.','2025-09-02','11:20:00',2,9),
-(5,'¿Aceptáis pago con tarjeta en la panadería?','2025-09-03','08:45:00',11,6),
-(6,'Sí, tanto tarjeta como efectivo.','2025-09-03','08:48:00',6,11),
-(7,'Tengo una consulta sobre el plan de entrenamiento.','2025-09-04','18:30:00',1,10),
-(8,'Te explico el plan y lo adaptamos a objetivos.','2025-09-04','18:35:00',10,1),
-(9,'¿Podéis traer fruta a domicilio?','2025-09-05','10:00:00',5,3),
-(10,'Sí, hacemos reparto local por la mañana.','2025-09-05','10:10:00',3,5),
-(11,'He tenido un fallo con la lavadora, podéis pasar mañana?','2025-09-06','14:00:00',9,12),
-(12,'Podemos pasar entre 9-12 o 14-17, ¿qué prefieres?','2025-09-06','14:10:00',12,9),
-(13,'¿Ofrecéis reparación de bicis a domicilio?','2025-09-07','12:30:00',1,8),
-(14,'Sí, tenemos servicio móvil con cita previa.','2025-09-07','12:35:00',8,1),
-(15,'¿El cargador es compatible con iPad?','2025-09-08','16:05:00',7,5),
-(16,'Sí, soporta carga PD que funciona con iPad recientes.','2025-09-08','16:10:00',5,7),
-(17,'Quisiera 2 baguettes para recoger en 30 minutos.','2025-09-09','09:20:00',11,6),
-(18,'Perfecto, te las dejamos en mostrador.','2025-09-09','09:23:00',6,11),
-(19,'¿Hacéis mantenimiento oficial de relojes de esa marca?','2025-09-10','10:50:00',1,2),
-(20,'Sí, enviamos al servicio técnico oficial si es necesario.','2025-09-10','11:05:00',2,1),
-(21,'¿Tenéis stock de proteína en sabor chocolate?','2025-09-11','17:15:00',7,10),
-(22,'Hoy solo vainilla, mañana recibimos chocolate.','2025-09-11','17:20:00',10,7),
-(23,'Me interesa ese libro infantil, ¿lo tenéis en papel y tapa dura?','2025-09-12','13:05:00',5,3),
-(24,'Sí, en papel y edición ilustrada.','2025-09-12','13:10:00',3,5),
-(25,'¿Pueden instalar la pantalla si la compro?','2025-09-13','15:00:00',9,10);
+-- ------------
+-- Mensajes
+-- ------------
+INSERT INTO `mensajes` (`id`, `mensaje`, `fecha`, `userID`, `chatID`) VALUES
+(1, '¿Hola teneis disponible el vestido azul en talla M?', '2025-10-17 11:59:00', 1, 1),
+(2, 'Hola', '2025-10-17 12:00:00', 1, 2),
+(3, 'Si, tenemos 10 unidades en stock', '2025-10-17 17:20:00', 6, 1),
+(4, 'Perfecto, reservame uno para el jueves a la tarde. Gracias', '2025-10-18 12:11:00', 1, 1);
 
 
 

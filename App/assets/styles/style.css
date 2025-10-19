@@ -20,13 +20,18 @@
   --botonesMalosSecundarios: #ff3318;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   width: 0px;
 }
 
 body {
   height: 100vh;
   width: 100vw;
+}
+
+main {
+  padding-top: 50px;
+  min-height: calc(100vh - 150px);
 }
 
 h1 {
@@ -41,7 +46,7 @@ h2 {
 
 h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 h4 {
