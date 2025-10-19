@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/ProductoModel.php';
 class ProductoController extends BaseController {
 
     public function index() {
-        $this->render('index.view.php');
+        $this->render('index.view.php',['navFile' => $this->navFile]);
     }
 
     public function show() {
