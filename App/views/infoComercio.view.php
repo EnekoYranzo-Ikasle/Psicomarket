@@ -4,7 +4,6 @@
     <div class="productosComercio">
         <div class="products">
 
-        <div class="prod">
             <?php
             if(!empty($productosDelComercio)){
                 foreach ($productosDelComercio as $producto){
@@ -17,7 +16,6 @@
             }
             ?>
             <a href="index.php" class="moreInfo">Volver</a>
-        </div>
     </div>
 </main>
 <?php require_once('layout/footer.php'); ?>
