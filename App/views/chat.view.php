@@ -10,7 +10,7 @@
       <div id="chatMessages"></div>
       <form id="textMessage">
         <input type="text" name="mensaje" placeholder="Escribe aqui tu mensaje..." required>
-        <input type="submit" value="">
+        <button type="submit"><img src="assets/images/icons/send.svg" alt="Send Message"></button>
       </form>
     </article>
     <script>
@@ -19,5 +19,3 @@
     <script src="assets/scripts/loadChats.js"></script>
   </div>
 </main>
-
-<?php require_once('layout/footer.php'); ?>

@@ -5,11 +5,19 @@ require_once __DIR__ . '/../models/ChatModel.php';
 class ChatController extends BaseController {
 
     public function index() {
-        $this->render('chat.view.php',['navFile' => $this->navFile]);
+        $this->render('chat.view.php', ['navFile' => $this->navFile]);
     }
 
     public function getMessagesList() {
-        $listaChats = ChatModel::getChatsList($_SESSION['user_id']);
+        $userID = $_SESSION['user_id'];
+        $userType = UsuarioModel::getUserRol($userID);
+
+        if ($userType['tipo'] == 'usuario') {
+            $listaChats = ChatModel::getUserChatsList($userID);
+        } elseif ($userType['tipo'] == 'comerciante') {
+            $listaChats = ChatModel::getVendorChatList($userID);
+        }
+
         header('Content-Type: application/json');
         echo json_encode($listaChats);
         exit;

@@ -4,19 +4,20 @@
     <div class="productosComercio">
         <div class="products">
 
-        <?php
-        if(!empty($productosDelComercio)){
-            foreach ($productosDelComercio as $producto){
-                include('views/components/Productos/producto.php');
-            }
-        }else{
-            ?>
-                <p>Este comercio no tiene productos actualemente</p>
+        <div class="prod">
             <?php
-        }
-        ?>
-        <a href="index.php" class="moreInfo">Volver</a>
+            if(!empty($productosDelComercio)){
+                foreach ($productosDelComercio as $producto){
+                    include('views/components/Productos/producto.php');
+                }
+            }else{
+                ?>
+                    <p>Este comercio no tiene productos actualemente</p>
+                <?php
+            }
+            ?>
+            <a href="index.php" class="moreInfo">Volver</a>
+        </div>
     </div>
 </main>
-</div>
 <?php require_once('layout/footer.php'); ?>

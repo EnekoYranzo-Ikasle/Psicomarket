@@ -10,7 +10,7 @@ async function loadMessagesList() {
             (chat) => `
                     <button class="item" chatid="${chat.id}">
                         <span></span>
-                        <h4>${chat.Nombre_comercio}</h4>
+                        <h4>${chat.nombreChat}</h4>
                     </button>
                     `
           )
@@ -69,19 +69,18 @@ async function actualizarMensajes() {
 
     chatMessages.innerHTML = mensajes.length
       ? mensajes
-          .map(
-            (msg) => `
-                    <div class="${msg.tipo_usuario === 'comerciante' ? 'comerciante' : 'usuario'}">
-                        <h4>${
-                          msg.tipo_usuario === 'comerciante'
-                            ? msg.Nombre_comercio
-                            : msg.nombre_usuario
-                        }</h4>
-                        <p>${msg.mensaje}</p>
-                        <small>${msg.fecha}</small>
-                    </div>
-                    `
-          )
+          .map((msg) => {
+            const msgLoggedUser = msg.userID === userId;
+            return `
+                <div class="${msgLoggedUser ? 'loggedUser' : 'other'}">
+                  <h4>
+                    ${msg.tipo_usuario === 'comerciante' ? msg.Nombre_comercio : msg.nombre_usuario}
+                  </h4>
+                  <p>${msg.mensaje}</p>
+                  <small>${msg.fecha}</small>
+                </div>
+            `;
+          })
           .join('')
       : '<p>No hay mensajes en este chat.</p>';
 
