@@ -3,23 +3,24 @@ require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 
-class ComercioController extends BaseController
-{
+class ComercioController extends BaseController {
 
-    public function index()
-    {
+    public function index() {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
-        $comercioSeleccionado=$this-> seleccionarComercio();
-        $this->render('index.view.php',
-                 ['comerciosPatrocinados' => $comerciosPatrocinados,
-                  'comerciosAnunciados' => $comerciosAnunciados,
-                    'comercioSeleccionado' => $comercioSeleccionado,'navFile' => $this->navFile]
-                );
+        $comercioSeleccionado = $this->seleccionarComercio();
+        $this->render(
+            'index.view.php',
+            [
+                'comerciosPatrocinados' => $comerciosPatrocinados,
+                'comerciosAnunciados' => $comerciosAnunciados,
+                'comercioSeleccionado' => $comercioSeleccionado,
+                'navFile' => $this->navFile
+            ]
+        );
     }
 
-    public function seleccionarComercio()
-    {
+    public function seleccionarComercio() {
         $comercioSeleccionado = null;
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = (int) $_GET['id'];
@@ -30,37 +31,44 @@ class ComercioController extends BaseController
     }
 
 
-    public function info()
-{
-    if (!isset($_GET['id']) || empty($_GET['id'])) {
-        die(" Falta el ID del comercio.");
+    public function info() {
+        if (!isset($_GET['id']) || empty($_GET['id'])) {
+            die(" Falta el ID del comercio.");
+        }
+
+        $id = (int) $_GET['id'];
+        $comercio = ComercioModel::getById($id);
+
+        if (!$comercio) {
+            die(" Comercio no encontrado.");
+        }
+        $productosDelComercio = ProductoModel::getByComercioId($id);
+        // Renderizar la vista infoComercio
+        $this->render('infoComercio.view.php', [
+            'comercio' => $comercio,
+            'productosDelComercio' => $productosDelComercio,
+            'navFile' => $this->navFile
+        ]);
     }
 
-    $id = (int) $_GET['id'];
-    $comercio = ComercioModel::getById($id);
-
-    if (!$comercio) {
-        die(" Comercio no encontrado.");
-    }
-    $productosDelComercio= ProductoModel::getByComercioId($id);
-    // Renderizar la vista infoComercio
-    $this->render('infoComercio.view.php', [
-        'comercio' => $comercio,
-        'productosDelComercio' => $productosDelComercio,'navFile' => $this->navFile
-    ]);
-}
-
-    public function coords()
-    {
+    public function getCoords() {
         $comerciosCoords = ComercioModel::getCoords();
+
+        header('Content-Type: application/json');
+        echo json_encode($comerciosCoords);
+        exit;
     }
 
 
-    public function show() {}
+    public function show() {
+    }
 
-    public function store() {}
+    public function store() {
+    }
 
-    public function destroy() {}
+    public function destroy() {
+    }
 
-    public function destroyAll() {}
+    public function destroyAll() {
+    }
 }

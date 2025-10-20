@@ -83,8 +83,6 @@ async function actualizarMensajes() {
           })
           .join('')
       : '<p>No hay mensajes en este chat.</p>';
-
-    chatMessages.scrollTop = chatMessages.scrollHeight;
   } catch (error) {
     console.log('Error al actualizar mensajes:', error);
   }
