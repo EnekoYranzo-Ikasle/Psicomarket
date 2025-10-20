@@ -8,6 +8,14 @@ class ProductoController extends BaseController {
         $this->render('index.view.php',['navFile' => $this->navFile]);
     }
 
+    public function verificarProductoFavorito(){
+        header('Content-Type: application/json');
+        $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'],$_SESSION['id_user']);
+        echo json_encode($producto);
+        exit;
+    }
+
+
     public function show() {
     }
 
