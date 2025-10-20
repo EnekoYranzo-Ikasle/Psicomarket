@@ -34,41 +34,97 @@ INSERT INTO `comercios` (`id`,`Nombre_comercio`,`Descripcion`,`Patrocinado`,`Lat
 (11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,40.4197000,-3.6997000,'uploads/comercios/mercado1.jpg',4.2,12),
 (12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,40.4112000,-3.7082000,'uploads/comercios/tecnica1.jpg',4.0,8);
 
+-- ------------
+-- Categorias
+-- ------------
+INSERT INTO categorias (nombre) VALUES
+('Electrónica'),
+('Ordenadores y portátiles'),
+('Teléfonos móviles y tablets'),
+('Accesorios tecnológicos'),
+('Audio y vídeo'),
+('Fotografía y cámaras'),
+('Televisores y proyectores'),
+('Videojuegos y consolas'),
+('Tecnología inteligente (IoT y domótica)'),
+('Moda para mujer'),
+('Moda para hombre'),
+('Ropa infantil'),
+('Calzado'),
+('Complementos de moda'),
+('Relojes y joyería'),
+('Belleza y cuidado personal'),
+('Maquillaje'),
+('Perfumes y fragancias'),
+('Cuidado del cabello'),
+('Salud y bienestar'),
+('Vitaminas y suplementos'),
+('Productos naturales'),
+('Hogar y cocina'),
+('Muebles'),
+('Decoración'),
+('Iluminación'),
+('Electrodomésticos'),
+('Organización y almacenamiento'),
+('Limpieza del hogar'),
+('Jardín y exteriores'),
+('Herramientas y ferretería'),
+('Deportes y fitness'),
+('Bicicletas y accesorios'),
+('Camping y aventura'),
+('Natación y playa'),
+('Juguetes y juegos'),
+('Bebés y maternidad'),
+('Mascotas'),
+('Oficina y papelería'),
+('Arte y manualidades'),
+('Libros y revistas'),
+('Instrumentos musicales'),
+('Automoción y motocicletas'),
+('Recambios y accesorios para vehículos'),
+('Seguridad y vigilancia'),
+('Productos ecológicos y sostenibles'),
+('Alimentación y bebidas'),
+('Vinos y licores'),
+('Regalos y ocasiones especiales'),
+('Ofertas y liquidaciones');
+
 
 -- ----------------------------
 -- Productos
 -- ----------------------------
-INSERT INTO `productos` (`id`,`Nombre`,`Descripcion`,`Categoria`,`Estado`,`id_comercio`) VALUES
-(1,'Café Espresso 250g','Café tostado de mezcla selecta - bolsas de 250g','Alimentos','nuevo',1),
-(2,'Taza de cerámica','Taza artesanal 300ml','Hogar','nuevo',1),
-(3,'Clean Code (libro)','Manual sobre buenas prácticas de programación','Libros','nuevo',2),
-(4,'Novela "La tarde"','Novela contemporánea en español','Libros','nuevo',2),
-(5,'Cambio de cadena','Servicio completo de cambio de cadena','Servicios','nuevo',3),
-(6,'Neumático 26"','Neumático para MTB tamaño 26 pulgadas','Deportes','nuevo',3),
-(7,'Vestido veraniego S','Vestido algodón orgánico talla S','Ropa','nuevo',4),
-(8,'Camiseta básica M','Camiseta 100% algodón talla M','Ropa','nuevo',4),
-(9,'Cargador USB-C','Cargador rápido 30W','Electrónica','nuevo',5),
-(10,'Pantalla 24"','Monitor 24 pulgadas FullHD','Electrónica','nuevo',5),
-(11,'Cesta frutal mediana','Selección de frutas de temporada','Alimentos','nuevo',6),
-(12,'Mermelada casera 300g','Mermelada artesanal de fresa','Alimentos','nuevo',6),
-(13,'Anillo de plata','Anillo sencillo en plata 925','Joyería','nuevo',7),
-(14,'Reloj clásico','Reloj analógico con correa de cuero','Joyería','nuevo',7),
-(15,'Cuaderno A4 80 hojas','Cuaderno espiral A4 80 hojas','Papelería','nuevo',8),
-(16,'Bolígrafo gel','Pack 3 bolígrafos de gel','Papelería','nuevo',8),
-(17,'Baguette artesanal','Pan recién horneado 300g','Alimentos','nuevo',9),
-(18,'Croissant mantequilla','Croissant tradicional','Alimentos','nuevo',9),
-(19,'Plan de entrenamiento 12 semanas','Programa personalizado de entrenamiento','Servicios','nuevo',10),
-(20,'Proteína whey 1kg','Suplemento proteico sabor vainilla','Salud','nuevo',10),
-(21,'Kale orgánico 200g','Kale lavado y envasado','Alimentos','nuevo',11),
-(22,'Levadura natural 200g','Levadura para panadería casera','Alimentos','nuevo',11),
-(23,'Reparación lavadora','Diagnóstico y reparación de lavadora','Servicios','nuevo',12),
-(24,'Juego de destornilladores','Set 6 piezas magnéticas','Hogar','nuevo',12),
-(25,'Guantes ciclismo','Guantes para manos con gel','Deportes','nuevo',3),
-(26,'Libro infantil "Aventuras"','Cuento ilustrado para 4-8 años','Libros','nuevo',2),
-(27,'Bolso sostenible','Bolso hecho de materiales reciclados','Ropa','nuevo',4),
-(28,'Cable HDMI 2m','Cable HDMI 2 metros alta velocidad','Electrónica','nuevo',5),
-(29,'Pack frutas premium','Caja regalo con frutas seleccionadas','Alimentos','nuevo',6),
-(30,'Mantenimiento reloj','Servicio oficial de mantenimiento y pulido','Servicios','nuevo',7);
+INSERT INTO `productos` (`id`,`Nombre`,`Descripcion`,`Estado`,`id_comercio`,`id_categoria`) VALUES
+(1,'Café Espresso 250g','Café tostado de mezcla selecta - bolsas de 250g','nuevo',1,45),
+(2,'Taza de cerámica','Taza artesanal 300ml','nuevo',1,46),
+(3,'Clean Code (libro)','Manual sobre buenas prácticas de programación','nuevo',2,42),
+(4,'Novela "La tarde"','Novela contemporánea en español','nuevo',2,42),
+(5,'Cambio de cadena','Servicio completo de cambio de cadena','nuevo',3,48),
+(6,'Neumático 26"','Neumático para MTB tamaño 26 pulgadas','nuevo',3,48),
+(7,'Vestido veraniego S','Vestido algodón orgánico talla S','nuevo',4,10),
+(8,'Camiseta básica M','Camiseta 100% algodón talla M','nuevo',4,11),
+(9,'Cargador USB-C','Cargador rápido 30W','nuevo',5,4),
+(10,'Pantalla 24"','Monitor 24 pulgadas FullHD','nuevo',5,5),
+(11,'Cesta frutal mediana','Selección de frutas de temporada','nuevo',6,45),
+(12,'Mermelada casera 300g','Mermelada artesanal de fresa','nuevo',6,45),
+(13,'Anillo de plata','Anillo sencillo en plata 925','nuevo',7,15),
+(14,'Reloj clásico','Reloj analógico con correa de cuero','nuevo',7,15),
+(15,'Cuaderno A4 80 hojas','Cuaderno espiral A4 80 hojas','nuevo',8,38),
+(16,'Bolígrafo gel','Pack 3 bolígrafos de gel','nuevo',8,38),
+(17,'Baguette artesanal','Pan recién horneado 300g','nuevo',9,45),
+(18,'Croissant mantequilla','Croissant tradicional','nuevo',9,45),
+(19,'Plan de entrenamiento 12 semanas','Programa personalizado de entrenamiento','nuevo',10,31),
+(20,'Proteína whey 1kg','Suplemento proteico sabor vainilla','nuevo',10,21),
+(21,'Kale orgánico 200g','Kale lavado y envasado','nuevo',11,22),
+(22,'Levadura natural 200g','Levadura para panadería casera','nuevo',11,45),
+(23,'Reparación lavadora','Diagnóstico y reparación de lavadora','nuevo',12,26),
+(24,'Juego de destornilladores','Set 6 piezas magnéticas','nuevo',12,30),
+(25,'Guantes ciclismo','Guantes para manos con gel','nuevo',3,31),
+(26,'Libro infantil "Aventuras"','Cuento ilustrado para 4-8 años','nuevo',2,42),
+(27,'Bolso sostenible','Bolso hecho de materiales reciclados','nuevo',4,14),
+(28,'Cable HDMI 2m','Cable HDMI 2 metros alta velocidad','nuevo',5,4),
+(29,'Pack frutas premium','Caja regalo con frutas seleccionadas','nuevo',6,45),
+(30,'Mantenimiento reloj','Servicio oficial de mantenimiento y pulido','nuevo',7,15);
+
 
 -- ----------------------------
 -- Imágenes de productos
@@ -186,6 +242,14 @@ INSERT INTO `valoraciones` (`id`,`estrellas`,`id_usuario`,`id_comercio`) VALUES
 (30,4.5,7,10);
 
 -- ------------
+-- Chat
+-- ------------
+
+INSERT INTO `chat` (`id`, `comercioID`, `usuarioID`) VALUES
+(1, 4, 1),  -- Ejemplo: chat entre la tienda Moda Clara y la usuaria Ana
+(2, 1, 1);  -- Ejemplo: chat entre La Buena Taza y Ana
+
+-- ------------
 -- Mensajes
 -- ------------
 INSERT INTO `mensajes` (`id`, `mensaje`, `fecha`, `userID`, `chatID`) VALUES
@@ -195,61 +259,6 @@ INSERT INTO `mensajes` (`id`, `mensaje`, `fecha`, `userID`, `chatID`) VALUES
 (4, 'Perfecto, reservame uno para el jueves a la tarde. Gracias', '2025-10-18 12:11:00', 1, 1);
 
 
-
-
---------------------------------------------------------------------------------------------------------
--------------------------CATEGORIAS---------------------------------------------------------------------
-INSERT INTO categorias (nombre) VALUES
-('Electrónica'),
-('Ordenadores y portátiles'),
-('Teléfonos móviles y tablets'),
-('Accesorios tecnológicos'),
-('Audio y vídeo'),
-('Fotografía y cámaras'),
-('Televisores y proyectores'),
-('Videojuegos y consolas'),
-('Tecnología inteligente (IoT y domótica)'),
-('Moda para mujer'),
-('Moda para hombre'),
-('Ropa infantil'),
-('Calzado'),
-('Complementos de moda'),
-('Relojes y joyería'),
-('Belleza y cuidado personal'),
-('Maquillaje'),
-('Perfumes y fragancias'),
-('Cuidado del cabello'),
-('Salud y bienestar'),
-('Vitaminas y suplementos'),
-('Productos naturales'),
-('Hogar y cocina'),
-('Muebles'),
-('Decoración'),
-('Iluminación'),
-('Electrodomésticos'),
-('Organización y almacenamiento'),
-('Limpieza del hogar'),
-('Jardín y exteriores'),
-('Herramientas y ferretería'),
-('Deportes y fitness'),
-('Bicicletas y accesorios'),
-('Camping y aventura'),
-('Natación y playa'),
-('Juguetes y juegos'),
-('Bebés y maternidad'),
-('Mascotas'),
-('Oficina y papelería'),
-('Arte y manualidades'),
-('Libros y revistas'),
-('Instrumentos musicales'),
-('Automoción y motocicletas'),
-('Recambios y accesorios para vehículos'),
-('Seguridad y vigilancia'),
-('Productos ecológicos y sostenibles'),
-('Alimentación y bebidas'),
-('Vinos y licores'),
-('Regalos y ocasiones especiales'),
-('Ofertas y liquidaciones');
 
 COMMIT;
 
