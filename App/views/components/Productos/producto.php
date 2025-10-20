@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['producto'])) {
     $producto = json_decode($_POST['producto'], true);
+}
 ?>
 
 <div class="producto">
@@ -33,6 +34,6 @@ if (isset($_POST['producto'])) {
     </span>
   </div>
 </div>
-<?php } ?>
+
 
 

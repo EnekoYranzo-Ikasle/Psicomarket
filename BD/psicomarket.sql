@@ -61,7 +61,7 @@ CREATE TABLE chat (
   comercioID INT(11) NOT NULL,
   usuarioID INT(11) NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE mensajes (
   id INT(11) NOT NULL AUTO_INCREMENT,
@@ -70,8 +70,8 @@ CREATE TABLE mensajes (
   userID INT(11),
   chatID INT(11) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (chatID) REFERENCES chat(id),
-)
+  FOREIGN KEY (chatID) REFERENCES chat(id)
+);
 
 CREATE TABLE valoraciones (
   id INT NOT NULL AUTO_INCREMENT,
