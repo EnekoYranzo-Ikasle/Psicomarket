@@ -14,7 +14,7 @@ class ComercioController extends BaseController
         $this->render('index.view.php',
                  ['comerciosPatrocinados' => $comerciosPatrocinados,
                   'comerciosAnunciados' => $comerciosAnunciados,
-                    'comercioSeleccionado' => $comercioSeleccionado]      
+                    'comercioSeleccionado' => $comercioSeleccionado,'navFile' => $this->navFile]
                 );
     }
 
@@ -46,7 +46,7 @@ class ComercioController extends BaseController
     // Renderizar la vista infoComercio
     $this->render('infoComercio.view.php', [
         'comercio' => $comercio,
-        'productosDelComercio' => $productosDelComercio
+        'productosDelComercio' => $productosDelComercio,'navFile' => $this->navFile
     ]);
 }
 

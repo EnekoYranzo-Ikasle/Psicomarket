@@ -7,7 +7,7 @@ class LoginController extends BaseController
 
     public function index()
     {
-        $this->render('login.view.php');
+        $this->render('login.view.php',['navFile' => $this->navFile]);
     }
 
 

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/LoginRegisterModel.php';
 class RegisterController extends BaseController {
 
     public function index() {
-        $this->render('register.view.php');
+        $this->render('register.view.php',['navFile' => $this->navFile]);
     }
 
     public function show() {
