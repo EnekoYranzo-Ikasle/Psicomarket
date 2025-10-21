@@ -58,6 +58,12 @@ class ComercioController extends BaseController {
         echo json_encode($comerciosCoords);
         exit;
     }
+    public function apiGetComercios(){
+        header('Content-Type: application/json');
+       $comercios = ComercioModel::getAll();
+        echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
 
 
     public function show() {
