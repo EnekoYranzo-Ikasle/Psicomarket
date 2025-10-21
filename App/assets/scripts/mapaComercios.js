@@ -28,15 +28,15 @@ const markers = L.layerGroup().addTo(map);
 // Cargar comercios desde la base de datos
 async function cargarComercios() {
   try {
-    const res = await fetch('controllers/ComercioController.php');
-    const data = await res.json();
+    const response = await fetch('index.php?controller=ComercioController&accion=getCoords');
+    const comercios = await response.json();
 
-    data.forEach((comercio) => {
-      if (comercio.lat && comercio.lon) {
-        L.marker([comercio.lat, comercio.lon])
-          .addTo(markers)
-          .bindPopup(`<b>${comercio.nombre}</b><br>${comercio.direccion}`);
-      }
+    comercios.forEach((comercio) => {
+      const lat = parseFloat(comercio.Latitud);
+      const lon = parseFloat(comercio.Longitud);
+      const nombre = comercio.Nombre_comercio;
+
+      L.marker([lat, lon]).addTo(markers).bindPopup(`<b>${nombre}</b>`);
     });
   } catch (err) {
     console.error('Error al cargar comercios:', err);

@@ -21,18 +21,19 @@ INSERT INTO `usuarios` (`id`,`Nombre`,`Nombre_usuario`,`Apellidos`,`Contrasenna`
 -- Comercios
 -- ----------------------------
 INSERT INTO `comercios` (`id`,`Nombre_comercio`,`Descripcion`,`Patrocinado`,`Latitud`,`Longitud`,`Ruta_imagen_comercio`,`Valoracion`,`id_usuario`) VALUES
-(1,'La Buena Taza','Cafetería con gran variedad de cafés de especialidad',0,40.4167750,-3.7037900,'uploads/comercios/cafeteria1.jpg',4.6,2),
-(2,'Librería Norte','Librería independiente con selección de libros técnicos y literatura',0,40.4234410,-3.6923450,'uploads/comercios/libreria1.jpg',4.4,3),
-(3,'Taller Pedro','Taller de reparación de bicicletas y venta de componentes',1,40.4153630,-3.7073980,'uploads/comercios/taller1.jpg',4.7,8),
-(4,'Moda Clara','Tienda de ropa sostenible y accesorios',0,40.4180560,-3.7072220,'uploads/comercios/moda1.jpg',4.2,6),
-(5,'ElectroVega','Electrónica y reparaciones rápidas',0,40.4123450,-3.7001230,'uploads/comercios/electro1.jpg',4.1,10),
-(6,'Frutería La Huerta','Frutería con producto local y ecológico',0,40.4190000,-3.6950000,'uploads/comercios/fruteria1.jpg',4.5,3),
-(7,'Joyería Central','Joyería y relojería con larga tradición',1,40.4145000,-3.7060000,'uploads/comercios/joyeria1.jpg',4.8,2),
-(8,'Papelería Sol','Papelería, material escolar y oficina',0,40.4200000,-3.7005000,'uploads/comercios/papeleria1.jpg',4.0,12),
-(9,'PanaderíaArte','Panadería artesanal con horno propio',0,40.4160000,-3.7040000,'uploads/comercios/panaderia1.jpg',4.3,6),
-(10,'FitnessHub','Centro de entrenamiento y venta de suplementación',1,40.4175000,-3.7025000,'uploads/comercios/gym1.jpg',4.6,10),
-(11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,40.4197000,-3.6997000,'uploads/comercios/mercado1.jpg',4.2,12),
-(12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,40.4112000,-3.7082000,'uploads/comercios/tecnica1.jpg',4.0,8);
+(1,'La Buena Taza','Cafetería con gran variedad de cafés de especialidad',0,42.8467,-2.6727,'uploads/comercios/cafeteria1.jpg',4.6,2),  -- Centro
+(2,'Librería Norte','Librería independiente con selección de libros técnicos y literatura',0,42.8485,-2.6710,'uploads/comercios/libreria1.jpg',4.4,3),  -- Ensanche
+(3,'Taller Pedro','Taller de reparación de bicicletas y venta de componentes',1,42.8430,-2.6750,'uploads/comercios/taller1.jpg',4.7,8),  -- Judimendi
+(4,'Moda Clara','Tienda de ropa sostenible y accesorios',0,42.8400,-2.6810,'uploads/comercios/moda1.jpg',4.2,6),  -- Zaramaga
+(5,'ElectroVega','Electrónica y reparaciones rápidas',0,42.8610,-2.6720,'uploads/comercios/electro1.jpg',4.1,10),  -- Salburua
+(6,'Frutería La Huerta','Frutería con producto local y ecológico',0,42.8435,-2.6850,'uploads/comercios/fruteria1.jpg',4.5,3),  -- Adurza
+(7,'Joyería Central','Joyería y relojería con larga tradición',1,42.8490,-2.6760,'uploads/comercios/joyeria1.jpg',4.8,2),  -- Ensanche norte
+(8,'Papelería Sol','Papelería, material escolar y oficina',0,42.8315,-2.6670,'uploads/comercios/papeleria1.jpg',4.0,12),  -- Zabalgana
+(9,'PanaderíaArte','Panadería artesanal con horno propio',0,42.8475,-2.6610,'uploads/comercios/panaderia1.jpg',4.3,6),  -- Arriaga
+(10,'FitnessHub','Centro de entrenamiento y venta de suplementación',1,42.8540,-2.6590,'uploads/comercios/gym1.jpg',4.6,10),  -- El Pilar
+(11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,42.8555,-2.6680,'uploads/comercios/mercado1.jpg',4.2,12),  -- Salburua norte
+(12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,42.8380,-2.6705,'uploads/comercios/tecnica1.jpg',4.0,8);  -- Lakua
+
 
 -- ------------
 -- Categorias
