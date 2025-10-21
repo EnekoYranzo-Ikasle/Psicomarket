@@ -1,26 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  function moverCarrusel(btn, dir) {
-    const imageFlag = btn.closest(".imageFlag");
-    const track = imageFlag.querySelector(".images");
-    const total = track.children.length;
-    if (total <= 1) return;
+function moverCarrusel(btn, dir) {
+  const imageFlag = btn.closest(".imageFlag");
+  const track = imageFlag.querySelector(".images");
+  const total = track.children.length;
+  if (total <= 1) return;
 
-    let idx = Number(track.dataset.index || 0);
-    idx = (idx + dir + total) % total;
+  let idx = Number(track.dataset.index || 0);
+  idx = (idx + dir + total) % total;
 
-    track.style.transform = `translateX(-${idx * 100}%)`;
-    track.dataset.index = idx;
-  }
+  track.style.transform = `translateX(-${idx * 100}%)`;
+  track.dataset.index = idx;
+}
 
   const svgs = document.querySelectorAll("path");
-
   svgs.forEach((svg) => {
-    svg.addEventListener("click", async () => {
-      const esFavorito = await verificarProductoFavorito(svg.classList.value) ? true : false;
-      console.log(esFavorito);
-    });
+    console.log(svg.classList.value)
+     agregarClaseFavorito(svg)
+     svg.addEventListener("click", async () => {
+       const esFavorito = await verificarProductoFavorito(svg.classList.value) ? true : false;
+       console.log(esFavorito);
+     });
   });
-});
+
+
+
 
 async function añadirFavoritoEliminar(IDproducto, estadoProducto) {
   try {
@@ -38,7 +40,6 @@ async function añadirFavoritoEliminar(IDproducto, estadoProducto) {
     console.error(error);
   }
 }
-
 async function verificarProductoFavorito(idProducto) {
   try {
     const res = await fetch(
@@ -55,5 +56,13 @@ async function verificarProductoFavorito(idProducto) {
 
   } catch (error) {
     console.error(error);
+  }
+}
+
+async function agregarClaseFavorito(svg){
+  const esFavorito = await verificarProductoFavorito(svg.classList.value)
+  console.log(svg.classList.value);
+  if(esFavorito){
+    svg.classList.add("favorito")
   }
 }

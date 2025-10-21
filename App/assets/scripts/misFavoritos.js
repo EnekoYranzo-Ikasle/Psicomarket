@@ -22,10 +22,15 @@ async function obtenerFavoritos() {
             const componenteRecogido = await componenteSolicitado.text();
             contenedor.innerHTML += componenteRecogido;
         }
+        const script = document.createElement("script");
+        script.src = "assets/scripts/productos.js";
+
+        contenedor.appendChild(script);
 
     } catch (error) {
         console.error("Error cargando favoritos:", error);
         contenedor.innerHTML = "<p>Error al cargar los favoritos.</p>";
+
     }
 }
 obtenerFavoritos();

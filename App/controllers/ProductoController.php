@@ -10,7 +10,7 @@ class ProductoController extends BaseController {
 
     public function verificarProductoFavorito(){
         header('Content-Type: application/json');
-        $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'],$_SESSION['id_user']);
+        $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'],$_SESSION['user_id']);
         echo json_encode($producto);
         exit;
     }

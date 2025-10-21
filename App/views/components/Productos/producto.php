@@ -34,7 +34,6 @@ if (isset($_POST['producto'])) {
     </span>
   </div>
 </div>
-<script src="assets/scripts/productos.js"></script>
 
 
 

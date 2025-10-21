@@ -36,7 +36,6 @@ class ProductoModel
                 $producto['rutas_imagenes'] = [];
             }
         }
-        error_log("Productos: " . var_export($productos, true), 3, __DIR__ . '/debug.log');
         return $productos;
     }
 

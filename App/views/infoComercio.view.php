@@ -9,13 +9,15 @@
                 foreach ($productosDelComercio as $producto){
                     include('views/components/Productos/producto.php');
                 }
-            }else{
-                ?>
-                    <p>Este comercio no tiene productos actualemente</p>
-                <?php
+            } else {
+                echo "<p>Este comercio no tiene productos actualmente</p>";
             }
             ?>
-            <a href="index.php" class="moreInfo">Volver</a>
+
+        </div>
+
+        <a href="index.php" class="moreInfo">Volver</a>
     </div>
 </main>
 <?php require_once('layout/footer.php'); ?>
+<script type="module" src="assets/scripts/productos.js"></script>
