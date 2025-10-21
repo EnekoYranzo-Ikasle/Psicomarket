@@ -11,35 +11,38 @@ function moverCarrusel(btn, dir) {
   track.dataset.index = idx;
 }
 
-  const svgs = document.querySelectorAll("path");
-  svgs.forEach((svg) => {
-    console.log(svg.classList.value)
-     agregarClaseFavorito(svg)
-     svg.addEventListener("click", async () => {
-       const esFavorito = await verificarProductoFavorito(svg.classList.value) ? true : false;
-       console.log(esFavorito);
-     });
+const svgs = document.querySelectorAll("path");
+svgs.forEach((svg) => {
+  agregarClaseFavorito(svg);
+  svg.addEventListener("click", async () => {
+    const esFavorito = await verificarProductoFavorito(svg.classList.value)
+      ? true
+      : false;
+    añadirFavoritoEliminar(svg.classList.value, esFavorito);
+    agregarClaseFavorito(svg);
   });
 
+});
 
-
-
-async function añadirFavoritoEliminar(IDproducto, estadoProducto) {
+async function añadirFavoritoEliminar(IDproducto, esFavorito) {
   try {
     const res = await fetch(
-      "index.php?controller=FavoritosController&accion=añadirEliminarFavorito&idProducto=" +
+      "index.php?controller=ProductoController&accion=añadirEliminarFavorito&idProducto=" +
         IDproducto +
-        "&estadoProducto=" +
-        estadoProducto
+        "&esFavorito=" +
+        esFavorito
     );
 
     if (!res.ok) {
       throw new Error("Error al añadir o eliminar favorito");
     }
+
+    const data = await res.json();
   } catch (error) {
     console.error(error);
   }
 }
+
 async function verificarProductoFavorito(idProducto) {
   try {
     const res = await fetch(
@@ -53,16 +56,16 @@ async function verificarProductoFavorito(idProducto) {
 
     const favorito = await res.json();
     return favorito;
-
   } catch (error) {
     console.error(error);
   }
 }
 
-async function agregarClaseFavorito(svg){
-  const esFavorito = await verificarProductoFavorito(svg.classList.value)
-  console.log(svg.classList.value);
-  if(esFavorito){
-    svg.classList.add("favorito")
+  async function agregarClaseFavorito(svg) {
+    let esFavorito = await verificarProductoFavorito(svg.classList.value);
+    if (esFavorito) {
+      svg.classList.add("favorito");
+    } else {
+      svg.classList.remove("favorito");
+    }
   }
-}
