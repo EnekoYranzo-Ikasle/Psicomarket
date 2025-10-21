@@ -20,6 +20,7 @@
   background-image: url(../images/ChatBackground.jpg);
   background-color: rgba(255, 255, 255, 0.6);
   background-blend-mode: lighten;
+  overflow: scroll;
 }
 
 .item {
@@ -58,6 +59,7 @@ h4 {
   justify-content: flex-end;
   height: 100%;
   gap: 10px;
+  margin-bottom: 80px;
 }
 
 .loggedUser,
@@ -91,9 +93,10 @@ h4 {
   color: #665;
 }
 
-form {
+#textMessage {
   display: flex;
-  width: 100%;
+  position: fixed;
+  width: 80%;
   border: 1px solid var(--secundario);
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
@@ -101,23 +104,23 @@ form {
   border-radius: 20px;
 }
 
-form input {
+#textMessage input {
   border: 0;
   outline: none;
 }
 
-form input[type='text'] {
+#textMessage input[type='text'] {
   width: 100%;
   height: 2em;
 }
 
-form button[type='submit'] {
+#textMessage button[type='submit'] {
   width: 32px;
   background: transparent;
   border: 0;
   cursor: pointer;
 }
 
-form:focus {
+#textMessage:focus {
   border-color: var(--acento);
 }
