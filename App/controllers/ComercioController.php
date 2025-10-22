@@ -2,6 +2,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
 
 class ComercioController extends BaseController
 {
@@ -11,10 +12,13 @@ class ComercioController extends BaseController
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
         $comercioSeleccionado=$this-> seleccionarComercio();
+        $categorias= CategoriaModel::getAll();
         $this->render('index.view.php',
                  ['comerciosPatrocinados' => $comerciosPatrocinados,
                   'comerciosAnunciados' => $comerciosAnunciados,
-                    'comercioSeleccionado' => $comercioSeleccionado,'navFile' => $this->navFile]
+                    'comercioSeleccionado' => $comercioSeleccionado,
+                    'categorias'=>$categorias,
+                    'navFile' => $this->navFile]
                 );
     }
 

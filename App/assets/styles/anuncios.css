@@ -104,3 +104,71 @@
 .anuncio:hover {
   transform: scale(1.01);
 }
+/* ------------- SELECT DE CATEGORIAS--------------*/
+.select-categorias {
+  position: relative;
+  width: 230px;
+  font-family: inherit;
+}
+
+.select-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.select-btn:hover {
+  background: #ececec;
+}
+
+.dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  padding: 8px;
+  z-index: 10;
+}
+
+.dropdown.oculto {
+  display: none;
+}
+
+#buscar-categoria {
+  width: 100%;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+#lista-categorias {
+  max-height: 180px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#lista-categorias li {
+  margin-bottom: 4px;
+}
+
+#lista-categorias label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+}
+
+
