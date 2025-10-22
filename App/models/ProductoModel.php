@@ -59,9 +59,9 @@ class ProductoModel
         $datos = ['id_producto' => $idProducto, 'id_usuario' => $idUsuario];
         $db = Database::getConnection();
 
-        $stmt = $db->prepare("INSERT INTO favoritos (id_producto,id_usuario)  VALUES (:id_producto,:id_usuario)");
+        $stmt = $db->prepare("INSERT INTO favoritos (id_producto,id_usuario)  VALUES (:id_producto, :id_usuario)");
         $stmt->execute($datos);
-        
+
         return $stmt->rowCount() > 0;
     }
     public static function eliminarFavorito($idProducto, $idUsuario)
@@ -70,9 +70,9 @@ class ProductoModel
 
         $db = Database::getConnection();
 
-        $stmt = $db->prepare(" DELETE FROM favoritos WHERE id_producto = :id_producto AND id_usuario = :id_usuario");
+        $stmt = $db->prepare("DELETE FROM favoritos WHERE id_producto = :id_producto AND id_usuario = :id_usuario");
         $stmt->execute($datos);
-        
+
 
         return $stmt->rowCount() > 0;
     }

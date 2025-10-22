@@ -15,13 +15,16 @@ const svgs = document.querySelectorAll("path");
 svgs.forEach((svg) => {
   agregarClaseFavorito(svg);
   svg.addEventListener("click", async () => {
-    const esFavorito = await verificarProductoFavorito(svg.classList.value)
+    const esFavorito = (await verificarProductoFavorito(svg.classList[0]))
       ? true
       : false;
-    añadirFavoritoEliminar(svg.classList.value, esFavorito);
-    agregarClaseFavorito(svg);
+    añadirFavoritoEliminar(svg.classList[0], esFavorito);
+    if (esFavorito) {
+      svg.classList.remove("favorito");
+    } else {
+      svg.classList.add("favorito");
+    }
   });
-
 });
 
 async function añadirFavoritoEliminar(IDproducto, esFavorito) {
@@ -38,6 +41,15 @@ async function añadirFavoritoEliminar(IDproducto, esFavorito) {
     }
 
     const data = await res.json();
+
+    console.log(data);
+
+    const esPaginaFavoritos = window.location.href.includes(
+      "FavoritosController"
+    );
+    if (esFavorito && esPaginaFavoritos) {
+      window.location.reload();
+    }
   } catch (error) {
     console.error(error);
   }
@@ -61,11 +73,7 @@ async function verificarProductoFavorito(idProducto) {
   }
 }
 
-  async function agregarClaseFavorito(svg) {
-    let esFavorito = await verificarProductoFavorito(svg.classList.value);
-    if (esFavorito) {
-      svg.classList.add("favorito");
-    } else {
-      svg.classList.remove("favorito");
-    }
-  }
+async function agregarClaseFavorito(svg) {
+  let esFavorito = await verificarProductoFavorito(svg.classList[0]);
+  if (esFavorito === true) svg.classList.add("favorito");
+}

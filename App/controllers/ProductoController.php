@@ -24,9 +24,8 @@ class ProductoController extends BaseController
 
         $usuario = $_SESSION['user_id'];
         $productoID = $_GET['idProducto'];
-        $esFavorito = $_GET['esFavorito'];
-
-        if ($esFavorito) {
+        $esFavorito = filter_var($_GET['esFavorito'], FILTER_VALIDATE_BOOLEAN);
+        if ($esFavorito === true) {
             $res = ProductoModel::eliminarFavorito($productoID, $usuario);
         } else {
             $res = ProductoModel::añadirFavorito($productoID, $usuario);
@@ -37,19 +36,11 @@ class ProductoController extends BaseController
     }
 
 
-    public function show()
-    {
-    }
+    public function show() {}
 
-    public function store()
-    {
-    }
+    public function store() {}
 
-    public function destroy()
-    {
-    }
+    public function destroy() {}
 
-    public function destroyAll()
-    {
-    }
+    public function destroyAll() {}
 }
