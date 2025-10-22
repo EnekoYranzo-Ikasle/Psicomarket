@@ -8,7 +8,7 @@ const boundsVitoria = [
 ];
 
 // Inicializar el mapa
-const map = L.map('map', {
+const map = L.map("map", {
   center: vitoriaCoords,
   zoom: 13,
   minZoom: 12,
@@ -18,8 +18,8 @@ const map = L.map('map', {
 });
 
 // Capa base
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors',
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
 // Grupo de marcadores
@@ -28,7 +28,21 @@ const markers = L.layerGroup().addTo(map);
 // Cargar comercios desde la base de datos
 async function cargarComercios() {
   try {
-    const response = await fetch('index.php?controller=ComercioController&accion=getCoords');
+    let funcion = "";
+    let controller = "";
+    const esPaginaMisComercios = window.location.href.includes(
+      "ComercianteController"
+    );
+    if (esPaginaMisComercios) {
+      controller = "ComercianteController";
+      funcion = "getCoordsMiComercio";
+    } else {
+      controller = "ComercioController";
+      funcion = "getCoords";
+    }
+    const response = await fetch(
+      "index.php?controller="+controller+"&accion=" + funcion
+    );
     const comercios = await response.json();
 
     comercios.forEach((comercio) => {
@@ -39,7 +53,7 @@ async function cargarComercios() {
       L.marker([lat, lon]).addTo(markers).bindPopup(`<b>${nombre}</b>`);
     });
   } catch (err) {
-    console.error('Error al cargar comercios:', err);
+    console.error("Error al cargar comercios:", err);
   }
 }
 
