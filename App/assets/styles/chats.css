@@ -1,7 +1,7 @@
 .chatContainer {
   display: flex;
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 50px);
 }
 
 .chatContainer aside {
@@ -17,6 +17,9 @@
   width: 100%;
   align-items: end;
   padding: 20px;
+  background-image: url(../images/ChatBackground.jpg);
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
 }
 
 .item {
@@ -57,39 +60,43 @@ h4 {
   gap: 10px;
 }
 
-.usuario,
-.comerciante {
+.loggedUser,
+.other {
   padding: 10px 15px;
   border-radius: 10px;
   max-width: 70%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.loggedUser {
+  align-self: flex-end;
+  text-align: right;
+  background-color: var(--acento);
+}
+
+.other {
+  align-self: flex-start;
+  text-align: left;
   background-color: var(--secundario);
 }
 
-.usuario {
-  align-self: flex-end;
-  text-align: right;
-}
-
-.comerciante {
-  align-self: flex-start;
-  text-align: left;
-}
-
-.usuario strong,
-.comerciante strong {
+.loggedUser strong,
+.other strong {
   font-size: 0.9em;
 }
 
-.usuario small,
-.comerciante small {
+.loggedUser small,
+.other small {
   font-size: 0.8em;
-  color: #666;
+  color: #665;
 }
 
 form {
   display: flex;
   width: 100%;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--secundario);
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   padding: 1em;
   border-radius: 20px;
 }
@@ -104,8 +111,11 @@ form input[type='text'] {
   height: 2em;
 }
 
-form input[type='submit'] {
+form button[type='submit'] {
   width: 32px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 form:focus {

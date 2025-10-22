@@ -7,11 +7,10 @@
         if (empty($favoritos)): ?>
             <p class="title">No hay favoritos</p>
         <?php else: ?>
-            <div class="products favorito">
+            <div class="products">
                 <script src="assets/scripts/misFavoritos.js"></script>
             </div>
         <?php endif; ?>
-        <script src="assets/scripts/productos.js"></script>
 
 </main>
 

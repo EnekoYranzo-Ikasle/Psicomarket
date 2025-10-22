@@ -3,16 +3,33 @@ require_once __DIR__ . '/Database.php';
 
 class ChatModel {
 
-    public static function getChatsList($idComprador) {
+    public static function getUserChatsList($userID) {
         $con = Database::getConnection();
-        $sql = "SELECT c.id, c.comercioID, co.Nombre_comercio
+        $sql = "SELECT c.id, c.comercioID, co.Nombre_comercio AS nombreChat
                     FROM chat c
                     JOIN comercios co ON c.comercioID = co.id
-                    WHERE c.usuarioID = :idComprador
+                    WHERE c.usuarioID = :userID
                     ORDER BY c.id ASC;
                 ";
         $stmt = $con->prepare($sql);
-        $dato = ['idComprador' => $idComprador];
+        $dato = ['userID' => $userID];
+        $stmt->execute($dato);
+
+        $listaChats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $listaChats;
+    }
+
+    public static function getVendorChatList($comercianteID) {
+        $con = Database::getConnection();
+        $sql = "SELECT c.id, c.usuarioID, u.nombre AS nombreChat
+            FROM chat c
+            JOIN usuarios u ON c.usuarioID = u.id
+            JOIN comercios com ON c.comercioID = com.id
+            WHERE com.id_usuario = :comercianteID
+            ORDER BY c.id ASC;
+        ";
+        $stmt = $con->prepare($sql);
+        $dato = ['comercianteID' => $comercianteID];
         $stmt->execute($dato);
 
         $listaChats = $stmt->fetchAll(PDO::FETCH_ASSOC);

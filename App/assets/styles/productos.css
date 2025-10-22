@@ -27,7 +27,7 @@
   overflow: hidden;
 }
 
-.favorito .producto svg path{
+.favorito svg path{
   fill: #FFBC03;
   cursor: pointer;
 }
@@ -38,6 +38,9 @@ svg{
     right: 10px;
     width: 48px;
     height: 48px;
+    & path{
+      cursor: pointer;
+    }
 }
 
 .images {

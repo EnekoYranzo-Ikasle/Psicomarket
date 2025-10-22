@@ -11,8 +11,7 @@ class ProductoModel
     {
         $db = Database::getConnection();
 
-        $stmt = $db->prepare(
-        "SELECT
+        $stmt = $db->prepare("SELECT
             p.*,
             c.nombre AS Categoria,
             GROUP_CONCAT(i.Ruta_imagen_producto SEPARATOR ',') AS rutas_imagenes
@@ -22,9 +21,7 @@ class ProductoModel
         LEFT JOIN imagenes i
             ON i.id_producto = p.id
         WHERE p.id_comercio = :id_comercio
-        GROUP BY p.id, c.nombre
-    "
-    );
+        GROUP BY p.id, c.nombre");
 
         $stmt->execute(['id_comercio' => $idComercio]);
         $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,10 +36,22 @@ class ProductoModel
                 $producto['rutas_imagenes'] = [];
             }
         }
-        error_log("Productos: " . var_export($productos,true), 3, __DIR__ . '/debug.log');
+        error_log("Productos: " . var_export($productos, true), 3, __DIR__ . '/debug.log');
         return $productos;
     }
 
+    public static function verificarProductoFavorito($idProducto,$idUsuario)
+    {
+        $datos = ['id_producto'=>$idProducto,'id_usuario'=>$idUsuario];
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("Select * From favoritos Where id_producto=:id_producto AND id_usuario=:id_usuario");
+
+        $stmt->execute($datos);
+        $favorito = $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+
+        return $favorito;
+    }
 
     public static function getById($id) {}
 
