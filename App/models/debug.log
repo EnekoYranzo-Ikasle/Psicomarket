@@ -224,4 +224,41 @@ Productos: array (
       ),
     ),
   ),
+)Productos: array (
+  0 => 
+  array (
+    'id' => 1,
+    'Nombre' => 'Café Espresso 250g',
+    'Descripcion' => 'Café tostado de mezcla selecta - bolsas de 250g',
+    'Estado' => 'nuevo',
+    'id_comercio' => 1,
+    'Precio' => 6.9,
+    'id_categoria' => 47,
+    'Categoria' => 'Alimentación y bebidas',
+    'rutas_imagenes' => 
+    array (
+      0 => 
+      array (
+        'ruta' => 'uploads/comercios/cafe_250.jpg',
+      ),
+    ),
+  ),
+  1 => 
+  array (
+    'id' => 2,
+    'Nombre' => 'Taza de cerámica',
+    'Descripcion' => 'Taza artesanal 300ml',
+    'Estado' => 'nuevo',
+    'id_comercio' => 1,
+    'Precio' => 8.5,
+    'id_categoria' => 23,
+    'Categoria' => 'Hogar y cocina',
+    'rutas_imagenes' => 
+    array (
+      0 => 
+      array (
+        'ruta' => 'uploads/productos/taza_ceramica.jpg',
+      ),
+    ),
+  ),
 )

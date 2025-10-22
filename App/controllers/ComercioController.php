@@ -2,12 +2,24 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
+require_once __DIR__ . '/../models/CategoriaModel.php';
 
 class ComercioController extends BaseController {
 
     public function index() {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
+<<<<<<< HEAD
+        $comercioSeleccionado=$this-> seleccionarComercio();
+        $categorias= CategoriaModel::getAll();
+        $this->render('index.view.php',
+                 ['comerciosPatrocinados' => $comerciosPatrocinados,
+                  'comerciosAnunciados' => $comerciosAnunciados,
+                    'comercioSeleccionado' => $comercioSeleccionado,
+                    'categorias'=>$categorias,
+                    'navFile' => $this->navFile]
+                );
+=======
         $comercioSeleccionado = $this->seleccionarComercio();
         $this->render(
             'index.view.php',
@@ -18,6 +30,7 @@ class ComercioController extends BaseController {
                 'navFile' => $this->navFile
             ]
         );
+>>>>>>> bacdbf28c80ac737245076c734add344f7f44d0b
     }
 
     public function seleccionarComercio() {
