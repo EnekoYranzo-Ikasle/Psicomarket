@@ -2,20 +2,24 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/AccountModel.php';
 
-class AccountController extends BaseController {
+class AccountController extends BaseController
+{
 
-    public function index() {
+    public function index()
+    {
         $this->render('account.view.php', ['navFile' => $this->navFile]);
     }
 
-    public function loadUserInfo($userID) {
+    public function loadUserInfo($userID)
+    {
         $accountInfo = AccountModel::getAccountInfo($userID);
         header('Content-Type: application/json');
         echo json_encode($accountInfo);
         exit;
     }
 
-    public function uploadUserImage() {
+    public function uploadUserImage()
+    {
         header('Content-Type: application/json');
 
         $file = $_FILES['image'];
@@ -24,7 +28,7 @@ class AccountController extends BaseController {
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0755, true);
         }
-        
+
         if (!is_writable($uploadDir)) {
             echo json_encode([
                 'success' => false,
@@ -53,5 +57,13 @@ class AccountController extends BaseController {
         } else {
             echo json_encode(['success' => false, 'message' => 'No se pudo guardar la imagen']);
         }
+    }
+
+    public function getUserRole()
+    {
+        header('Content-Type: application/json');
+        $rol = AccountModel::getUserRol($_SESSION['user_id']);
+        echo json_encode(['rol' => $rol]);
+        exit;
     }
 }
