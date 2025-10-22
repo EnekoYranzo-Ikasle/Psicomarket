@@ -1,38 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-  function moverCarrusel(btn, dir) {
-    const imageFlag = btn.closest(".imageFlag");
-    const track = imageFlag.querySelector(".images");
-    const total = track.children.length;
-    if (total <= 1) return;
+function moverCarrusel(btn, dir) {
+  const imageFlag = btn.closest(".imageFlag");
+  const track = imageFlag.querySelector(".images");
+  const total = track.children.length;
+  if (total <= 1) return;
 
-    let idx = Number(track.dataset.index || 0);
-    idx = (idx + dir + total) % total;
+  let idx = Number(track.dataset.index || 0);
+  idx = (idx + dir + total) % total;
 
-    track.style.transform = `translateX(-${idx * 100}%)`;
-    track.dataset.index = idx;
-  }
+  track.style.transform = `translateX(-${idx * 100}%)`;
+  track.dataset.index = idx;
+}
 
-  const svgs = document.querySelectorAll("path");
-
-  svgs.forEach((svg) => {
-    svg.addEventListener("click", async () => {
-      const esFavorito = await verificarProductoFavorito(svg.classList.value) ? true : false;
-      console.log(esFavorito);
-    });
+const svgs = document.querySelectorAll("path");
+svgs.forEach((svg) => {
+  agregarClaseFavorito(svg);
+  svg.addEventListener("click", async () => {
+    const esFavorito = (await verificarProductoFavorito(svg.classList[0]))
+      ? true
+      : false;
+    añadirFavoritoEliminar(svg.classList[0], esFavorito);
+    if (esFavorito) {
+      svg.classList.remove("favorito");
+    } else {
+      svg.classList.add("favorito");
+    }
   });
 });
 
-async function añadirFavoritoEliminar(IDproducto, estadoProducto) {
+async function añadirFavoritoEliminar(IDproducto, esFavorito) {
   try {
     const res = await fetch(
-      "index.php?controller=FavoritosController&accion=añadirEliminarFavorito&idProducto=" +
+      "index.php?controller=ProductoController&accion=añadirEliminarFavorito&idProducto=" +
         IDproducto +
-        "&estadoProducto=" +
-        estadoProducto
+        "&esFavorito=" +
+        esFavorito
     );
 
     if (!res.ok) {
       throw new Error("Error al añadir o eliminar favorito");
+    }
+
+    const data = await res.json();
+
+    console.log(data);
+
+    const esPaginaFavoritos = window.location.href.includes(
+      "FavoritosController"
+    );
+    if (esFavorito && esPaginaFavoritos) {
+      window.location.reload();
     }
   } catch (error) {
     console.error(error);
@@ -52,8 +68,12 @@ async function verificarProductoFavorito(idProducto) {
 
     const favorito = await res.json();
     return favorito;
-
   } catch (error) {
     console.error(error);
   }
+}
+
+async function agregarClaseFavorito(svg) {
+  let esFavorito = await verificarProductoFavorito(svg.classList[0]);
+  if (esFavorito === true) svg.classList.add("favorito");
 }

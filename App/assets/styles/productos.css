@@ -27,9 +27,8 @@
   overflow: hidden;
 }
 
-.favorito svg path{
+.favorito{
   fill: #FFBC03;
-  cursor: pointer;
 }
 
 svg{

@@ -8,11 +8,10 @@
             <p class="title">No hay favoritos</p>
         <?php else: ?>
             <div class="products">
-                <script src="assets/scripts/misFavoritos.js"></script>
+                
             </div>
         <?php endif; ?>
-
+    </div>
+    <script src="assets/scripts/misFavoritos.js"></script>
 </main>
-
-
 <?php require_once('layout/footer.php'); ?>

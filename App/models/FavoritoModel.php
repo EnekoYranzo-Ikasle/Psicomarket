@@ -8,17 +8,21 @@ class FavoritoModel
     {
         $datos = ['idUsuario' => $idUsuario];
         $db = Database::getConnection();
-        $stmt = $db->prepare("SELECT
+        $stmt = $db->prepare(
+            "SELECT
                 p.*,
+                c.nombre AS Categoria,
                 GROUP_CONCAT(i.Ruta_imagen_producto SEPARATOR ',') AS rutas_imagenes
-                FROM productos p
-                JOIN favoritos f
-                    ON f.id_producto = p.id
-                LEFT JOIN imagenes i
-                    ON i.id_producto = p.id
-                WHERE f.id_usuario = :idUsuario
-                GROUP BY p.id;
-            ");
+            FROM productos p
+            JOIN favoritos f
+                ON f.id_producto = p.id
+            LEFT JOIN categorias c
+                ON c.id = p.id_categoria
+            LEFT JOIN imagenes i
+                ON i.id_producto = p.id
+            WHERE f.id_usuario = :idUsuario
+            GROUP BY p.id, c.nombre
+        ");
         $stmt->execute($datos);
         $favoritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -33,7 +37,7 @@ class FavoritoModel
             }
         }
 
-    return json_encode($favoritos, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    return json_encode($favoritos);
     }
 
     public static function getById($id) {}
