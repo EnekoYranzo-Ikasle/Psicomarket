@@ -26,4 +26,17 @@ class AccountModel {
         $accountInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $accountInfo;
     }
+
+    public static function saveUserImagePath($filepath) {
+        $userID = $_SESSION['user_id'];
+
+        $con = Database::getConnection();
+        $sql = "UPDATE usuarios
+            SET userImagePath = :userImagePath
+            WHERE id = :userID";
+
+        $stmt = $con->prepare($sql);
+        $dato = ['userImagePath' => $filepath, 'userID' => $userID];
+        $stmt->execute($dato);
+    }
 }

@@ -9,11 +9,26 @@
     </div>
 
     <div id="Informacion" class="tabcontent">
-      <span>
-        <img src="assets/images/icons/userLogo.png" alt="">
+      <div>
+        <!-- User logo -->
+        <span class="userImageContainer">
+          <img src="assets/images/icons/userLogo.png" id="userImage">
+          <button id="editUserImage"><img src="assets/images/icons/Camera.svg" alt=""></button>
+        </span>
+
+        <!-- Modal -->
+        <div id="uploadModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <input type="file" id="uploadedFile">
+            <button id="saveImageButton">Guardar</button>
+          </div>
+        </div>
+
+        <!-- Boton editar usuario -->
         <h3 id="username"></h3>
-        <button id="editUser">Editar usuario</button>
-      </span>
+        <button id="editUserInfo">Editar usuario</button>
+      </div>
       <form id="UserInfo">
         <ul>
           <li><b>Nombre:</b> <input type="text" id="nombre" disabled></li>
@@ -25,6 +40,7 @@
     </div>
 
     <div id="Seguridad" class="tabcontent">
+
     </div>
 
     <div id="Preferencias" class="tabcontent">
