@@ -47,40 +47,38 @@ editImageButton.addEventListener('click', function () {
 });
 
 async function saveUserImage() {
-    const formData = new FormData();
-    formData.append('image', userImage.files[0]);
+  const formData = new FormData();
+  formData.append('image', userImage.files[0]);
 
+  try {
+    const response = await fetch(`index.php?controller=AccountController&accion=uploadUserImage`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    // Ver el texto crudo de la respuesta
+    const text = await response.text();
+    console.log('Respuesta cruda:', text);
+
+    // Intentar parsear como JSON
     try {
-        const response = await fetch(`index.php?controller=AccountController&accion=uploadUserImage`, {
-            method: 'POST',
-            body: formData,
-        });
+      const result = JSON.parse(text);
+      console.log('JSON parseado:', result);
 
-        // Ver el texto crudo de la respuesta
-        const text = await response.text();
-        console.log('Respuesta cruda:', text);
+      // Cerrar modal si todo va bien
+      modal.style.display = 'none';
 
-        // Intentar parsear como JSON
-        try {
-            const result = JSON.parse(text);
-            console.log('JSON parseado:', result);
-
-            // Cerrar modal si todo va bien
-            modal.style.display = 'none';
-
-            // Actualizar la imagen si viene en la respuesta
-            if (result.imageUrl) {
-                document.querySelector('.user-image img').src = result.imageUrl;
-            }
-
-        } catch (parseError) {
-            console.error('Error al parsear JSON:', parseError);
-            console.error('Texto recibido:', text);
-        }
-
-    } catch (error) {
-        console.error('Error en la petición:', error);
+      // Actualizar la imagen si viene en la respuesta
+      if (result.imageUrl) {
+        document.querySelector('.user-image img').src = result.imageUrl;
+      }
+    } catch (parseError) {
+      console.error('Error al parsear JSON:', parseError);
+      console.error('Texto recibido:', text);
     }
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  }
 }
 
 //////// Editar Info del Perfil ////////
@@ -106,7 +104,7 @@ async function loadUserInfo() {
   try {
     const nombre = document.getElementById('nombre');
     const apellidos = document.getElementById('apellidos');
-    const usuario = document.getElementById('usuario');
+    const email = document.getElementById('email');
     const telefono = document.getElementById('telefono');
     const username = document.getElementById('username');
 
@@ -121,11 +119,11 @@ async function loadUserInfo() {
       // Inputs
       nombre.value = user.Nombre;
       apellidos.value = user.Apellidos;
-      usuario.value = user.Nombre_usuario;
+      email.value = user.Email;
       telefono.value = user.num_Tel;
 
       // H3 username
-      username.innerHTML = user.Nombre_usuario;
+      username.innerHTML = user.Nombre;
     } else {
       throw new Error();
     }

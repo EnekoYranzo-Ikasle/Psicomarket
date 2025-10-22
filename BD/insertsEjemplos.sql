@@ -3,19 +3,22 @@ USE `psicomarket`;
 -- ----------------------------
 -- Usuarios
 -- ----------------------------
-INSERT INTO `usuarios` (`id`,`Nombre`,`Nombre_usuario`,`Apellidos`,`Contrasenna`,`num_Tel`,`Tipo`) VALUES
-(1,'Ana','ana92','García','passAna2025',612345001,'usuario'),
-(2,'Luis','luis_dev','Martínez','luisPwd!','612345002','comerciante'),
-(3,'María','maria_shop','Rodríguez','maria123','612345003','comerciante'),
-(4,'Jorge','jorge_admin','Fernández','adminJ2025','612345004','administrador'),
-(5,'Clara','clara_p','Pérez','clarapass','612345005','usuario'),
-(6,'Miguel','miguel87','Santos','miguelPass','612345006','comerciante'),
-(7,'Sofia','sofia98','Lopez','sofiasegura','612345007','usuario'),
-(8,'Pedro','pedro_m','Navarro','pedro1234','612345008','comerciante'),
-(9,'Laura','laura_c','Gil','lauraPwd','612345009','usuario'),
-(10,'Carlos','carlos_v','Vega','cvPass','612345010','comerciante'),
-(11,'Elena','elenaweb','Ortega','elen@2025','612345011','usuario'),
-(12,'Raúl','raul_store','Herrera','raulStrong','612345012','comerciante');
+INSERT INTO `usuarios` (`id`, `Nombre`, `Apellidos`, `Email`, `Contrasenna`, `num_Tel`, `Tipo`, `userImagePath`) VALUES
+(1, 'Ana', 'García', 'ana.garcia@email.com', 'passAna2025', 612345001, 'usuario', ''),
+(2, 'Luis', 'Martínez', 'luis.martinez@email.com', 'luisPwd!', 612345002, 'comerciante', ''),
+(3, 'María', 'Rodríguez', 'maria.rodriguez@email.com', 'maria123', 612345003, 'comerciante', ''),
+(4, 'Jorge', 'Fernández', 'jorge.fernandez@email.com', 'adminJ2025', 612345004, 'administrador', ''),
+(5, 'Clara', 'Pérez', 'clara.perez@email.com', 'clarapass', 612345005, 'usuario', ''),
+(6, 'Miguel', 'Santos', 'miguel.santos@email.com', 'miguelPass', 612345006, 'comerciante', ''),
+(7, 'Sofia', 'Lopez', 'sofia.lopez@email.com', 'sofiasegura', 612345007, 'usuario', ''),
+(8, 'Pedro', 'Navarro', 'pedro.navarro@email.com', 'pedro1234', 612345008, 'comerciante', ''),
+(9, 'Laura', 'Gil', 'laura.gil@email.com', 'lauraPwd', 612345009, 'usuario', ''),
+(10, 'Carlos', 'Vega', 'carlos.vega@email.com', 'cvPass', 612345010, 'comerciante', ''),
+(11, 'Elena', 'Ortega', 'elena.ortega@email.com', 'elen@2025', 612345011, 'usuario', ''),
+(12, 'Raúl', 'Herrera', 'raul.herrera@email.com', 'raulStrong', 612345012, 'comerciante', ''),
+(13, 'Eneko', 'Yranzo', 'eneko.yranzo@email.com', '12345Abcde', 123456789, 'administrador', ''),
+(14, 'Ibai', 'Lopez', 'ibai.lopez@email.com', '12345Abcde', 123456789, 'administrador', ''),
+(15, 'Aimar', 'Medina', 'aimar.medina@email.com', '12345Abcde', 123456789, 'administrador', '');
 
 -- ----------------------------
 -- Comercios
