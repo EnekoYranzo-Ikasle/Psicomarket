@@ -33,9 +33,14 @@
             </a>
         </div>
         <div class="buttons">
-            <div class="account icon">
-                <img src="assets/images/icons/user.svg" alt="" class="accountIcon">
-            </div>
+            <form method="post" class="icon">
+                <?php if (!empty($_SESSION['user_id'])): ?>
+                    <button type="submit" name="logout">
+                        <img src="assets/images/icons/Logout.svg" title="Cerrar sesión" class="logOutIcon">
+                    </button>
+                <?php endif; ?>
+            </form>
+
             <div class="menuIcon icon">
                 <div class="menuBar menuBar1"></div>
                 <div class="menuBar menuBar2"></div>
@@ -44,9 +49,14 @@
         </div>
     </header>
     <?php
+    if (isset($_POST['logout'])) {
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        exit();
+    }
 
     require_once "views/components/Nav/{$navFile}.html";
-
     ?>
 
     <script src="assets/scripts/headerNav.js"></script>
