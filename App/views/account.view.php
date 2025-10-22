@@ -33,7 +33,7 @@
         <ul>
           <li><b>Nombre:</b> <input type="text" id="nombre" disabled></li>
           <li><b>Apellidos:</b> <input type="text" id="apellidos" disabled></li>
-          <li><b>Usuario:</b> <input type="text" id="usuario" disabled></li>
+          <li><b>Email:</b> <input type="text" id="email" disabled></li>
           <li><b>Telefono:</b> <input type="tel" id="telefono" disabled></li>
         </ul>
       </form>
