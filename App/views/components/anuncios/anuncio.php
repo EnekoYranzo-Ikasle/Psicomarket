@@ -12,4 +12,9 @@ if (isset($_POST['comercio'])) {
     <span> <?= $comercio['Valoracion'] ?> </span>
     <img src="assets/images/icons/valoracion.svg" alt="estrella">
   </div>
+  <?php if (isset($_POST['acciones']) && $_POST['acciones'] === 'true') : ?>
+    <div class="acciones-anuncio">
+      <?php include("../accionesAnuncios/accionesAnuncio.php"); ?>
+    </div>
+  <?php endif; ?>
 </div>
