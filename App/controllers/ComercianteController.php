@@ -4,21 +4,14 @@ require_once __DIR__ . '/../models/ComercioModel.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
 
-class ComercioController extends BaseController {
+class ComercianteController extends BaseController {
 
     public function index() {
-        $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
-        $comerciosAnunciados = ComercioModel::getAll();
-        $comercioSeleccionado=$this-> seleccionarComercio();
-        $categorias= CategoriaModel::getAll();
-        $this->render('index.view.php',
-                 ['comerciosPatrocinados' => $comerciosPatrocinados,
-                  'comerciosAnunciados' => $comerciosAnunciados,
-                    'comercioSeleccionado' => $comercioSeleccionado,
-                    'categorias'=>$categorias,
-                    'navFile' => $this->navFile]
-                );
-
+        $comercios = ComercioModel::getAllMine();
+        $this->render('misComercios.view.php', [
+            'misComercios' => $comercios,
+            'navFile' => $this->navFile
+        ]);
     }
 
     public function seleccionarComercio() {
@@ -43,34 +36,31 @@ class ComercioController extends BaseController {
         if (!$comercio) {
             die(" Comercio no encontrado.");
         }
-        $productosDelComercio = ProductoModel::getByComercioId($id);
-        // Renderizar la vista infoComercio
+
         $this->render('infoComercio.view.php', [
             'comercio' => $comercio,
-            'productosDelComercio' => $productosDelComercio,
             'navFile' => $this->navFile
         ]);
     }
 
-    public function getCoords() {
-        $comerciosCoords = ComercioModel::getCoords();
+    public function getCoordsMiComercio()
+    {
+        $user = $_SESSION['user_id'];
+        $comerciosCoords = ComercioModel::getCoordsMiComercio($user);
 
         header('Content-Type: application/json');
         echo json_encode($comerciosCoords);
         exit;
     }
-    public function apiGetComercios() {
+
+        public function apiGetMisComercios()
+    {
         header('Content-Type: application/json');
-
-
-        $busqueda =$_GET['busqueda'] ?? null;
-        
-       $comercios = ComercioModel::getAll();
-
-
+        $comercios = ComercioModel::getAllMine();
         echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
         exit;
     }
+
 
 
     public function show() {

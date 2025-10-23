@@ -2,29 +2,45 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 
-class ProductoController extends BaseController {
+class ProductoController extends BaseController
+{
 
-    public function index() {
-        $this->render('index.view.php',['navFile' => $this->navFile]);
+    public function index()
+    {
+        $this->render('index.view.php', ['navFile' => $this->navFile]);
     }
 
-    public function verificarProductoFavorito(){
+    public function verificarProductoFavorito()
+    {
         header('Content-Type: application/json');
-        $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'],$_SESSION['id_user']);
+        $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'], $_SESSION['user_id']) ? true : false;
         echo json_encode($producto);
         exit;
     }
 
+    public function añadirEliminarFavorito()
+    {
+        header('Content-Type: application/json');
 
-    public function show() {
+        $usuario = $_SESSION['user_id'];
+        $productoID = $_GET['idProducto'];
+        $esFavorito = filter_var($_GET['esFavorito'], FILTER_VALIDATE_BOOLEAN);
+        if ($esFavorito === true) {
+            $res = ProductoModel::eliminarFavorito($productoID, $usuario);
+        } else {
+            $res = ProductoModel::añadirFavorito($productoID, $usuario);
+        }
+
+        echo json_encode($res);
+        exit;
     }
 
-    public function store() {
-    }
 
-    public function destroy() {
-    }
+    public function show() {}
 
-    public function destroyAll() {
-    }
+    public function store() {}
+
+    public function destroy() {}
+
+    public function destroyAll() {}
 }

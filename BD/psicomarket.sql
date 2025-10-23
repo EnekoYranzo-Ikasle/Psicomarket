@@ -4,11 +4,12 @@ USE psicomarket;
 CREATE TABLE usuarios (
   id INT NOT NULL AUTO_INCREMENT,
   Nombre VARCHAR(50),
-  Nombre_usuario VARCHAR(50),
   Apellidos VARCHAR(50),
-  Contrasenna VARCHAR(50),
+  Email VARCHAR(255),
+  Contrasenna VARCHAR(255),
   num_Tel INT,
   Tipo ENUM('usuario','comerciante','administrador') NOT NULL DEFAULT 'usuario',
+  UserImagePath VARCHAR(255) NULL,
   PRIMARY KEY (id)
 );
 
@@ -26,16 +27,23 @@ CREATE TABLE comercios (
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
 
+CREATE TABLE categorias (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE productos (
   id INT NOT NULL AUTO_INCREMENT,
   Nombre VARCHAR(50),
   Descripcion VARCHAR(100),
-  Categoria VARCHAR(50),
   Estado VARCHAR(20),
   id_comercio INT,
   Precio FLOAT,
+  id_categoria INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_comercio) REFERENCES comercios(id)
+  FOREIGN KEY (id_comercio) REFERENCES comercios(id),
+  FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
 
 CREATE TABLE imagenes (
@@ -82,14 +90,3 @@ CREATE TABLE valoraciones (
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
   FOREIGN KEY (id_comercio) REFERENCES comercios(id)
 );
-
-CREATE TABLE categorias (
-  id INT NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id)
-);
-
-ALTER TABLE productos
-DROP COLUMN Categoria,
-ADD COLUMN id_categoria INT,
-ADD FOREIGN KEY (id_categoria) REFERENCES categorias(id);

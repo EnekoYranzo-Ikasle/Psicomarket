@@ -10,7 +10,7 @@ class ChatController extends BaseController {
 
     public function getMessagesList() {
         $userID = $_SESSION['user_id'];
-        $userType = UsuarioModel::getUserRol($userID);
+        $userType = AccountModel::getUserRol($userID);
 
         if ($userType['tipo'] == 'usuario') {
             $listaChats = ChatModel::getUserChatsList($userID);

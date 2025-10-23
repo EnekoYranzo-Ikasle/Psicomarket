@@ -6,7 +6,9 @@ class ProductoModel
 {
 
 
-    public static function getAll() {}
+    public static function getAll()
+    {
+    }
     public static function getByComercioId($idComercio)
     {
         $db = Database::getConnection();
@@ -36,28 +38,58 @@ class ProductoModel
                 $producto['rutas_imagenes'] = [];
             }
         }
-        error_log("Productos: " . var_export($productos, true), 3, __DIR__ . '/debug.log');
         return $productos;
     }
 
-    public static function verificarProductoFavorito($idProducto,$idUsuario)
+    public static function verificarProductoFavorito($idProducto, $idUsuario)
     {
-        $datos = ['id_producto'=>$idProducto,'id_usuario'=>$idUsuario];
+        $datos = ['id_producto' => $idProducto, 'id_usuario' => $idUsuario];
         $db = Database::getConnection();
 
-        $stmt = $db->prepare("Select * From favoritos Where id_producto=:id_producto AND id_usuario=:id_usuario");
+        $stmt = $db->prepare("Select id From favoritos Where id_producto=:id_producto AND id_usuario=:id_usuario");
 
         $stmt->execute($datos);
-        $favorito = $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+        $favorito = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $favorito;
     }
 
-    public static function getById($id) {}
+    public static function añadirFavorito($idProducto, $idUsuario)
+    {
+        $datos = ['id_producto' => $idProducto, 'id_usuario' => $idUsuario];
+        $db = Database::getConnection();
 
-    public static function create($datos) {}
+        $stmt = $db->prepare("INSERT INTO favoritos (id_producto,id_usuario)  VALUES (:id_producto, :id_usuario)");
+        $stmt->execute($datos);
 
-    public static function deleteById($id) {}
+        return $stmt->rowCount() > 0;
+    }
+    public static function eliminarFavorito($idProducto, $idUsuario)
+    {
+        $datos = ['id_producto' => $idProducto, 'id_usuario' => $idUsuario];
 
-    public static function deleteAll() {}
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("DELETE FROM favoritos WHERE id_producto = :id_producto AND id_usuario = :id_usuario");
+        $stmt->execute($datos);
+
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public static function getById($id)
+    {
+    }
+
+    public static function create($datos)
+    {
+    }
+
+    public static function deleteById($id)
+    {
+    }
+
+    public static function deleteAll()
+    {
+    }
 }
