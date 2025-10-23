@@ -1,0 +1,33 @@
+.acciones{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ transform: translate(-50%, 150%);
+  display: flex;
+  gap: 10px;
+}
+.btn {
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.editar {
+    background-color: rgb(223, 223, 223); /* Green */
+    border: 2px solid #000000;
+    color: black;
+}
+.eliminar {
+    background-color: #f44336; /* Red */
+    border: 2px solid #a50b00;
+
+}
+

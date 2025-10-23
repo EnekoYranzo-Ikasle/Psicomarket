@@ -96,7 +96,8 @@ main {
 /* Animacion label */
 
 .inputGroup input:focus + label,
-.inputGroup input:valid + label {
+.inputGroup input:valid + label,
+.inputGroup input.has-content + label {
   transform: translate(-15px, -25px);
   font-size: 13px;
   z-index: inherit;

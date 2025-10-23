@@ -11,17 +11,23 @@
   position: relative;
 }
 
-.anuncio img {
+.anuncio .imagenes {
+  height: 50%;
+  overflow: hidden;
+}
+
+.anuncio .imagenes img {
   border-radius: 10px;
   width: 100%;
-  height: 65%;
-  max-height: 65%;
+  height: 100%;
   object-fit: cover;
 }
 
 .nombre-comercio {
-  margin: 10px 0;
   font-weight: 600;
+  height: 30%;
+  display: flex;
+  justify-content: center;
 }
 
 .descripcion {
@@ -73,7 +79,6 @@
   align-items: center;
 }
 
-/*-------- Anuncios de 3 en 3 en dos filas -------*/
 .anuncios-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -95,7 +100,8 @@
 }
 
 .moreInfo:hover {
-  background: #2a2a2a; /* un poco más claro para el efecto */
+  background: #2a2a2a;
+  /* un poco más claro para el efecto */
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.7), -8px -8px 16px rgba(100, 100, 100, 0.25),
     inset 0 0 10px rgba(255, 255, 255, 0.05);
   color: #ffffff;
@@ -104,6 +110,7 @@
 .anuncio:hover {
   transform: scale(1.01);
 }
+
 /* ------------- SELECT DE CATEGORIAS--------------*/
 .select-categorias {
   position: relative;
@@ -134,7 +141,7 @@
   right: 0;
   border: 1px solid #333;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   padding: 8px;
   z-index: 10;
 }
@@ -170,32 +177,145 @@
   gap: 6px;
 
 }
-#filtro-container{
+
+#filtro-container {
   display: none;
 }
 
-#toggle-filtros{
+#toggle-filtros {
   cursor: pointer;
   display: flex;
   gap: 5px;
   padding: 8px;
   border-radius: 5px;
 }
-#toggle-filtros:hover{
-background-color: #ebebeb;
+
+#toggle-filtros:hover {
+  background-color: #ebebeb;
 }
-.botones{
-  display: flex;
-  flex-direction: row;
-}
-.acciones{
+
+.overlay, .overlay2 {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 15;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
 }
 
+.validarEliminarAnuncio, .editarAnuncio {
+  padding: 25px 30px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
 
+.validarEliminarAnuncio p {
+  font-size: 1.1rem;
+  color: #333333;
+  margin-bottom: 20px;
+}
 
+.validarEliminarAnuncio .botones {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.validarEliminarAnuncio button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  min-width: 120px;
+}
+
+.validarEliminarAnuncio .confirmarEliminarAnuncio {
+  background-color: #e53935;
+  color: #ffffff;
+}
+
+.validarEliminarAnuncio .confirmarEliminarAnuncio:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.validarEliminarAnuncio .cancelarEliminarAnuncio {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.validarEliminarAnuncio .cancelarEliminarAnuncio:hover {
+  background-color: #bdbdbd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.editarAnuncio input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editarAnuncio input[type="text"]:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+.editarAnuncio .botones {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.editarAnuncio button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  min-width: 120px;
+}
+
+.editarAnuncio .confirmarEditarAnuncio {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.editarAnuncio .confirmarEditarAnuncio:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.editarAnuncio .cancelarEditarAnuncio {
+  background-color: #e0e0e0;
+  color: #333333;
+}
+
+.editarAnuncio .cancelarEditarAnuncio:hover {
+  background-color: #bdbdbd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

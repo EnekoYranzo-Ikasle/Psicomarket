@@ -64,4 +64,26 @@ class ComercioModel
         $comerciosCoords = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $comerciosCoords;
     }
+
+    public static function eliminarAnuncio($idAnuncio, $idComerciante)
+    {
+        $datos = ['idAnuncio' => $idAnuncio, 'idComerciante' => $idComerciante];
+        $db = Database::getConnection();
+        $stmt = $db->prepare("DELETE FROM comercios WHERE id=:idAnuncio AND id_usuario=:idComerciante");
+        $stmt->execute($datos);
+        return $stmt->rowCount() > 0;
+    }
+
+    public static function editarAnuncio($anuncioId, $nombre, $descripcion)
+    {
+        $datos = [
+            'idAnuncio' => $anuncioId,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion
+        ];
+        $db = Database::getConnection();
+        $stmt = $db->prepare("UPDATE comercios SET Nombre_comercio = :nombre, Descripcion = :descripcion WHERE id = :idAnuncio");
+        $stmt->execute($datos);
+        return $stmt->rowCount() > 0;
+    }
 }

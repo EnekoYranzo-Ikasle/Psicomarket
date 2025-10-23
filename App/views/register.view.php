@@ -22,7 +22,7 @@
           </div>
 
           <div class="inputGroup">
-            <input type="email" name="Email" id="EmailInput" placeholder="" required>
+            <input type="email" name="Email" id="EmailInput" placeholder="" required oninput="checkInput(this)">
             <label for="EmailInput">Email</label>
           </div>
 
@@ -48,6 +48,14 @@
   </div>
   <div class="image" style="--bg-url: url('../images/registerImage.png');"></div>
 </main>
-
+<script>
+  function checkInput(input) {
+    if (input.value.trim() !== "") {
+      input.classList.add("has-content");
+    } else {
+      input.classList.remove("has-content");
+    }
+  }
+</script>
 
 <?php require_once('layout/footer.php'); ?>
