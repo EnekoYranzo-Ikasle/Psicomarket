@@ -9,7 +9,7 @@ if (isset($_POST['comercio'])) {
   <a class="moreInfo" href="index.php?controller=ComercioController&accion=info&id=<?= $comercio['id'] ?>">Más información</a>
 
   <div class="valoracion">
-    <span> <?= $comercio['Valoracion'] ?> </span>
+    <span> <?= $comercio['valoracion'] ?> </span>
     <img src="assets/images/icons/valoracion.svg" alt="estrella">
   </div>
   <?php if (isset($_POST['acciones']) && $_POST['acciones'] === 'true') : ?>
