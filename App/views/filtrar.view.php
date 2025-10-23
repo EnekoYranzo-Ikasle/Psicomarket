@@ -5,7 +5,7 @@
       <img src="assets/images/icons/filter.svg" alt="Filtrar">
       <span> Ordenar y filtrar</span>
     </label>
-    <input type="text" name="busqueda" placeholder="Buscar Comercio">
+    <input type="text" name="busqueda" id="busqueda" placeholder="Buscar Comercio">
     <div id="filtro-container" class="filtros oculto">
       <form id="form-filtros">
         <select name="valoracion" id="valoracion">
@@ -45,10 +45,10 @@
             <input type="button" value="Reestablecer filtros" name="reestablecer" id="reestablecer">
           </div>
         </div>
-        <div class="btn-filtrar">
+        <!-- <div class="btn-filtrar">
           <button type="submit">Aplicar filtros</button>
 
-        </div>
+        </div> -->
 
     </div>
 
