@@ -3,6 +3,7 @@ require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
+require_once __DIR__ . '/../models/ValoracionModel.php';
 
 class ComercioController extends BaseController
 {
@@ -12,6 +13,7 @@ class ComercioController extends BaseController
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
         $comercioSeleccionado = $this->seleccionarComercio();
+
         $categorias = CategoriaModel::getAll();
         $this->render(
             'index.view.php',
@@ -69,18 +71,24 @@ class ComercioController extends BaseController
 
 
     public function apiGetComercios()
-    {
-        header('Content-Type: application/json');
+{
+    header('Content-Type: application/json');
 
-        $busqueda = $_GET['busqueda'] ?? null;
-        $valoracion = $_GET['valoracion'] ?? null;
-        $cantidadProductos = $_GET['cantidadProductos'] ?? null;
-        $categorias = $_GET['categorias'] ?? [];
+    $busqueda = $_GET['busqueda'] ?? null;
+    $valoracion = $_GET['valoracion'] ?? null;
+    $cantidadProductos = $_GET['cantidadProductos'] ?? null;
+    $categorias = $_GET['categorias'] ?? [];
 
-        $comercios = ComercioModel::getAll($busqueda, $valoracion, $cantidadProductos, $categorias);
-        echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
-        exit;
+    $comercios = ComercioModel::getAll($busqueda, $valoracion, $cantidadProductos, $categorias);
+
+    foreach ($comercios as &$comercio) {
+        $comercio['valoracion'] = ValoracionModel::getValoracionMedia($comercio['id']);
     }
+    unset($comercio);
+
+    echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 
     public function show() {}

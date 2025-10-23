@@ -59,7 +59,6 @@ async function obtenerAnuncios() {
   }
 }
 
-obtenerAnuncios();
 
 const buscadorComercios = document.getElementById("busqueda");
 

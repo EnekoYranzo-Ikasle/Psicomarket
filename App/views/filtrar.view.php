@@ -1,11 +1,13 @@
 <link rel="stylesheet" href="assets/styles/anuncios.css">
 
  <div class="categorias">
+  <div class="elementos-busqueda">
     <label for="filtro-container" id="toggle-filtros">
       <img src="assets/images/icons/filter.svg" alt="Filtrar">
       <span> Ordenar y filtrar</span>
     </label>
     <input type="text" name="busqueda" id="busqueda" placeholder="Buscar Comercio">
+    </div>
     <div id="filtro-container" class="filtros oculto">
       <form id="form-filtros">
         <select name="valoracion" id="valoracion">
@@ -20,11 +22,11 @@
         </select>
         <div class="select-categorias">
           <div class="select-btn" id="abrir-categorias">
-            <div id="categorias-seleccionadas"></div>
+           
             <span id="texto-categoria">Seleccionar categorías</span>
             <img src="assets/images/icons/categories.svg" alt="icono filtro">
           </div>
-
+          <div id="categorias-seleccionadas"></div>
           <div class="dropdown oculto" id="dropdown-categorias">
             <input type="text" id="buscar-categoria" placeholder="Buscar categoría...">
 
@@ -33,7 +35,7 @@
                 <li>
                   <label>
                     <input type="checkbox" value="<?= $categoria['id'] ?>">
-                    <?= $categoria['nombre'] ?>
+                    <?= $categoria['nombre'] ?> 
                   </label>
                 </li>
               <?php endforeach; ?>

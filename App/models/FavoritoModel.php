@@ -40,7 +40,9 @@ class FavoritoModel
     return json_encode($favoritos);
     }
 
-    public static function getById($id) {}
+    public static function getById($id) {
+        
+    }
 
     public static function create($datos) {}
 
