@@ -170,7 +170,24 @@
   gap: 6px;
 
 }
+#filtro-container{
+  display: none;
+}
 
+#toggle-filtros{
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 5px;
+}
+#toggle-filtros:hover{
+background-color: #ebebeb;
+}
+.botones{
+  display: flex;
+  flex-direction: row;
+}
 .acciones{
   position: absolute;
   top: 20px;

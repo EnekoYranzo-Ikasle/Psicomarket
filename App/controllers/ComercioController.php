@@ -9,18 +9,16 @@ class ComercioController extends BaseController {
     public function index() {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
-        $comercioSeleccionado = $this->seleccionarComercio();
-        $categorias = CategoriaModel::getAll();
-        $this->render(
-            'index.view.php',
-            [
-                'comerciosPatrocinados' => $comerciosPatrocinados,
-                'comerciosAnunciados' => $comerciosAnunciados,
-                'comercioSeleccionado' => $comercioSeleccionado,
-                'categorias' => $categorias,
-                'navFile' => $this->navFile
-            ]
-        );
+        $comercioSeleccionado=$this-> seleccionarComercio();
+        $categorias= CategoriaModel::getAll();
+        $this->render('index.view.php',
+                 ['comerciosPatrocinados' => $comerciosPatrocinados,
+                  'comerciosAnunciados' => $comerciosAnunciados,
+                    'comercioSeleccionado' => $comercioSeleccionado,
+                    'categorias'=>$categorias,
+                    'navFile' => $this->navFile]
+                );
+
     }
 
     public function seleccionarComercio() {
@@ -63,7 +61,13 @@ class ComercioController extends BaseController {
     }
     public function apiGetComercios() {
         header('Content-Type: application/json');
-        $comercios = ComercioModel::getAll();
+
+
+        $busqueda =$_GET['busqueda'] ?? null;
+        
+       $comercios = ComercioModel::getAll();
+
+
         echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
         exit;
     }
