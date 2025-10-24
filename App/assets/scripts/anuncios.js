@@ -53,6 +53,12 @@ async function obtenerAnuncios() {
       const componenteRecogido = await componenteSolicitado.text();
       contenedor.innerHTML += componenteRecogido;
     }
+    const script = document.createElement("script");
+    script.src = "assets/scripts/accionesAnuncioProducto.js";
+    script.onload = function () {
+      inicializarAcciones();
+    };
+    document.body.appendChild(script);
   } catch (error) {
     console.error("Error cargando anuncios:", error);
     contenedor.innerHTML = "<p>Error al cargar los anuncios.</p>";

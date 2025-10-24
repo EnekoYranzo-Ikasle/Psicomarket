@@ -90,6 +90,25 @@ class ComercioController extends BaseController
     exit;
 }
 
+    public function eliminarAnuncio(){
+        header('Content-Type: application/json');
+        $anuncio = $_GET['id'];
+        $comerciante = $_SESSION['user_id'];
+        $resultado = ComercioModel::eliminarAnuncio($anuncio, $comerciante);
+        echo json_encode($resultado);
+        exit;
+    }
+
+    public function editarAnuncio(){
+        header('Content-Type: application/json');
+        $anuncioId = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $resultado = ComercioModel::editarAnuncio($anuncioId, $nombre, $descripcion);
+        echo json_encode($resultado);
+        exit;
+    }
+
 
     public function show() {}
 

@@ -14,4 +14,5 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="assets/scripts/mapaComercios.js"></script>
 <script src="assets/scripts/anuncios.js"></script>
+
 <?php require_once("layout/footer.php"); ?>
