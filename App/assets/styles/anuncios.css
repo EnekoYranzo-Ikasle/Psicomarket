@@ -156,9 +156,6 @@
   color: #ffffff;
 }
 
-.anuncio:hover {
-  transform: scale(1.01);
-}
 
 /* ------------- SELECT DE CATEGORIAS--------------*/
 .select-categorias {

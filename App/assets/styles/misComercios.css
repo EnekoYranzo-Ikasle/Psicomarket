@@ -1,0 +1,18 @@
+.tituloAñadirAnuncio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+    & .añadirAnuncio{
+        display: flex;
+        align-items: center;
+        background: #62BC7A;
+        border: #329e4f 2px solid;
+        & svg{
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
