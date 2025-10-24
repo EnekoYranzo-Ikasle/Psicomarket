@@ -11,14 +11,15 @@ function inicializarAcciones() {
           overlay.style.display = "flex";
           overlay.style.justifyContent = "center";
           overlay.style.alignItems = "center";
-
+      
           overlay
             .querySelector(".confirmarEditarAnuncio")
             .addEventListener("click", () => {
-              editarAnuncio(id, {
+              const datos = {
                 nombre: overlay.querySelector("input[name='nombre']").value,
-                descripcion: overlay.querySelector("input[name='descripcion']").value,
-              });
+                descripcion: overlay.querySelector("input[name='descripcion']").value
+              }
+              editarAnuncio(id, datos);
               overlay.style.display = "none";
             });
           overlay
@@ -90,6 +91,7 @@ async function editarAnuncio(idComercio, nuevosDatos) {
       window.location.reload();
     }
   } catch (error) {
+    console.log(nuevosDatos);
     console.error("Error al editar el anuncio:", error);
   }
 }

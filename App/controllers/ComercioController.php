@@ -102,11 +102,15 @@ class ComercioController extends BaseController
     public function editarAnuncio()
     {
         header('Content-Type: application/json');
-        $anuncioId = $_POST['id'];
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        $input = file_get_contents("php://input");
+        $datos = json_decode($input, true);
+
+        $anuncioId = $_GET['id'];
+        $nombre = $datos['nombre'];
+        $descripcion = $datos['descripcion'];
         $resultado = ComercioModel::editarAnuncio($anuncioId, $nombre, $descripcion);
         echo json_encode($resultado);
+        
         exit;
     }
 

@@ -124,13 +124,16 @@ class ComercioModel
 
     public static function editarAnuncio($anuncioId, $nombre, $descripcion)
     {
+        $db = Database::getConnection();
+        $sql = "UPDATE comercios SET Nombre_comercio = :nombre, Descripcion = :descripcion
+             WHERE id = :idAnuncio";
+
+        $stmt = $db->prepare($sql);
         $datos = [
             'idAnuncio' => $anuncioId,
             'nombre' => $nombre,
             'descripcion' => $descripcion
         ];
-        $db = Database::getConnection();
-        $stmt = $db->prepare("UPDATE comercios SET Nombre_comercio = :nombre, Descripcion = :descripcion WHERE id = :idAnuncio");
         $stmt->execute($datos);
         return $stmt->rowCount() > 0;
     }
