@@ -92,7 +92,7 @@ class ComercioModel
     public static function getCoords()
     {
         $con = Database::getConnection();
-        $sql = "SELECT Nombre_comercio, Latitud, Longitud FROM comercios";
+        $sql = "SELECT id, Nombre_comercio, Latitud, Longitud FROM comercios";
         $stmt = $con->prepare($sql);
         $stmt->execute();
         $comerciosCoords = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -101,7 +101,7 @@ class ComercioModel
     public static function getCoordsMiComercio($idUsuario)
     {
         $con = Database::getConnection();
-        $sql = "SELECT Nombre_comercio, Latitud, Longitud FROM comercios Where id_usuario =:idUsuario";
+        $sql = "SELECT id, Nombre_comercio, Latitud, Longitud FROM comercios Where id_usuario =:idUsuario";
         $stmt = $con->prepare($sql);
         $stmt->execute(['idUsuario' => $idUsuario]);
         $comerciosCoords = $stmt->fetchAll(PDO::FETCH_ASSOC);
