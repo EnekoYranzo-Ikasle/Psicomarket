@@ -5,7 +5,6 @@
     <div class="tab">
       <button class="tablinks" tab="Informacion">Información</button>
       <button class="tablinks" tab="Seguridad">Seguridad</button>
-      <button class="tablinks" tab="Preferencias">Preferencias</button>
     </div>
 
     <div id="Informacion" class="tabcontent">
@@ -60,12 +59,8 @@
         <button type="button" id="savePasswBtn">Cambiar contraseña</button>
       </form>
     </div>
-
-    <div id="Preferencias" class="tabcontent">
-    </div>
-  </div>
-  <script>
-    const userId = <?= json_encode($_SESSION['user_id']); ?>;
-  </script>
-  <script src="assets/scripts/account.js"></script>
+    <script>
+      const userId = <?= json_encode($_SESSION['user_id']); ?>;
+    </script>
+    <script src="assets/scripts/account.js"></script>
 </main>
