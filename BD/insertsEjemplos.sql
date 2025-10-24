@@ -3,22 +3,22 @@ USE `psicomarket`;
 -- ----------------------------
 -- Usuarios
 -- ----------------------------
-INSERT INTO `usuarios` (`id`, `Nombre`, `Apellidos`, `Email`, `Contrasenna`, `num_Tel`, `Tipo`, `userImagePath`) VALUES
-(1, 'Ana', 'García', 'ana.garcia@email.com', 'passAna2025', 612345001, 'usuario', ''),
-(2, 'Luis', 'Martínez', 'luis.martinez@email.com', 'luisPwd!', 612345002, 'comerciante', ''),
-(3, 'María', 'Rodríguez', 'maria.rodriguez@email.com', 'maria123', 612345003, 'comerciante', ''),
-(4, 'Jorge', 'Fernández', 'jorge.fernandez@email.com', 'adminJ2025', 612345004, 'administrador', ''),
-(5, 'Clara', 'Pérez', 'clara.perez@email.com', 'clarapass', 612345005, 'usuario', ''),
-(6, 'Miguel', 'Santos', 'miguel.santos@email.com', 'miguelPass', 612345006, 'comerciante', ''),
-(7, 'Sofia', 'Lopez', 'sofia.lopez@email.com', 'sofiasegura', 612345007, 'usuario', ''),
-(8, 'Pedro', 'Navarro', 'pedro.navarro@email.com', 'pedro1234', 612345008, 'comerciante', ''),
-(9, 'Laura', 'Gil', 'laura.gil@email.com', 'lauraPwd', 612345009, 'usuario', ''),
-(10, 'Carlos', 'Vega', 'carlos.vega@email.com', 'cvPass', 612345010, 'comerciante', ''),
-(11, 'Elena', 'Ortega', 'elena.ortega@email.com', 'elen@2025', 612345011, 'usuario', ''),
-(12, 'Raúl', 'Herrera', 'raul.herrera@email.com', 'raulStrong', 612345012, 'comerciante', ''),
-(13, 'Eneko', 'Yranzo', 'eneko.yranzo@email.com', '12345Abcde', 123456789, 'administrador', ''),
-(14, 'Ibai', 'Lopez', 'ibai.lopez@email.com', '12345Abcde', 123456789, 'administrador', ''),
-(15, 'Aimar', 'Medina', 'aimar.medina@email.com', '12345Abcde', 123456789, 'administrador', '');
+INSERT INTO `usuarios` (`id`, `Nombre`, `Apellidos`, `Email`, `Contrasenna`, `num_Tel`, `Tipo`, `UserImagePath`) VALUES
+(1, 'Ana', 'García', 'ana.garcia@email.com', '$2y$10$TOhDnPutfyH1lu3KMCx/EO4sz./kz.Gu43toWz0ExXX3wwzBVXSvq', 612345001, 'usuario', ''),
+(2, 'Luis', 'Martínez', 'luis.martinez@email.com', '$2y$10$jg.U4rrGVFTlE4MVkoGMMe1BhmodMTsSr.SOZSyAB9AKS/b/XuzAq', 612345002, 'comerciante', ''),
+(3, 'María', 'Rodríguez', 'maria.rodriguez@email.com', '$2y$10$MIISA7Ash5kcQoSPm8xBk.E80xzRV0qIQpoJr5ZFqswP20XikMLxu', 612345003, 'comerciante', ''),
+(4, 'Jorge', 'Fernández', 'jorge.fernandez@email.com', '$2y$10$kpoq3PaNFi7HjhdkioRqC.FXwPjVGmVgxiekVcAPvg1ky1Hkxkpje', 612345004, 'administrador', ''),
+(5, 'Clara', 'Pérez', 'clara.perez@email.com', '$2y$10$.90tes7FqTjGGrz.3tq7n.nbYhCXtXeS3jkHpzF86vHDYS14gZqZK', 612345005, 'usuario', ''),
+(6, 'Miguel', 'Santos', 'miguel.santos@email.com', '$2y$10$ClN0HOgObgypnz.J5ZtjZuOsGO5DxpjB3fBoBF5rurUAyBe0fRtBy', 612345006, 'comerciante', ''),
+(7, 'Sofia', 'Lopez', 'sofia.lopez@email.com', '$2y$10$4mfUnZ63oS2ofGKIGq3rZ.boU01fek6ucWil6Xp7xauhq/hAo5PkS', 612345007, 'usuario', ''),
+(8, 'Pedro', 'Navarro', 'pedro.navarro@email.com', '$2y$10$eqFoHZr3gcdvIaV4ctVva.7r4HJS1eSrDRRpaKkRIEy/0KOLgJv2O', 612345008, 'comerciante', ''),
+(9, 'Laura', 'Gil', 'laura.gil@email.com', '$2y$10$LjpmRO61lXhNUZnFS82L3OUX3AHkZK0xqqyKdgflMXQLLf5/XB9pq', 612345009, 'usuario', ''),
+(10, 'Carlos', 'Vega', 'carlos.vega@email.com', '$2y$10$7SkojHpgf/ANV6PCd3yXsuX12ZK7X4ncLQSKdYzCVkT0Wypdgs7yy', 612345010, 'comerciante', ''),
+(11, 'Elena', 'Ortega', 'elena.ortega@email.com', '$2y$10$edg4Sd7YRIL8pcUMlYHx1.nk/FULyAsuHSyUYtR2EsvGhwfG0bMSm', 612345011, 'usuario', ''),
+(12, 'Raúl', 'Herrera', 'raul.herrera@email.com', '$2y$10$zlWqLy8gRmOznuRuQyabxe9U3v2IrPWd.y0SXo/TaPXd/nRWqu3wG', 612345012, 'comerciante', ''),
+(13, 'Eneko', 'Yranzo', 'eneko.yranzo@email.com', '$2y$10$T2tgophvhd7AE/N9xqsS0eV/IUJFNwYB2yp57p6nZqnewcIt68GEC', 123456789, 'administrador', ''),
+(14, 'Ibai', 'Lopez', 'ibai.lopez@email.com', '$2y$10$BuExTiwc58GK2fOOVlkb8eEmCZiB0xtn7xDqrmlQvXE/4rWm3AJNW', 123456789, 'administrador', ''),
+(15, 'Aimar', 'Medina', 'aimar.medina@email.com', '$2y$10$pbMgfTbYBrvbPVAvcIuVm.creAjJegEtDOBFE6uw1IcFdd4JLhXj.', 123456789, 'administrador', '');
 
 -- ----------------------------
 -- Comercios
