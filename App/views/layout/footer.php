@@ -1,6 +1,6 @@
 </body>
 <footer>
-  <div class="categorias">
+  <div class="categorias-footer">
     <div class="nosotros">
       <h4>Nosotros</h4>
       <a href="">¿Quienes somos?</a>

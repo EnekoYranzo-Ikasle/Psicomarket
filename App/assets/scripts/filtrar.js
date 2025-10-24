@@ -49,11 +49,26 @@ function abrirFiltros() {
   const filtroContainer = document.getElementById("filtro-container");
   const toggleFiltros = document.getElementById("toggle-filtros");
 
-  toggleFiltros.addEventListener("click", () => {
-    filtroContainer.style.display =
-      filtroContainer.style.display === "block" ? "none" : "block";
+  toggleFiltros.addEventListener("click", (e) => {
+    e.stopPropagation();
+    filtroContainer.classList.toggle("mostrar");
+
+    if (filtroContainer.classList.contains("mostrar")) {
+      document.addEventListener("click", cerrarFiltros);
+    }
   });
+
+  function cerrarFiltros(e) {
+    if (
+      !filtroContainer.contains(e.target) &&
+      !toggleFiltros.contains(e.target)
+    ) {
+      filtroContainer.classList.remove("mostrar");
+      document.removeEventListener("click", cerrarFiltros);
+    }
+  }
 }
+
 
 function abrirSelectCategorias(){
 document.addEventListener("click", (e) => {

@@ -4,15 +4,47 @@ require_once __DIR__ . '/Database.php';
 class ComercioModel
 {
 
-    public static function getAll()
+
+    public static function getAll($busqueda = null, $valoracion = null, $cantidadProductos = null, $categorias = null)
     {
         $con = Database::getConnection();
-        $sql = "SELECT *FROM comercios"; //Escribimos la sentencia
-        $stmt = $con->prepare($sql); //Preparamos la sentencia
-        $stmt->execute(); //Ejecutamos las sentencia
-        $comercios = $stmt->fetchAll(PDO::FETCH_ASSOC); //Guardamos los comercios en un array asociativo
-        return $comercios; //retornamos comercios
+
+        $sql = "SELECT c.*, COUNT(p.id) AS total_productos, AVG(v.estrellas) AS promedio_valoracion
+            FROM comercios c
+            LEFT JOIN productos p ON p.id_comercio = c.id
+            LEFT JOIN valoraciones v ON v.id_comercio = c.id
+            WHERE 1=1";
+
+        $params = [];
+
+        if ($busqueda) {
+            $sql .= " AND c.Nombre_comercio LIKE ? ";
+            $params[] = "%$busqueda%";
+        }
+
+        if (!empty($categorias)) {
+            $placeholders = implode(',', array_fill(0, count($categorias), '?'));
+            $sql .= " AND p.id_categoria IN ($placeholders)";
+            $params = array_merge($params, $categorias);
+        }
+
+        $sql .= " GROUP BY c.id";
+
+        if ($valoracion === "mayorMenor") {
+            $sql .= " ORDER BY promedio_valoracion DESC";
+        } elseif ($valoracion === "menorMayor") {
+            $sql .= " ORDER BY promedio_valoracion ASC";
+        } elseif ($cantidadProductos === "mayorMenor") {
+            $sql .= " ORDER BY total_productos DESC";
+        } elseif ($cantidadProductos === "menorMayor") {
+            $sql .= " ORDER BY total_productos ASC";
+        }
+        $stmt = $con->prepare($sql);
+        $stmt->execute($params);;
+        $comercios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $comercios;
     }
+
 
     public static function getAllMine()
     {
@@ -24,17 +56,28 @@ class ComercioModel
         return $comercios; //retornamos comercios
     }
 
+
+
     public static function getById($id)
     {
         $con = Database::getConnection();
         $sql = "SELECT * FROM comercios WHERE id=:id";
         $stmt = $con->prepare($sql);
-        $dato = ['id' => $id]; //asociamos el id
+        $dato = ['id' => $id];
         $stmt->execute($dato);
 
         $comercio = $stmt->fetch(PDO::FETCH_ASSOC);
         return $comercio;
     }
+
+
+
+    public static function create($datos) {}
+
+    public static function deleteById($id) {}
+
+    public static function deleteAll() {}
+
 
     public static function getAllPatrocinated()
     {

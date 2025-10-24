@@ -21,7 +21,6 @@ CREATE TABLE comercios (
   Latitud DECIMAL(10,7) NOT NULL,
   Longitud DECIMAL(10,7) NOT NULL,
   Ruta_imagen_comercio VARCHAR(255) NOT NULL,
-  Valoracion FLOAT,
   id_usuario INT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
@@ -90,3 +89,4 @@ CREATE TABLE valoraciones (
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
   FOREIGN KEY (id_comercio) REFERENCES comercios(id)
 );
+
