@@ -20,7 +20,7 @@ function openTab(page, clickedButton) {
     tablinks[i].classList.remove('active');
   }
 
-  document.getElementById(page).style.display = 'flex';
+  document.getElementById(page).style.display = 'block';
   clickedButton.classList.add('active');
 }
 
@@ -83,22 +83,8 @@ async function saveUserImage() {
 
 //////// Editar Info del Perfil ////////
 const editButton = document.getElementById('editUserInfo');
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('.userInput');
 let editingInfo = false;
-
-editButton.addEventListener('click', async function () {
-  if (!editingInfo) {
-    inputs.forEach((input) => input.removeAttribute('disabled'));
-    editButton.textContent = 'Guardar';
-    editingInfo = true;
-  } else {
-    inputs.forEach((input) => input.setAttribute('disabled', ''));
-    editButton.textContent = 'Editar usuario';
-    editingInfo = false;
-
-    await saveUserInfo();
-  }
-});
 
 async function loadUserInfo() {
   try {
@@ -106,7 +92,6 @@ async function loadUserInfo() {
     const apellidos = document.getElementById('apellidos');
     const email = document.getElementById('email');
     const telefono = document.getElementById('telefono');
-    const username = document.getElementById('username');
 
     const response = await fetch(
       `index.php?controller=AccountController&accion=loadUserInfo&id=${userId}`
@@ -132,10 +117,82 @@ async function loadUserInfo() {
   }
 }
 
+editButton.addEventListener('click', async function () {
+  if (!editingInfo) {
+    inputs.forEach((input) => input.removeAttribute('disabled'));
+    editButton.textContent = 'Guardar';
+    editingInfo = true;
+  } else {
+    inputs.forEach((input) => input.setAttribute('disabled', ''));
+    editButton.textContent = 'Editar usuario';
+    editingInfo = false;
+
+    await saveUserInfo();
+  }
+});
+
 async function saveUserInfo() {
-  const formData = {};
-  inputs.forEach((input) => (formData[input.id] = input.value));
-  console.log('Datos guardados:', formData);
+  const formData = new FormData();
+  inputs.forEach((input) => formData.append(input.id, input.value));
+
+  await fetch(`index.php?controller=AccountController&accion=saveUserInfo`, {
+    method: 'POST',
+    body: formData,
+  });
+}
+
+//////// Cambiar Contraseña////////
+
+// Funcion mostrar contraseña
+const eyeButtons = document.querySelectorAll('.eye-btn');
+
+eyeButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const input = btn.parentElement.querySelector('input');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.querySelector('img').src = 'assets/images/icons/ClosedEye.svg';
+    } else {
+      input.type = 'password';
+      btn.querySelector('img').src = 'assets/images/icons/Eye.svg';
+    }
+  });
+});
+
+// Guardar nueva contraseña
+const savePasswdButton = document.getElementById('savePasswBtn');
+savePasswdButton.addEventListener('click', async function (e) {
+  e.preventDefault();
+  await saveNewPasswd();
+});
+
+async function saveNewPasswd() {
+  const currentPasswd = document.getElementById('current').value;
+  const newPasswd = document.getElementById('new').value;
+
+  const formData = new FormData();
+  formData.append('currentPasswd', currentPasswd);
+  formData.append('newPasswd', newPasswd);
+
+  try {
+    const response = await fetch('index.php?controller=AccountController&accion=saveUserPasswd', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log('Respuesta del servidor:', data);
+
+    if (data.status === 'ok') {
+      console.log(data.msg);
+      document.getElementById('ChangePasswd').reset();
+    } else {
+      console.error(data.msg);
+    }
+  } catch (error) {
+    console.error('Error en el fetch:', error);
+  }
 }
 
 loadUserInfo();

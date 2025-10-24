@@ -27,6 +27,23 @@ class AccountModel {
         return $accountInfo;
     }
 
+    public static function saveUserInfo($nombre, $apellidos, $email, $telefono, $userID) {
+        $con = Database::getConnection();
+        $sql = "UPDATE usuarios SET Nombre = :nombre, Apellidos = :apellidos,
+                    Email = :email, num_Tel = :telefono
+                    WHERE id = :idUsuario
+                ";
+        $stmt = $con->prepare($sql);
+        $dato = [
+            'nombre' => $nombre,
+            'apellidos' => $apellidos,
+            'email' => $email,
+            'telefono' => $telefono,
+            'idUsuario' => $userID
+        ];
+        $stmt->execute($dato);
+    }
+
     public static function saveUserImagePath($filepath) {
         $userID = $_SESSION['user_id'];
 
@@ -38,5 +55,26 @@ class AccountModel {
         $stmt = $con->prepare($sql);
         $dato = ['userImagePath' => $filepath, 'userID' => $userID];
         $stmt->execute($dato);
+    }
+
+    public static function saveUserPasswd($newPasswd, $userID) {
+        $con = Database::getConnection();
+        $sql = "UPDATE usuarios
+                SET Contrasenna = :newPasswd
+                WHERE id = :userID
+            ";
+
+        $stmt = $con->prepare($sql);
+        $dato = ['newPasswd' => $newPasswd, 'userID' => $userID];
+        $stmt->execute($dato);
+    }
+
+    public static function getCurrentPasswd($userID) {
+        $con = Database::getConnection();
+        $sql = "SELECT Contrasenna FROM usuarios WHERE id = :userID";
+        $stmt = $con->prepare($sql);
+        $stmt->execute(['userID' => $userID]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
