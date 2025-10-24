@@ -44,9 +44,7 @@ class AccountModel {
         $stmt->execute($dato);
     }
 
-    public static function saveUserImagePath($filepath) {
-        $userID = $_SESSION['user_id'];
-
+    public static function saveUserImagePath($filepath, $userID) {
         $con = Database::getConnection();
         $sql = "UPDATE usuarios
             SET userImagePath = :userImagePath

@@ -15,22 +15,15 @@ class AccountController extends BaseController {
         exit;
     }
 
-    /* public function uploadUserImage() {
+    public function uploadUserImage() {
         header('Content-Type: application/json');
 
         $file = $_FILES['image'];
-        $uploadDir = __DIR__ . 'uploads/userImages/';
+        $uploadDir = __DIR__ . '/../uploads/userImages/';
+        $userID = $_SESSION['user_id'];
 
         if (!file_exists($uploadDir)) {
             mkdir($uploadDir, 0755, true);
-        }
-
-        if (!is_writable($uploadDir)) {
-            echo json_encode([
-                'success' => false,
-                'error' => 'No se puede escribir en la carpeta uploads'
-            ]);
-            exit;
         }
 
         if ($file['error'] !== UPLOAD_ERR_OK) {
@@ -48,12 +41,12 @@ class AccountController extends BaseController {
         $filepath = $uploadDir . $filename;
 
         if (move_uploaded_file($file['tmp_name'], $filepath)) {
-            AccountModel::saveUserImagePath($filepath);
+            AccountModel::saveUserImagePath($filepath, $userID);
             echo json_encode(['success' => true, 'message' => 'Imagen guardada correctamente']);
         } else {
             echo json_encode(['success' => false, 'message' => 'No se pudo guardar la imagen']);
         }
-    } */
+    }
 
     public function saveUserInfo() {
         $nombre = $_POST['nombre'];
