@@ -71,25 +71,44 @@ class ComercioController extends BaseController
 
 
     public function apiGetComercios()
-{
-    header('Content-Type: application/json');
+    {
+        header('Content-Type: application/json');
 
-    $busqueda = $_GET['busqueda'] ?? null;
-    $valoracion = $_GET['valoracion'] ?? null;
-    $cantidadProductos = $_GET['cantidadProductos'] ?? null;
-    $categorias = $_GET['categorias'] ?? [];
+        $busqueda = $_GET['busqueda'] ?? null;
+        $valoracion = $_GET['valoracion'] ?? null;
+        $cantidadProductos = $_GET['cantidadProductos'] ?? null;
+        $categorias = $_GET['categorias'] ?? [];
 
-    $comercios = ComercioModel::getAll($busqueda, $valoracion, $cantidadProductos, $categorias);
+        $comercios = ComercioModel::getAll($busqueda, $valoracion, $cantidadProductos, $categorias);
 
-    foreach ($comercios as &$comercio) {
-        $comercio['valoracion'] = ValoracionModel::getValoracionMedia($comercio['id']);
+        foreach ($comercios as &$comercio) {
+            $comercio['valoracion'] = ValoracionModel::getValoracionMedia($comercio['id']);
+        }
+        unset($comercio);
+
+        echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
+        exit;
     }
-    unset($comercio);
+    public function eliminarAnuncio()
+    {
+        header('Content-Type: application/json');
+        $anuncio = $_GET['id'];
+        $comerciante = $_SESSION['user_id'];
+        $resultado = ComercioModel::eliminarAnuncio($anuncio, $comerciante);
+        echo json_encode($resultado);
+        exit;
+    }
 
-    echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
-    exit;
-}
-
+    public function editarAnuncio()
+    {
+        header('Content-Type: application/json');
+        $anuncioId = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $resultado = ComercioModel::editarAnuncio($anuncioId, $nombre, $descripcion);
+        echo json_encode($resultado);
+        exit;
+    }
 
     public function show() {}
 

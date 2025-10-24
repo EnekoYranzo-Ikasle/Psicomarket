@@ -34,7 +34,3 @@ if (isset($_POST['producto'])) {
     </span>
   </div>
 </div>
-
-
-
-

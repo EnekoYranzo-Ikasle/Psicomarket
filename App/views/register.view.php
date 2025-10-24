@@ -34,7 +34,7 @@
             <span>Soy: </span>
             <select name="UserRol" id="userRol" aria-label="Seleccionar el tipo de usuario que soy">
               <option value="Usuario">Usuario</option>
-              <option value="Comeriante">Comeriante</option>
+              <option value="Comerciante">Comerciante</option>
             </select>
           </div>
         </div>

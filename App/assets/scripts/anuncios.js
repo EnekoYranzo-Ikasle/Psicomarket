@@ -1,44 +1,38 @@
 const contenedor = document.querySelector(".anuncios-container");
 
-
 async function obtenerAnuncios() {
   try {
-    let funcion = "";
-    let controller = "";
+    const filtros = getFiltrosSeleccionados();
     const esPaginaMisComercios = window.location.href.includes(
       "ComercianteController"
     );
+    let url = "index.php?controller=";
+
     if (esPaginaMisComercios) {
-      controller = "ComercianteController";
-      funcion = "apiGetMisComercios";
+      url += "ComercianteController&accion=apiGetMisComercios";
     } else {
-      controller = "ComercioController";
-      funcion = "apiGetComercios";
+      url += "ComercioController&accion=apiGetComercios";
+      const q = new URLSearchParams();
+      if (filtros.busqueda) q.append("busqueda", filtros.busqueda);
+      if (filtros.valoracion) q.append("valoracion", filtros.valoracion);
+      if (filtros.cantidadProductos)
+        q.append("cantidadProductos", filtros.cantidadProductos);
+      if (filtros.categorias?.length) {
+        filtros.categorias.forEach((id) => q.append("categorias[]", id));
+      }
+      if (q.toString()) url += `&${q.toString()}`;
     }
-    const res = await fetch(
-      "index.php?controller=" + controller + "&accion=" + funcion
-    );
+
+    const res = await fetch(url);
     const anuncios = await res.json();
 
-    // const res3 = await fetch("index.php?controller=ComercianteController&accion=apiGetMisComercios");
-    // const misComercios = await res3.json();
-
-    // comerciosDelUsuario = [];
-    //     Array.from(misComercios).forEach(comercio => {
-    //     comerciosDelUsuario.push({ 'id': comercio.id ,'idPropietario': comercio.id_usuario });
-
-    // });
-    // console.log(comerciosDelUsuario);
-
     if (!anuncios.length) {
-      contenedor.innerHTML = "<p> No hay anuncios todavía </p>";
+      contenedor.innerHTML = "<p>No hay anuncios todavía</p>";
       return;
     }
 
+    contenedor.innerHTML = "";
     for (const anuncio of anuncios) {
-      const esPaginaMisComercios = window.location.href.includes(
-        "ComercianteController"
-      );
       const formData = new FormData();
       formData.append("comercio", JSON.stringify(anuncio));
       formData.append("acciones", JSON.stringify(esPaginaMisComercios));
@@ -53,12 +47,23 @@ async function obtenerAnuncios() {
       const componenteRecogido = await componenteSolicitado.text();
       contenedor.innerHTML += componenteRecogido;
     }
+
+    // Cargar el script de acciones solo si estamos en misComercios
+    if (esPaginaMisComercios) {
+      const script = document.createElement("script");
+      script.src = "assets/scripts/accionesAnuncioProducto.js";
+      script.onload = function () {
+        if (typeof inicializarAcciones === "function") {
+          inicializarAcciones();
+        }
+      };
+      document.body.appendChild(script);
+    }
   } catch (error) {
     console.error("Error cargando anuncios:", error);
     contenedor.innerHTML = "<p>Error al cargar los anuncios.</p>";
   }
 }
-
 
 const buscadorComercios = document.getElementById("busqueda");
 
@@ -101,34 +106,7 @@ function getFiltrosSeleccionados() {
   return { busqueda, valoracion, cantidadProductos, categorias };
 }
 
-async function obtenerAnuncios() {
-  try {
-    const filtros = getFiltrosSeleccionados(); //coger los filtros para iterar en los if
-
-    const q = new URLSearchParams();
-    //en cada if: si el array de filtros tiene ese parametro, añadelo a la url
-    if (filtros.busqueda) q.append("busqueda", filtros.busqueda);
-    if (filtros.valoracion) q.append("valoracion", filtros.valoracion);
-    if (filtros.cantidadProductos)
-      q.append("cantidadProductos", filtros.cantidadProductos);
-    if (filtros.categorias.length) {
-      filtros.categorias.forEach((id) => q.append("categorias[]", id));
-    }
-
-    //hace el fetch y  si no tiene nada pone ''(vacio y devuelve todos los auncios por ende)
-    const res = await fetch(
-      `index.php?controller=ComercioController&accion=apiGetComercios${
-        q.toString() ? `&${q.toString()}` : ""
-      }`
-    );
-
-    const anuncios = await res.json();
-    await renderAnuncios(anuncios); //llamar a la función de pintar los anuncios en base a la respuesta del fetch
-  } catch (error) {
-    console.error("Error cargando anuncios:", error);
-    contenedor.innerHTML = "<p>Error al cargar los anuncios.</p>";
-  }
-}
+// Esta función ha sido eliminada porque estaba duplicada
 
 function configurarBuscador() {
   let timeout;
@@ -142,24 +120,28 @@ function configurarBuscador() {
   });
 }
 
+function aplicarFiltrosBuscador() {
+  document
+    .getElementById("valoracion")
+    ?.addEventListener("change", obtenerAnuncios);
+  document
+    .getElementById("cantidadProductos")
+    ?.addEventListener("change", obtenerAnuncios);
 
-function aplicarFiltrosBuscador(){
+  document
+    .getElementById("lista-categorias")
+    ?.addEventListener("change", obtenerAnuncios);
 
-document.getElementById('valoracion')?.addEventListener('change', obtenerAnuncios);
-document.getElementById('cantidadProductos')?.addEventListener('change', obtenerAnuncios);
-
-
-document.getElementById('lista-categorias')?.addEventListener('change', obtenerAnuncios);
-
-document.getElementById('reestablecer')?.addEventListener('click', async () => {
-  document.getElementById('form-filtros')?.reset();
-  document.querySelectorAll('#lista-categorias input[type="checkbox"]').forEach(chk => chk.checked = false);
-  await obtenerAnuncios();
-});
- 
+  document
+    .getElementById("reestablecer")
+    ?.addEventListener("click", async () => {
+      document.getElementById("form-filtros")?.reset();
+      document
+        .querySelectorAll('#lista-categorias input[type="checkbox"]')
+        .forEach((chk) => (chk.checked = false));
+      await obtenerAnuncios();
+    });
 }
 configurarBuscador();
 aplicarFiltrosBuscador();
 obtenerAnuncios();
-
-
