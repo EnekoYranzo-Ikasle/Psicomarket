@@ -47,7 +47,7 @@ main {
   margin-top: 1em;
 }
 
-#Informacion {
+.card {
   display: flex;
   gap: 2rem;
   text-align: center;
@@ -159,4 +159,74 @@ input {
 
 input:disabled {
   background-color: transparent;
+}
+
+/************* Cambiar contraseña usuario *************/
+.field {
+  position: relative;
+  width: 30%;
+  margin: 1em 2em;
+}
+
+/* Inputs */
+.field input {
+  border: 0;
+  width: 100%;
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.field label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 5px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.field input:focus + label,
+.field input:valid + label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.eye-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.eye-btn:hover img {
+  opacity: 1;
+}
+
+#savePasswBtn {
+  width: 30%;
+  padding: 0.5em;
+  margin: 0 2em;
+  background-color: var(--acento);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#savePasswBtn:hover {
+  filter: brightness(0.8);
 }
