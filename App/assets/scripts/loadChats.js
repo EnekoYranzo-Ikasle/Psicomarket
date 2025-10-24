@@ -24,6 +24,9 @@ async function loadMessagesList() {
       if (primerChat) {
         seleccionarChat(primerChat);
         await actualizarMensajes();
+
+        if (window.refreshInterval) clearInterval(window.refreshInterval);
+        window.refreshInterval = setInterval(actualizarMensajes, 30000);
       }
     }
   } catch (error) {
