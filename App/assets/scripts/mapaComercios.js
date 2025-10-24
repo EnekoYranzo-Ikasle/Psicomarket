@@ -49,8 +49,17 @@ async function cargarComercios() {
       const lat = parseFloat(comercio.Latitud);
       const lon = parseFloat(comercio.Longitud);
       const nombre = comercio.Nombre_comercio;
+      const idComercio =comercio.id;
 
-      L.marker([lat, lon]).addTo(markers).bindPopup(`<b>${nombre}</b>`);
+      const marker = L.marker([lat, lon]).addTo(markers); 
+      //Que salga el nombre al pasar el raton
+      marker.bindTooltip(nombre);
+
+
+     // Al hacer clic redirigir a la info del comercio
+      marker.on("click", () => {
+        window.location.href = `index.php?controller=ComercioController&accion=info&id=${idComercio}`;
+      });
     });
   } catch (err) {
     console.error("Error al cargar comercios:", err);
