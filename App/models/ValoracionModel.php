@@ -8,8 +8,8 @@ class ValoracionModel {
     public static function getValoracionMedia($idComercio)
     {
         $con = Database::getConnection();
-        $sql = "SELECT IFNULL(AVG(estrellas), 0) AS media 
-                FROM valoraciones 
+        $sql = "SELECT IFNULL(AVG(estrellas), 0) AS media
+                FROM valoraciones
                 WHERE id_comercio = ?";
         $stmt = $con->prepare($sql);
         $stmt->execute([$idComercio]);
