@@ -49,7 +49,12 @@ class ComercioModel
     public static function getAllMine()
     {
         $con = Database::getConnection();
-        $sql = "SELECT * FROM comercios WHERE id_usuario = :propietario_id"; //Escribimos la sentencia
+        $sql = "SELECT c.*, AVG(v.estrellas) AS valoracion
+            FROM comercios c
+            LEFT JOIN productos p ON p.id_comercio = c.id
+            LEFT JOIN valoraciones v ON v.id_comercio = c.id
+            WHERE c.id_usuario = :propietario_id
+            GROUP BY c.id";
         $stmt = $con->prepare($sql); //Preparamos la sentencia
         $stmt->execute(['propietario_id' => $_SESSION['user_id']]); //Ejecutamos las sentencia
         $comercios = $stmt->fetchAll(PDO::FETCH_ASSOC); //Guardamos los comercios en un array asociativo

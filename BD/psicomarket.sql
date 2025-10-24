@@ -41,7 +41,7 @@ CREATE TABLE productos (
   Precio FLOAT,
   id_categoria INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_comercio) REFERENCES comercios(id),
+  FOREIGN KEY (id_comercio) REFERENCES comercios(id) ON DELETE CASCADE,
   FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE imagenes (
   Ruta_imagen_producto VARCHAR(255),
   id_producto INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_producto) REFERENCES productos(id)
+  FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE CASCADE
 );
 
 CREATE TABLE favoritos (
@@ -59,7 +59,7 @@ CREATE TABLE favoritos (
   id_producto INT,
   id_usuario INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_producto) REFERENCES productos(id),
+  FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE CASCADE,
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );
 
@@ -87,6 +87,6 @@ CREATE TABLE valoraciones (
   id_comercio INT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-  FOREIGN KEY (id_comercio) REFERENCES comercios(id)
+  FOREIGN KEY (id_comercio) REFERENCES comercios(id) ON DELETE CASCADE
 );
 
