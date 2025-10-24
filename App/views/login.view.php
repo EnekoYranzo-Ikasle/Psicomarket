@@ -8,7 +8,7 @@
       <div class="formInputs">
         <div class="inputs">
           <div class="inputGroup">
-            <input type="email" name="email" id="emailInput" placeholder="" required>
+            <input type="email" name="email" id="emailInput" placeholder="" required oninput="checkInput(this)">
             <label for="emailInput">Email</label>
           </div>
 
@@ -34,6 +34,15 @@
 </main>
 
 <script src="assets/scripts/errorBox.js"></script>
+<script>
+  function checkInput(input) {
+    if (input.value.trim() !== "") {
+      input.classList.add("has-content");
+    } else {
+      input.classList.remove("has-content");
+    }
+  }
+</script>
 
 
 <?php require_once('layout/footer.php'); ?>
