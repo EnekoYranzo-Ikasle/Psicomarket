@@ -141,12 +141,12 @@ main {
 }
 
 /************* Lista info usuario *************/
-ul {
+#UserInfo ul {
   list-style: none;
   text-align: left;
 }
 
-li {
+#UserInfo li {
   margin: 0.5em;
 }
 

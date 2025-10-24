@@ -3,10 +3,10 @@ header {
   width: 100%;
   height: 50px;
   background-color: #fdfeff;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  box-shadow: 0 1px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   position: fixed;
   z-index: 10;
   top: 0;
@@ -42,8 +42,6 @@ header {
     gap: 20px;
 
     & .icon {
-      width: 30px;
-      height: 30px;
       cursor: pointer;
 
       & button {
@@ -60,6 +58,8 @@ header {
     & .menuIcon {
       display: flex;
       flex-direction: column;
+      width: 30px;
+      height: 30px;
       align-items: center;
       justify-content: center;
       gap: 7px;
@@ -81,8 +81,9 @@ nav {
   height: 100%;
   position: fixed;
   top: 50px;
-  right: -200px;
-  transition: right 0.5s ease-in-out;
+  left: -200px;
+  transition: left 0.5s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   z-index: 10;
 
   & ul {
@@ -121,11 +122,11 @@ nav {
 }
 
 .opened {
-  right: 0;
+  left: 0;
 }
 
 .closed {
-  right: -200px;
+  left: -200px;
 }
 
 .menuIcon.active .menuBar1 {
