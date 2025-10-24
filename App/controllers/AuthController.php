@@ -12,12 +12,18 @@ class AuthController extends BaseController {
         $user = AuthModel::login($_POST['email']);
 
         if ($user) {
-            if (password_verify($_POST['userPasswd'], $user['Contrasenna'])) {
+            if ($user['Contrasenna'] === $_POST['userPasswd']) {
                 $_SESSION['user_id'] = $user['id'];
                 $this->redirect('index.php');
             } else {
                 $error = 'La contraseña introducida no es correcta';
             }
+            /* if (password_verify($_POST['userPasswd'], $user['Contrasenna'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $this->redirect('index.php');
+            } else {
+                $error = 'La contraseña introducida no es correcta';
+            } */
         } else {
             $error = 'El usuario introducido no existe';
         }
@@ -41,6 +47,5 @@ class AuthController extends BaseController {
         $Rol = $_POST['UserRol'];
 
         AuthModel::createAccount($nombre, $apellidos, $phoneNumber, $Email, $Passwd, $Rol);
-        $this->redirect('index.php?controller=AuthController&accion=showLogin');
     }
 }
