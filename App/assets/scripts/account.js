@@ -56,16 +56,19 @@ async function saveUserImage() {
       body: formData,
     });
 
-    const result = await response.json();
+    const data = await response.json();
 
-    if (result.success) {
-      modal.style.display = 'none';
-      if (result.imageUrl) {
-        document.getElementById('userImage').src = result.imageUrl;
+    modal.style.display = 'none';
+
+    if (!data.success) {
+      showError(data.message);
+    } else {
+      if (data.imageUrl) {
+        document.getElementById('userImage').src = data.imageUrl;
       }
     }
   } catch (error) {
-    console.error(error.message);
+    showError(error);
   }
 }
 
@@ -86,10 +89,10 @@ async function loadUserInfo() {
       `index.php?controller=AccountController&accion=loadUserInfo&id=${userId}`
     );
 
-    const accountInfo = await response.json();
+    const data = await response.json();
 
-    if (accountInfo && accountInfo.length > 0) {
-      const user = accountInfo[0];
+    if (data && data.length > 0) {
+      const user = data[0];
       // Inputs
       nombre.value = user.Nombre;
       apellidos.value = user.Apellidos;
@@ -102,10 +105,10 @@ async function loadUserInfo() {
       // Image
       imagen.src = user.UserImagePath || 'assets/images/icons/userLogo.png';
     } else {
-      throw new Error();
+      showError(data.message);
     }
   } catch (error) {
-    console.log('Error al cargar la información del usuario');
+    showError('Error al cargar la información del usuario');
   }
 }
 
@@ -180,10 +183,10 @@ async function saveNewPasswd() {
       console.log(data.msg);
       document.getElementById('ChangePasswd').reset();
     } else {
-      console.error(data.msg);
+      showError(data.msg);
     }
   } catch (error) {
-    console.error('Error en el fetch:', error);
+    showError('Error en el fetch ' + error);
   }
 }
 

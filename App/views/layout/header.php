@@ -7,10 +7,14 @@
     <link rel="shortcut icon" href="assets/images/Logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet"> <!-- STYLES -->
+    <link href="https://fonts.googleapis.com/css2?family=Sonsie+One&display=swap" rel="stylesheet">
+
+    <!-- STYLES -->
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="stylesheet" href="assets/styles/header.css">
     <link rel="stylesheet" href="assets/styles/footer.css">
+    <link rel="stylesheet" href="assets/styles/errorBox.css">
+
     <title>PsicoMarket</title>
 </head>
 
