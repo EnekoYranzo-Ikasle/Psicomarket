@@ -134,4 +134,24 @@ class ComercioModel
         $stmt->execute($datos);
         return $stmt->rowCount() > 0;
     }
+
+    public static function añadirAnuncio($nombre, $descripcion, $lat, $lon, $idUsuario, $imagenComercio)
+    {
+        $rutaImagen = $imagenComercio ? "uploads/comercios/" . $imagenComercio : "uploads/comercios/default.jpg";
+        
+        $datos = [
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'lat' => $lat,
+            'lon' => $lon,
+            'idUsuario' => $idUsuario,
+            'imagenComercio' => $rutaImagen
+        ];
+        $db = Database::getConnection();
+        $stmt = $db->prepare("INSERT INTO comercios (Nombre_comercio, Descripcion, Patrocinado, Latitud, Longitud, id_usuario, Ruta_imagen_comercio) 
+                              VALUES (:nombre, :descripcion, 0, :lat, :lon, :idUsuario, :imagenComercio)");
+        $stmt->execute($datos);
+        return $stmt->rowCount() > 0;
+    }
 }
+

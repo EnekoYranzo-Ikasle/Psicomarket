@@ -110,11 +110,57 @@ class ComercioController extends BaseController
         exit;
     }
 
-    public function show() {}
 
-    public function store() {}
+    public function añadirAnuncio()
+    {
+        $nombre = $_POST['nombreAnuncio'];
+        $descripcion = $_POST['descripcionAnuncio'];
+        $lat = $_POST['lat'];
+        $lon = $_POST['lon'];
+        $comercianteId = $_SESSION['user_id'];
+        
+        $nombreArchivoFinal = 'default.jpg'; // Valor por defecto
 
-    public function destroy() {}
+        if (isset($_FILES['imagenComercio']) && $_FILES['imagenComercio']['error'] === UPLOAD_ERR_OK) {
+            $imagenComercio = $_FILES['imagenComercio'];
 
-    public function destroyAll() {}
+            $nombreTemp = $imagenComercio['tmp_name'];
+            $extension = pathinfo($imagenComercio['name'], PATHINFO_EXTENSION);
+
+            $carpeta = "uploads/comercios/";
+
+            $nombreArchivoFinal = uniqid('img_', true) . '.' . $extension;
+            $rutaFinal = $carpeta . $nombreArchivoFinal;
+
+            if (!move_uploaded_file($nombreTemp, $rutaFinal)) {
+                die("Error al guardar la imagen.");
+            }
+        }
+
+        $resultado = ComercioModel::añadirAnuncio($nombre, $descripcion, $lat, $lon, $comercianteId, $nombreArchivoFinal);
+
+        if ($resultado) {
+            header('Location: index.php?controller=ComercianteController');
+            exit;
+        } else {
+            die("Error al añadir el anuncio.");
+        }
+    }
+
+
+    public function show()
+    {
+    }
+
+    public function store()
+    {
+    }
+
+    public function destroy()
+    {
+    }
+
+    public function destroyAll()
+    {
+    }
 }
