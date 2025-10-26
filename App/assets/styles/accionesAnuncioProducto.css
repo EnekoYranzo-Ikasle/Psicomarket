@@ -18,8 +18,11 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: bold;
+    transition: transform .3s ease;
 }
-
+.btn:hover{
+    transform: translateY(-3px);
+}
 .editar {
     background-color: rgb(223, 223, 223); /* Green */
     border: 2px solid #000000;
