@@ -19,7 +19,7 @@ class AccountController extends BaseController {
         header('Content-Type: application/json');
 
         $file = $_FILES['image'];
-        $uploadDir = __DIR__ . '/../uploads/userImages/';
+        $uploadDir = 'uploads/userImages/';
         $userID = $_SESSION['user_id'];
 
         if (!file_exists($uploadDir)) {
@@ -42,7 +42,7 @@ class AccountController extends BaseController {
 
         if (move_uploaded_file($file['tmp_name'], $filepath)) {
             AccountModel::saveUserImagePath($filepath, $userID);
-            echo json_encode(['success' => true, 'message' => 'Imagen guardada correctamente']);
+            echo json_encode(['success' => true, 'message' => 'Imagen guardada correctamente', 'imageUrl' => $filepath]);
         } else {
             echo json_encode(['success' => false, 'message' => 'No se pudo guardar la imagen']);
         }

@@ -15,7 +15,7 @@ class AccountModel {
 
     public static function getAccountInfo($userID) {
         $con = Database::getConnection();
-        $sql = "SELECT Nombre, Apellidos, Email, num_Tel
+        $sql = "SELECT Nombre, Apellidos, Email, num_Tel, UserImagePath
                     FROM usuarios
                     WHERE id = :userID
         ";

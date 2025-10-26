@@ -20,7 +20,7 @@ function openTab(page, clickedButton) {
     tablinks[i].classList.remove('active');
   }
 
-  document.getElementById(page).style.display = 'block';
+  document.getElementById(page).style.display = 'flex';
   clickedButton.classList.add('active');
 }
 
@@ -56,28 +56,16 @@ async function saveUserImage() {
       body: formData,
     });
 
-    // Ver el texto crudo de la respuesta
-    const text = await response.text();
-    console.log('Respuesta cruda:', text);
+    const result = await response.json();
 
-    // Intentar parsear como JSON
-    try {
-      const result = JSON.parse(text);
-      console.log('JSON parseado:', result);
-
-      // Cerrar modal si todo va bien
+    if (result.success) {
       modal.style.display = 'none';
-
-      // Actualizar la imagen si viene en la respuesta
       if (result.imageUrl) {
-        document.querySelector('.user-image img').src = result.imageUrl;
+        document.getElementById('userImage').src = result.imageUrl;
       }
-    } catch (parseError) {
-      console.error('Error al parsear JSON:', parseError);
-      console.error('Texto recibido:', text);
     }
   } catch (error) {
-    console.error('Error en la petición:', error);
+    console.error(error.message);
   }
 }
 
@@ -92,6 +80,7 @@ async function loadUserInfo() {
     const apellidos = document.getElementById('apellidos');
     const email = document.getElementById('email');
     const telefono = document.getElementById('telefono');
+    const imagen = document.getElementById('userImage');
 
     const response = await fetch(
       `index.php?controller=AccountController&accion=loadUserInfo&id=${userId}`
@@ -109,6 +98,9 @@ async function loadUserInfo() {
 
       // H3 username
       username.innerHTML = user.Nombre;
+
+      // Image
+      imagen.src = user.UserImagePath || 'assets/images/icons/userLogo.png';
     } else {
       throw new Error();
     }
