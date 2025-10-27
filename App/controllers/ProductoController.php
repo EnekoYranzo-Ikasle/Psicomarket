@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
+require_once __DIR__ . '/../models/ImagenModel.php';
 
 class ProductoController extends BaseController
 {
@@ -33,6 +34,21 @@ class ProductoController extends BaseController
 
         echo json_encode($res);
         exit;
+    }
+    public function getById(){
+        if(isset($_GET['id'])){
+        $id=$_GET['id'];
+        $producto=ProductoModel::getById($id);
+        $imagenes=ImagenModel::getByProductoId($id);
+       $producto['rutas_imagenes']=$imagenes;
+
+        $this->render('productoDetalles.view.php', [
+            'producto' =>$producto,
+            'navFile' => $this->navFile
+        ]);
+        } else{
+            die ('Producto no encontrado');
+        }
     }
 
 
