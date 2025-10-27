@@ -94,7 +94,7 @@ h4 {
 }
 
 #textMessage {
-  display: flex;
+  display: none;
   position: fixed;
   width: 80%;
   border: 1px solid var(--secundario);

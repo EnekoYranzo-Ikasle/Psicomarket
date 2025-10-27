@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
   id INT NOT NULL AUTO_INCREMENT,
   Nombre VARCHAR(50),
   Apellidos VARCHAR(50),
-  Email VARCHAR(255),
+  Email VARCHAR(255) UNIQUE,
   Contrasenna VARCHAR(255),
   num_Tel INT,
   Tipo ENUM('usuario','comerciante','administrador') NOT NULL DEFAULT 'usuario',
