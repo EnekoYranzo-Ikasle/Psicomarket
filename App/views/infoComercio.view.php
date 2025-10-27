@@ -5,8 +5,8 @@
         <div class="products">
 
             <?php
-            if(!empty($productosDelComercio)){
-                foreach ($productosDelComercio as $producto){
+            if (!empty($productosDelComercio)) {
+                foreach ($productosDelComercio as $producto) {
                     include('views/components/Productos/producto.php');
                 }
             } else {
@@ -20,4 +20,4 @@
     </div>
 </main>
 <?php require_once('layout/footer.php'); ?>
-<script type="module" src="assets/scripts/productos.js"></script>
+<script src="assets/scripts/productos.js"></script>

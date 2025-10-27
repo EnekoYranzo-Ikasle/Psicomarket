@@ -172,10 +172,8 @@
   padding: 6px 10px;
   display: flex;
   justify-content:flex-start;
-  gap:14px
-
-
-
+  gap:14px;
+  cursor: pointer;
 }
 .select-btn img{
   justify-self: flex-end;
@@ -243,6 +241,9 @@
   margin: 0;
   vertical-align: top;
   transform: translateY(1px);
+}
+#reestablecer{
+  cursor: pointer;
 }
 
 #filtro-container{
