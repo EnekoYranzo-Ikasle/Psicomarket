@@ -17,6 +17,9 @@ class BaseController {
                 case 'comerciante':
                     $this->navFile = 'navComerciante';
                     break;
+                case 'administrador':
+                    $this->navFile = 'navAdministrador';
+                    break;
             }
         } else {
             $this->navFile = 'navAnonimo';
