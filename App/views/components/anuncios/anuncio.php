@@ -8,8 +8,13 @@ if (isset($_POST['comercio'])) {
     <img src="<?= $comercio['Ruta_imagen_comercio'] ?>">
   </div>
   <h3 class="nombre-comercio"><?= $comercio['Nombre_comercio'] ?> </h3>
-  <a class="moreInfo" href="index.php?controller=ComercioController&accion=info&id=<?= $comercio['id'] ?>">Más información</a>
-
+  <?php if (isset($_POST['esMisComerciosViews'])): ?>
+    <?php if ($_POST['esMisComerciosViews'] === 'true'): ?>
+      <a class="moreInfo" href="index.php?controller=ProductoController&accion=gestionarProductos&id=<?= $comercio['id'] ?>">Gestionar productos</a>
+    <?php else: ?>
+      <a class="moreInfo" href="index.php?controller=ComercioController&accion=info&id=<?= $comercio['id'] ?>">Más información</a>
+    <?php endif; ?>
+  <?php endif; ?>
   <div class="valoracion">
     <span> <?= number_format($comercio['valoracion'] ?? 0, 1, '.', '');  ?> </span>
     <img src="assets/images/icons/valoracion.svg" alt="estrella">
@@ -21,13 +26,12 @@ if (isset($_POST['comercio'])) {
   <?php endif; ?>
   <div class="overlay">
     <div class="editarAnuncio">
-
-        <input type="text" name="nombre" placeholder="Nuevo nombre">
-        <input type="text" name="descripcion" placeholder="Nueva descripción">
-        <div class="botones">
-          <button class="confirmarEditarAnuncio">Guardar cambios</button>
-          <button class="cancelarEditarAnuncio">Cancelar</button>
-        </div>
+      <input type="text" name="nombre" placeholder="Nuevo nombre">
+      <input type="text" name="descripcion" placeholder="Nueva descripción">
+      <div class="botones">
+        <button class="confirmarEditarAnuncio">Guardar cambios</button>
+        <button class="cancelarEditarAnuncio">Cancelar</button>
+      </div>
     </div>
   </div>
   <div class="overlay2">

@@ -1,4 +1,5 @@
-.misFavoritos, .productosComercio {
+.misFavoritos,
+.productosComercio {
   padding: 10px;
 }
 
@@ -10,7 +11,7 @@
 
 .producto {
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@
 
 .producto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .imageFlag {
@@ -27,38 +28,63 @@
   overflow: hidden;
 }
 
-.favorito{
+.favorito {
   fill: #FFBC03;
 }
 
-svg{
-    position: absolute;
-    top: 0;
-    right: 10px;
-    width: 48px;
-    height: 48px;
-    & path{
-      cursor: pointer;
-    }
+.imageFlag svg {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+
+  & path {
+    cursor: pointer;
+  }
+}
+
+.añadirAnuncio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.añadirAnuncio svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tituloAñadirAnuncio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .images {
   display: flex;
+  height: 400px;
   transition: transform 0.3s ease;
 }
 
 .images img {
   min-width: 100%;
-  height: 400px;
   object-fit: cover;
   display: block;
 }
 
-.imageFlag > button {
+.imageFlag>button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   font-size: 1.8rem;
   cursor: pointer;
@@ -68,12 +94,20 @@ svg{
   transition: background 0.2s;
 }
 
-.imageFlag > button:hover {
-  background: rgba(255,255,255,1);
+.imageFlag>button:hover {
+  background: rgba(255, 255, 255, 1);
 }
 
-.imageFlag > button:first-of-type { left: 8px; } /* prev */
-.imageFlag > button:last-of-type  { right: 8px; } /* next */
+.imageFlag>button:first-of-type {
+  left: 8px;
+}
+
+/* prev */
+.imageFlag>button:last-of-type {
+  right: 8px;
+}
+
+/* next */
 
 .info {
   padding: 1rem;

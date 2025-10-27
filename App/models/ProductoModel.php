@@ -77,6 +77,7 @@ class ProductoModel
         return $stmt->rowCount() > 0;
     }
 
+
     public static function getById($id)
     {
     }

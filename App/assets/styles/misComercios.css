@@ -1,11 +1,11 @@
-.tituloAñadirAnuncio{
+.tituloAñadirAnuncio,.tituloAñadirProducto{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0 10px;
-    & .añadirAnuncio{
+    & .añadirAnuncio,.añadirProducto{
         display: flex;
         align-items: center;
         background: #62BC7A;

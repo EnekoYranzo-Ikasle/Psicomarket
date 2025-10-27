@@ -10,10 +10,7 @@ function inicializarAcciones() {
           overlay.style.display = "flex";
           overlay.style.justifyContent = "center";
           overlay.style.alignItems = "center";
-      
-          overlay
-            .querySelector(".confirmarEditarAnuncio")
-            .addEventListener("click", () => {
+          overlay.querySelector(".confirmarEditarAnuncio").addEventListener("click", () => {
               const datos = {
                 nombre: overlay.querySelector("input[name='nombre']").value,
                 descripcion: overlay.querySelector("input[name='descripcion']").value
@@ -21,13 +18,9 @@ function inicializarAcciones() {
               editarAnuncio(id, datos);
               overlay.style.display = "none";
             });
-          overlay
-            .querySelector(".cancelarEditarAnuncio")
-            .addEventListener("click", () => {
+          overlay.querySelector(".cancelarEditarAnuncio").addEventListener("click", () => {
               overlay.style.display = "none";
             });
-            overlay.style.display = 'none';
-          });
           overlay.querySelector('.cancelarEditarAnuncio').addEventListener('click', () => {
             overlay.style.display = 'none';
           });

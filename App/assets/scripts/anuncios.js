@@ -33,6 +33,7 @@ async function obtenerAnuncios() {
       const formData = new FormData();
       formData.append('comercio', JSON.stringify(anuncio));
       formData.append('acciones', JSON.stringify(esPaginaMisComercios));
+      formData.append('esMisComerciosViews', JSON.stringify(esPaginaMisComercios));
 
       const componenteSolicitado = await fetch('views/components/anuncios/anuncio.php', {
         method: 'POST',
@@ -61,27 +62,6 @@ async function obtenerAnuncios() {
 
 const buscadorComercios = document.getElementById('busqueda');
 
-//  Función que pinta los anuncios
-async function renderAnuncios(anuncios) {
-  contenedor.innerHTML = '';
-
-  if (!anuncios.length) {
-    contenedor.innerHTML = '<p>No hay anuncios disponibles.</p>';
-    return;
-  }
-
-  for (const anuncio of anuncios) {
-    const formData = new FormData();
-    formData.append('comercio', JSON.stringify(anuncio));
-
-    const componenteSolicitado = await fetch('views/components/anuncios/anuncio.php', {
-      method: 'POST',
-      body: formData,
-    });
-    const componenteRecogido = await componenteSolicitado.text();
-    contenedor.innerHTML += componenteRecogido;
-  }
-}
 
 function getFiltrosSeleccionados() {
   const busqueda = (document.getElementById('busqueda')?.value || '').trim();
