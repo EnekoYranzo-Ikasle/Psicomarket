@@ -94,7 +94,14 @@ class ComercioController extends BaseController
         header('Content-Type: application/json');
         $anuncio = $_GET['id'];
         $comerciante = $_SESSION['user_id'];
+        $imagenComercio = ComercioModel::getImagenByAnuncioId($anuncio);
         $resultado = ComercioModel::eliminarAnuncio($anuncio, $comerciante);
+        if ($resultado && $imagenComercio !== 'default.jpg') {
+            $rutaImagen = $imagenComercio;
+            if (file_exists($rutaImagen)) {
+                unlink($rutaImagen);
+            }
+        }
         echo json_encode($resultado);
         exit;
     }
@@ -110,7 +117,7 @@ class ComercioController extends BaseController
         $descripcion = $datos['descripcion'];
         $resultado = ComercioModel::editarAnuncio($anuncioId, $nombre, $descripcion);
         echo json_encode($resultado);
-        
+
         exit;
     }
 
@@ -122,7 +129,7 @@ class ComercioController extends BaseController
         $lat = $_POST['lat'];
         $lon = $_POST['lon'];
         $comercianteId = $_SESSION['user_id'];
-        
+
         $nombreArchivoFinal = 'default.jpg'; // Valor por defecto
 
         if (isset($_FILES['imagenComercio']) && $_FILES['imagenComercio']['error'] === UPLOAD_ERR_OK) {

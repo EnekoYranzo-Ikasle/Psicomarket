@@ -1,4 +1,4 @@
-const contenedor = document.querySelector('.products');
+const contenedor = document.querySelector(".products");
 
 async function obtenerFavoritos() {
   try {

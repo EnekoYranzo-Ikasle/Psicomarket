@@ -8,7 +8,7 @@
             <p class="title">No hay favoritos</p>
         <?php else: ?>
             <div class="products">
-                
+
             </div>
         <?php endif; ?>
     </div>
