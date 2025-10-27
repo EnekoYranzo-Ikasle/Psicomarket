@@ -4,17 +4,27 @@ function inicializarAcciones() {
     accion.addEventListener('click', (e) => {
       let id = e.currentTarget.classList[2];
       switch (e.currentTarget.classList[1]) {
-        case 'editar':
-          const anuncio = e.currentTarget.closest('.anuncio');
-          const overlay = anuncio.querySelector('.overlay');
-          overlay.style.display = 'flex';
-          overlay.style.justifyContent = 'center';
-          overlay.style.alignItems = 'center';
-
-          overlay.querySelector('.confirmarEditarAnuncio').addEventListener('click', () => {
-            editarAnuncio(id, {
-              nombre: overlay.querySelector("input[name='nombre']").value,
-              descripcion: overlay.querySelector("input[name='descripcion']").value,
+        case "editar":
+          const anuncio = e.currentTarget.closest(".anuncio");
+          const overlay = anuncio.querySelector(".overlay");
+          overlay.style.display = "flex";
+          overlay.style.justifyContent = "center";
+          overlay.style.alignItems = "center";
+      
+          overlay
+            .querySelector(".confirmarEditarAnuncio")
+            .addEventListener("click", () => {
+              const datos = {
+                nombre: overlay.querySelector("input[name='nombre']").value,
+                descripcion: overlay.querySelector("input[name='descripcion']").value
+              }
+              editarAnuncio(id, datos);
+              overlay.style.display = "none";
+            });
+          overlay
+            .querySelector(".cancelarEditarAnuncio")
+            .addEventListener("click", () => {
+              overlay.style.display = "none";
             });
             overlay.style.display = 'none';
           });
