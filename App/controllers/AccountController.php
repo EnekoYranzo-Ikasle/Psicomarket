@@ -15,6 +15,13 @@ class AccountController extends BaseController {
         exit;
     }
 
+    public function loadAdminTable() {
+        $userList = AccountModel::getUserList();
+        header('Content-Type: application/json');
+        echo json_encode($userList);
+        exit;
+    }
+
     public function uploadUserImage() {
         header('Content-Type: application/json');
 
@@ -95,6 +102,12 @@ class AccountController extends BaseController {
         AccountModel::saveUserPasswd($newHashedPasswd, $userID);
 
         echo json_encode(['status' => 'ok', 'msg' => 'Contraseña actualizada correctamente']);
+        exit;
+    }
+
+    public function  deleteUser($userID) {
+        AccountModel::deleteUser($userID);
+        echo json_encode(['status' => 'ok', 'msg' => 'Usuario borrado correctamente']);
         exit;
     }
 

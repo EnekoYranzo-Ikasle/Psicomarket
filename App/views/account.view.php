@@ -6,6 +6,9 @@
     <div class="tab">
       <button class="tablinks" tab="Informacion">Información</button>
       <button class="tablinks" tab="Seguridad">Seguridad</button>
+      <?php if ($navFile == 'navAdministrador'): ?>
+        <button class="tablinks" tab="Administrador">Panel administrador</button>
+      <?php endif ?>
     </div>
 
     <!-- Tab Informacion -->
@@ -114,6 +117,27 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <div id="Administrador" class="tabcontent">
+      <h3>Listado de usuarios</h3>
+      <div class="adminContent">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Tipo</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody id="adminTable"></tbody>
+        </table>
+      </div>
+
     </div>
 
     <script>

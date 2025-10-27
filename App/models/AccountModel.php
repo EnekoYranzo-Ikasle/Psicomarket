@@ -27,6 +27,19 @@ class AccountModel {
         return $accountInfo;
     }
 
+    public static function getUserList() {
+        $con = Database::getConnection();
+        $sql = "SELECT id, Nombre, Apellidos, Email, num_Tel, Tipo
+                    FROM usuarios
+                    WHERE NOT(Tipo = 'administrador')
+        ";
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+
+        $userList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $userList;
+    }
+
     public static function saveUserInfo($nombre, $apellidos, $email, $telefono, $userID) {
         $con = Database::getConnection();
         $sql = "UPDATE usuarios SET Nombre = :nombre, Apellidos = :apellidos,
@@ -73,6 +86,14 @@ class AccountModel {
         $stmt = $con->prepare($sql);
         $stmt->execute(['userID' => $userID]);
 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function deleteUser($userID) {
+        $con = Database::getConnection();
+        $sql = "DELETE FROM usuarios WHERE id = :userID";
+        $stmt = $con->prepare($sql);
+        $stmt->execute(['userID' => $userID]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
