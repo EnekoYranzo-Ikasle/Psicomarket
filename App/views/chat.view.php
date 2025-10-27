@@ -1,4 +1,5 @@
 <?php require_once('layout/header.php'); ?>
+<?php include_once('components/errorBox.php'); ?>
 <link rel="stylesheet" href="assets/styles/chats.css">
 <main>
   <div class="chatContainer">

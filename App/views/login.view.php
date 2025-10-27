@@ -1,4 +1,5 @@
 <?php require_once('layout/header.php'); ?>
+<?php include_once('components/errorBox.php'); ?>
 <link rel="stylesheet" href="assets/styles/loginView.css">
 <main>
   <div class="image" style="--bg-url: url('../images/loginImage.png');"></div>
@@ -26,14 +27,7 @@
       </div>
     </form>
   </div>
-  <?php if (isset($error) && $error !== ''): ?>
-    <div class="error">
-      Error: <?php echo $error; ?>
-    </div>
-  <?php endif; ?>
 </main>
-
-<script src="assets/scripts/errorBox.js"></script>
 <script>
   function checkInput(input) {
     if (input.value.trim() !== "") {
