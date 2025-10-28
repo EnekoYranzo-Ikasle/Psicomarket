@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="assets/styles/anuncios.css">
 <link rel="stylesheet" href="assets/styles/misComercios.css">
 <link rel="stylesheet" href="assets/styles/añadirAnuncio.css">
+<link rel="stylesheet" href="assets/styles/accionesAnuncioProducto.css">
 
 <main>
     <div class="tituloAñadirAnuncio">

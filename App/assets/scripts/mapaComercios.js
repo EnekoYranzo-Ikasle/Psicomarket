@@ -8,7 +8,7 @@ const boundsVitoria = [
 ];
 
 // Inicializar el mapa
-const map = L.map("map", {
+const map = L.map('map', {
   center: vitoriaCoords,
   zoom: 13,
   minZoom: 12,
@@ -18,8 +18,8 @@ const map = L.map("map", {
 });
 
 // Capa base
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap contributors",
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
 }).addTo(map);
 
 // Grupo de marcadores
@@ -28,41 +28,36 @@ const markers = L.layerGroup().addTo(map);
 // Cargar comercios desde la base de datos
 async function cargarComercios() {
   try {
-    let funcion = "";
-    let controller = "";
-    const esPaginaMisComercios = window.location.href.includes(
-      "ComercianteController"
-    );
+    let funcion = '';
+    let controller = '';
+    const esPaginaMisComercios = window.location.href.includes('ComercianteController');
     if (esPaginaMisComercios) {
-      controller = "ComercianteController";
-      funcion = "getCoordsMiComercio";
+      controller = 'ComercianteController';
+      funcion = 'getCoordsMiComercio';
     } else {
-      controller = "ComercioController";
-      funcion = "getCoords";
+      controller = 'ComercioController';
+      funcion = 'getCoords';
     }
-    const response = await fetch(
-      "index.php?controller="+controller+"&accion=" + funcion
-    );
+    const response = await fetch('index.php?controller=' + controller + '&accion=' + funcion);
     const comercios = await response.json();
 
     comercios.forEach((comercio) => {
       const lat = parseFloat(comercio.Latitud);
       const lon = parseFloat(comercio.Longitud);
       const nombre = comercio.Nombre_comercio;
-      const idComercio =comercio.id;
+      const idComercio = comercio.id;
 
-      const marker = L.marker([lat, lon]).addTo(markers); 
+      const marker = L.marker([lat, lon]).addTo(markers);
       //Que salga el nombre al pasar el raton
       marker.bindTooltip(nombre);
 
-
-     // Al hacer clic redirigir a la info del comercio
-      marker.on("click", () => {
+      // Al hacer clic redirigir a la info del comercio
+      marker.on('click', () => {
         window.location.href = `index.php?controller=ComercioController&accion=info&id=${idComercio}`;
       });
     });
   } catch (err) {
-    console.error("Error al cargar comercios:", err);
+    showError('Error al cargar comercios:', err);
   }
 }
 

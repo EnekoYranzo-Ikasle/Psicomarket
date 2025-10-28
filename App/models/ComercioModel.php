@@ -141,7 +141,7 @@ class ComercioModel
     public static function añadirAnuncio($nombre, $descripcion, $lat, $lon, $idUsuario, $imagenComercio)
     {
         $rutaImagen = $imagenComercio ? "uploads/comercios/" . $imagenComercio : "uploads/comercios/default.jpg";
-        
+
         $datos = [
             'nombre' => $nombre,
             'descripcion' => $descripcion,
@@ -151,10 +151,20 @@ class ComercioModel
             'imagenComercio' => $rutaImagen
         ];
         $db = Database::getConnection();
-        $stmt = $db->prepare("INSERT INTO comercios (Nombre_comercio, Descripcion, Patrocinado, Latitud, Longitud, id_usuario, Ruta_imagen_comercio) 
+        $stmt = $db->prepare("INSERT INTO comercios (Nombre_comercio, Descripcion, Patrocinado, Latitud, Longitud, id_usuario, Ruta_imagen_comercio)
                               VALUES (:nombre, :descripcion, 0, :lat, :lon, :idUsuario, :imagenComercio)");
         $stmt->execute($datos);
         return $stmt->rowCount() > 0;
+    }
+
+    public static function getImagenByAnuncioId($anuncioId)
+    {
+        $con = Database::getConnection();
+        $sql = "SELECT Ruta_imagen_comercio FROM comercios WHERE id=:anuncioId";
+        $stmt = $con->prepare($sql);
+        $stmt->execute(['anuncioId' => $anuncioId]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado ? $resultado['Ruta_imagen_comercio'] : null;
     }
 }
 
