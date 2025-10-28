@@ -2,6 +2,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/ImagenModel.php';
+require_once __DIR__ . '/../models/ComercioModel.php';
 
 class ProductoController extends BaseController
 {
@@ -41,32 +42,19 @@ class ProductoController extends BaseController
         $producto=ProductoModel::getById($id);
         $imagenes=ImagenModel::getByProductoId($id);
         $cantidad = count($imagenes);
-        $grupoImagenes= $this->contarImagenes($cantidad);
+        $comercio =ComercioModel::getById($producto['id_comercio']);
 
         $this->render('productoDetalles.view.php', [
             'producto' =>$producto,
             'imagenes' => $imagenes,
-            'grupoImagenes'=> $grupoImagenes,
+            'comercio'=>$comercio,
             'navFile' => $this->navFile
         ]);
         } else{
             die ('Producto no encontrado');
         }
     }
-    private function contarImagenes($cantidad) {
-    
 
-    switch (true) {
-        case ($cantidad < 2):
-            return 0;
-        case ($cantidad >= 2 && $cantidad <= 4):
-            return 1;
-        case ($cantidad >= 5 && $cantidad <= 7):
-            return 2;
-        default:
-            return 3;
-    }
-}
 
 
     public function show() {}
