@@ -1,6 +1,12 @@
-const errorBox = document.querySelector('.error');
-if (errorBox) {
-  errorBox.style.transition = 'all 0.5s ease-in-out';
+function showError(message) {
+  const errorBox = document.getElementById('error-box');
+  if (!errorBox) return;
+
+  errorBox.textContent = 'Error, ' + message;
+  errorBox.style.display = 'block';
+  errorBox.style.opacity = 1;
+  errorBox.style.top = '50px';
+
   setTimeout(() => {
     errorBox.style.top = '-150px';
     errorBox.style.opacity = 0;

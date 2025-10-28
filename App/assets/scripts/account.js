@@ -56,24 +56,23 @@ async function saveUserImage() {
       body: formData,
     });
 
-    const result = await response.json();
+    const data = await response.json();
 
-    if (result.success) {
-      modal.style.display = 'none';
-      if (result.imageUrl) {
-        document.getElementById('userImage').src = result.imageUrl;
+    modal.style.display = 'none';
+
+    if (!data.success) {
+      showError(data.message);
+    } else {
+      if (data.imageUrl) {
+        document.getElementById('userImage').src = data.imageUrl;
       }
     }
   } catch (error) {
-    console.error(error.message);
+    showError(error);
   }
 }
 
-//////// Editar Info del Perfil ////////
-const editButton = document.getElementById('editUserInfo');
-const inputs = document.querySelectorAll('.userInput');
-let editingInfo = false;
-
+// Cargar informacion del usuario
 async function loadUserInfo() {
   try {
     const nombre = document.getElementById('nombre');
@@ -86,10 +85,10 @@ async function loadUserInfo() {
       `index.php?controller=AccountController&accion=loadUserInfo&id=${userId}`
     );
 
-    const accountInfo = await response.json();
+    const data = await response.json();
 
-    if (accountInfo && accountInfo.length > 0) {
-      const user = accountInfo[0];
+    if (data && data.length > 0) {
+      const user = data[0];
       // Inputs
       nombre.value = user.Nombre;
       apellidos.value = user.Apellidos;
@@ -102,12 +101,80 @@ async function loadUserInfo() {
       // Image
       imagen.src = user.UserImagePath || 'assets/images/icons/userLogo.png';
     } else {
-      throw new Error();
+      showError(data.message);
     }
   } catch (error) {
-    console.log('Error al cargar la información del usuario');
+    showError('Error al cargar la información del usuario');
   }
 }
+
+// Cargar tabla de administraccion
+async function loadAdminTable() {
+  try {
+    const adminTable = document.getElementById('adminTable');
+
+    const response = await fetch(`index.php?controller=AccountController&accion=loadAdminTable`);
+
+    const data = await response.json();
+
+    if (data && data.length > 0) {
+      adminTable.innerHTML = data.length
+        ? data
+            .map(
+              (user) => `
+    <tr data-user-id="${user.id}">
+      <td>${user.id}</td>
+      <td>${user.Nombre}</td>
+      <td>${user.Apellidos}</td>
+      <td>${user.Email}</td>
+      <td>${user.num_Tel}</td>
+      <td>${user.Tipo}</td>
+      <td>
+        <button type="button" onclick="deleteUser(${user.id})">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 7l16 0" />
+              <path d="M10 11l0 6" />
+              <path d="M14 11l0 6" />
+              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+          </svg>
+        </button>
+      </td>
+    </tr>`
+            )
+            .join('')
+        : '<p>No hay usuarios</p>';
+    } else {
+      showError(data.message);
+    }
+  } catch (error) {
+    showError('Error al cargar la tabla de administración');
+  }
+}
+
+async function deleteUser(userID) {
+  try {
+    const response = await fetch(
+      `index.php?controller=AccountController&accion=deleteUser&id=${userID}`
+    );
+
+    const data = await response.json();
+
+    if (data.status === 'ok') {
+      await loadAdminTable();
+    } else {
+      throw new Error('Error al eliminar el usuario');
+    }
+  } catch (error) {
+    showError(error);
+  }
+}
+
+//////// Editar Info del Perfil ////////
+const editButton = document.getElementById('editUserInfo');
+const inputs = document.querySelectorAll('.userInput');
+let editingInfo = false;
 
 editButton.addEventListener('click', async function () {
   if (!editingInfo) {
@@ -174,17 +241,17 @@ async function saveNewPasswd() {
     });
 
     const data = await response.json();
-    console.log('Respuesta del servidor:', data);
 
     if (data.status === 'ok') {
-      console.log(data.msg);
+      showError(data.msg);
       document.getElementById('ChangePasswd').reset();
     } else {
-      console.error(data.msg);
+      showError(data.msg);
     }
   } catch (error) {
-    console.error('Error en el fetch:', error);
+    showError('Error en el fetch ' + error);
   }
 }
 
 loadUserInfo();
+loadAdminTable();

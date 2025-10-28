@@ -30,4 +30,4 @@
     </div>
 </main>
 <?php require_once('layout/footer.php'); ?>
-<script type="module" src="assets/scripts/productos.js"></script>
+<script src="assets/scripts/productos.js"></script>

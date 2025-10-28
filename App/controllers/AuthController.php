@@ -33,14 +33,25 @@ class AuthController extends BaseController {
     }
 
     public function createAccount() {
-        $nombre = $_POST['Name'];
-        $apellidos = $_POST['LastName'];
-        $phoneNumber = $_POST['PhoneNumber'];
-        $Email = $_POST['Email'];
-        $Passwd = password_hash($_POST['Passwd'], PASSWORD_DEFAULT);
-        $Rol = $_POST['UserRol'];
+        try {
+            $nombre = $_POST['Name'];
+            $apellidos = $_POST['LastName'];
+            $phoneNumber = $_POST['PhoneNumber'];
+            $Email = $_POST['Email'];
+            $Passwd = password_hash($_POST['Passwd'], PASSWORD_DEFAULT);
+            $Rol = $_POST['UserRol'];
 
-        AuthModel::createAccount($nombre, $apellidos, $phoneNumber, $Email, $Passwd, $Rol);
-        $this->redirect('index.php?controller=AuthController&accion=showLogin');
+            AuthModel::createAccount($nombre, $apellidos, $phoneNumber, $Email, $Passwd, $Rol);
+            $this->redirect('index.php?controller=AuthController&accion=showLogin');
+        } catch (PDOException $e) {
+            // Erro por UNIQUE o constraint
+            if ($e->getCode() == 23000) {
+                $error = 'Esa cuenta de correo ya esta registrada';
+            } else {
+                $error = 'Error en la base de datos';
+            }
+
+            $this->render('register.view.php', ['error' => $error]);
+        }
     }
 }

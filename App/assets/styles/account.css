@@ -16,7 +16,7 @@ main {
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 /* Tabs */
@@ -426,6 +426,75 @@ input:disabled {
   color: var(--acento);
   font-weight: bold;
   margin-right: 8px;
+}
+
+/************* Panel admin *************/
+#Administrador {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  padding: 1rem;
+}
+
+.adminContent {
+  flex: 1;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background: white;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+table tr {
+  border-bottom: 1px solid lightgray;
+}
+
+table td,
+th {
+  padding: 12px;
+  white-space: nowrap;
+}
+
+table button {
+  display: flex;
+  align-items: center;
+  padding: 0.3em;
+  font-size: 24px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+table svg {
+  stroke: black;
+  transition: all 0.3s ease-in-out;
+}
+
+table tbody tr:hover {
+  background-color: var(--secundario);
+}
+
+table button:hover {
+  background-color: red;
+}
+
+table button:hover svg {
+  stroke: white;
 }
 
 /* Responsive */

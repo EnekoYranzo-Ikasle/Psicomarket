@@ -30,7 +30,7 @@ async function loadMessagesList() {
       }
     }
   } catch (error) {
-    console.log(error);
+    showError(error);
     chatList.innerHTML = '<p>Error al cargar las conversaciones</p>';
   }
 }
@@ -39,7 +39,6 @@ async function loadMessagesList() {
 async function loadConversation() {
   try {
     const chatButtons = document.getElementsByClassName('item');
-    const chatMessages = document.getElementById('chatMessages');
     for (let i = 0; i < chatButtons.length; i++) {
       const button = chatButtons[i];
       button.addEventListener('click', async () => {
@@ -48,7 +47,7 @@ async function loadConversation() {
       });
     }
   } catch (error) {
-    console.log(error);
+    showError(error);
     chatMessages.innerHTML = '<p>Error al cargar la conversacion seleccionada</p>';
   }
 }
@@ -58,7 +57,7 @@ async function actualizarMensajes() {
   try {
     const chatSeleccionado = document.querySelector('.item.selected');
     if (!chatSeleccionado) {
-      console.log('No hay chat seleccionado');
+      showError('No hay chat seleccionado');
       return;
     }
 
@@ -87,9 +86,14 @@ async function actualizarMensajes() {
           .join('')
       : '<p>No hay mensajes en este chat.</p>';
 
+    // Si hay un chat seleccionado cargar barra de mensajes
+    if (form) {
+      form.style.display = 'flex';
+    }
+
     chatMessages.scrollTop = 0;
   } catch (error) {
-    console.log('Error al actualizar mensajes:', error);
+    showError('Error al actualizar mensajes:', error);
   }
 }
 
@@ -139,10 +143,10 @@ async function sendData() {
       form.reset();
       await actualizarMensajes();
     } else {
-      throw new Error();
+      throw new Error('Error al actualizar los mensajes');
     }
   } catch (error) {
-    console.error('Error al enviar el mensaje:', error);
+    showError(error);
   }
 }
 
