@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="assets/styles/productos.css">
 <link rel="stylesheet" href="assets/styles/misComercios.css">
 <link rel="stylesheet" href="assets/styles/accionesAnuncioProducto.css">
+<link rel="stylesheet" href="assets/styles/anuncios.css">
 
 
 <main>
-    <div class="misFavoritos">
+    <div class="misProductos">
         <div class="tituloAñadirProducto">
             <h2>Mis Productos</h2>
             <button class="añadirProducto btn">
@@ -30,5 +31,6 @@
         <?php endif; ?>
     </div>
     <script src="assets/scripts/misProductos.js"></script>
+    <script src="assets/scripts/accionesAnuncioProducto.js"></script>
 </main>
 <?php require_once('layout/footer.php'); ?>

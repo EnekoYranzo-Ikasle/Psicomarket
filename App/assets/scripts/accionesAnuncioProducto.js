@@ -4,7 +4,7 @@ function inicializarAcciones() {
     accion.addEventListener('click', (e) => {
       let id = e.currentTarget.classList[2];
       switch (e.currentTarget.classList[1]) {
-        case "editar":
+        case "editarAnuncio":
           const anuncio = e.currentTarget.closest(".anuncio");
           const overlay = anuncio.querySelector(".overlay");
           overlay.style.display = "flex";
@@ -25,7 +25,7 @@ function inicializarAcciones() {
             overlay.style.display = 'none';
           });
           break;
-        case 'eliminar':
+        case 'eliminarAnuncio':
           const anuncio2 = e.currentTarget.closest('.anuncio');
           const overlay2 = anuncio2.querySelector('.overlay2');
           overlay2.style.display = 'flex';
@@ -43,6 +43,53 @@ function inicializarAcciones() {
       }
     });
   });
+
+  let accionesProducto = document.querySelectorAll('.accionesProducto .btn');
+  accionesProducto.forEach((accion) => {
+    accion.addEventListener('click', (e) => {
+      console.log(e.currentTarget.classList[2]);
+      
+      let id = e.currentTarget.classList[2];
+      switch (e.currentTarget.classList[1]) {
+        case "editarProducto":
+          const producto = e.currentTarget.closest(".producto");
+          const overlay = producto.querySelector(".overlay");
+          overlay.style.display = "flex";
+          overlay.style.justifyContent = "center";
+          overlay.style.alignItems = "center";
+          overlay.querySelector(".confirmarEditarProducto").addEventListener("click", () => {
+              const datos = {
+                nombre: overlay.querySelector("input[name='nombre']").value,
+                descripcion: overlay.querySelector("input[name='descripcion']").value
+              }
+              editarProducto(id, datos);
+              overlay.style.display = "none";
+            });
+          overlay.querySelector(".cancelarEditarProducto").addEventListener("click", () => {
+              overlay.style.display = "none";
+            });
+          overlay.querySelector('.cancelarEditarProducto').addEventListener('click', () => {
+            overlay.style.display = 'none';
+          });
+          break;
+        case 'eliminarProducto':
+          const producto2 = e.currentTarget.closest('.producto');
+          const overlay2 = producto2.querySelector('.overlay2');
+          overlay2.style.display = 'flex';
+          overlay2.style.justifyContent = 'center';
+          overlay2.style.alignItems = 'center';
+
+          overlay2.querySelector('.confirmarEliminarProducto').addEventListener('click', () => {
+            eliminarProducto(id);
+            overlay2.style.display = 'none';
+          });
+          overlay2.querySelector('.cancelarEliminarProducto').addEventListener('click', () => {
+            overlay2.style.display = 'none';
+          });
+          break;
+      }
+    });
+  });   
 }
 
 async function eliminarAnuncio(idComercio) {
@@ -85,3 +132,4 @@ async function editarAnuncio(idComercio, nuevosDatos) {
     showError('Error al editar el anuncio:', error);
   }
 }
+

@@ -11,7 +11,7 @@ function moverCarrusel(btn, dir) {
   track.dataset.index = idx;
 }
 
-const svgs = document.querySelectorAll('path');
+const svgs = document.querySelectorAll('.añadirFavoritoSVG');
 svgs.forEach((svg) => {
   agregarClaseFavorito(svg);
   svg.addEventListener('click', async () => {
