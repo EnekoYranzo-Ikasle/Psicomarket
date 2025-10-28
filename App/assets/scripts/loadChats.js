@@ -4,38 +4,40 @@ async function loadMessagesList() {
     const chatList = document.getElementById('chatList');
     const response = await fetch('index.php?controller=ChatController&accion=getMessagesList');
 
-    if (response.ok) {
-      const chats = await response.json();
-      chatList.innerHTML = chats.length
-        ? chats
-            .map(
-              (chat) => `
-                    <button class="item" chatid="${chat.id}">
-                        <span></span>
-                        <h4>${chat.nombreChat}</h4>
-                    </button>
-                    `
-            )
-            .join('')
-        : '<p>No hay conversaciones</p>';
+    if (!response.ok) {
+      throw new Error('Error en la respuesta del servidor');
+    }
 
-      if (chats.length > 0) {
-        loadConversation();
+    const data = await response.json();
 
-        const primerChat = document.querySelector('.item');
-        if (primerChat) {
-          seleccionarChat(primerChat);
-          await actualizarMensajes();
+    if (data.success) {
+      chats = data.lista;
+      chatList.innerHTML = chats
+        .map(
+          (chat) => `
+            <button class="item" chatid="${chat.id}">
+                <span></span>
+                <h4>${chat.nombreChat}</h4>
+            </button>
+          `
+        )
+        .join('');
 
-          if (window.refreshInterval) clearInterval(window.refreshInterval);
-          window.refreshInterval = setInterval(actualizarMensajes, 30000);
-        }
+      await loadConversation();
+
+      const primerChat = document.querySelector('.item');
+      if (primerChat) {
+        seleccionarChat(primerChat);
+        await actualizarMensajes();
+
+        if (window.refreshInterval) clearInterval(window.refreshInterval);
+        window.refreshInterval = setInterval(actualizarMensajes, 30000);
       }
     } else {
-      throw new Error
+      chatList.innerHTML = '<p>No hay conversaciones</p>';
     }
   } catch (error) {
-    showError('Error al cargar las conversaciones' || error);
+    showError('Error al cargar las conversaciones');
     chatList.innerHTML = '<p>Error al cargar las conversaciones</p>';
   }
 }
