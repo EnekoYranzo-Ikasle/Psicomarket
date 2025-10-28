@@ -40,16 +40,33 @@ class ProductoController extends BaseController
         $id=$_GET['id'];
         $producto=ProductoModel::getById($id);
         $imagenes=ImagenModel::getByProductoId($id);
-       $producto['rutas_imagenes']=$imagenes;
+        $cantidad = count($imagenes);
+        $grupoImagenes= $this->contarImagenes($cantidad);
 
         $this->render('productoDetalles.view.php', [
             'producto' =>$producto,
+            'imagenes' => $imagenes,
+            'grupoImagenes'=> $grupoImagenes,
             'navFile' => $this->navFile
         ]);
         } else{
             die ('Producto no encontrado');
         }
     }
+    private function contarImagenes($cantidad) {
+    
+
+    switch (true) {
+        case ($cantidad < 2):
+            return 0;
+        case ($cantidad >= 2 && $cantidad <= 4):
+            return 1;
+        case ($cantidad >= 5 && $cantidad <= 7):
+            return 2;
+        default:
+            return 3;
+    }
+}
 
 
     public function show() {}
