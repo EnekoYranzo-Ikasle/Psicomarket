@@ -1,16 +1,25 @@
-.tituloAñadirAnuncio,.tituloAñadirProducto{
+.tituloAñadirAnuncio,
+.tituloAñadirProducto {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0 10px;
-    & .añadirAnuncio,.añadirProducto{
+
+    & .añadirAnuncio,
+    .añadirProducto {
         display: flex;
         align-items: center;
-        background: #62BC7A;
-        border: #329e4f 2px solid;
-        & svg{
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+        & svg {
             width: 24px;
             height: 24px;
         }
@@ -18,12 +27,13 @@
 }
 
 @media (max-width: 768px) {
-    .tituloAñadirAnuncio{
+    .tituloAñadirAnuncio {
         justify-content: space-around;
     }
-    .tituloAñadirAnuncio h2{
+
+    .tituloAñadirAnuncio h2 {
         font-size: 35px;
-      
+
     }
-    
+
 }

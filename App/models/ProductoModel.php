@@ -108,7 +108,6 @@ class ProductoModel
         $stmt = $db->prepare("DELETE FROM productos WHERE id = :id_producto");
         $stmt->execute(['id_producto' => $idProducto]);
 
-        error_log("Deleted rows: " . var_export($idProducto,true) . "\n",3,"./debug.log");
         return $stmt->rowCount() > 0;
     }
     public static function getCategoria($id){

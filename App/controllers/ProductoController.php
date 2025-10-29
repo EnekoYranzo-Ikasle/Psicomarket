@@ -23,6 +23,7 @@ class ProductoController extends BaseController {
         $usuario = $_SESSION['user_id'];
         $productoID = $_GET['idProducto'];
         $esFavorito = filter_var($_GET['esFavorito'], FILTER_VALIDATE_BOOLEAN);
+
         if ($esFavorito === true) {
             $res = ProductoModel::eliminarFavorito($productoID, $usuario);
         } else {
@@ -44,7 +45,6 @@ class ProductoController extends BaseController {
             'imagenes' => $imagenes,
             'comercio'=>$comercio,
             'categoria'=>$categoria,
-            'navFile' => $this->navFile
         ]);
         } else{
             die ('Producto no encontrado');
