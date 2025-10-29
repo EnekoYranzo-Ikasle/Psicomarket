@@ -13,7 +13,7 @@ async function obtenerFavoritos() {
     for (const producto of productos) {
       const formData = new FormData();
       formData.append("producto", JSON.stringify(producto));
-      if (window.location.pathname.includes("misProductos.view.php") || 
+      if (window.location.pathname.includes("misProductos.view.php") ||
           window.location.search.includes("ProductoController")) {
         formData.append("gestionarProductos", true);
       }
