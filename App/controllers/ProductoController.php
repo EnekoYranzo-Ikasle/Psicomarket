@@ -74,7 +74,6 @@ class ProductoController extends BaseController
         header('Content-Type: application/json');
         $productoID = $_GET['id'];
 
-        error_log("Deleted rows: " . var_export($productoID,true) . "\n",3,"./debug.log");
 
         $res = ProductoModel::eliminarProducto($productoID);
         echo json_encode($res);
