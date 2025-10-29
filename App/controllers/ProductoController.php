@@ -41,13 +41,13 @@ class ProductoController extends BaseController
         $id=$_GET['id'];
         $producto=ProductoModel::getById($id);
         $imagenes=ImagenModel::getByProductoId($id);
-        $cantidad = count($imagenes);
         $comercio =ComercioModel::getById($producto['id_comercio']);
-
+        $categoria= ProductoModel::getCategoria($id);
         $this->render('productoDetalles.view.php', [
             'producto' =>$producto,
             'imagenes' => $imagenes,
             'comercio'=>$comercio,
+            'categoria'=>$categoria,
             'navFile' => $this->navFile
         ]);
         } else{

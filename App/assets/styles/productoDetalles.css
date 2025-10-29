@@ -1,5 +1,5 @@
 .producto-detalles {
-  margin-top: 250px;
+  margin-top: 50px;
 }
 
 .layout-una {
@@ -26,14 +26,14 @@
   height: 450px;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background: #fff;
 }
 
 .layout-una .imagen-principal img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -53,7 +53,7 @@
 .thumbnails img {
   width: 90px;
   height: 70px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
   opacity: 0.6;
@@ -95,6 +95,12 @@
   line-height: 1.6;
   margin-top: 10px;
 }
+.descripcion-fieldset .texto-categoria {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #4c4a4a;
+  margin-bottom: 25px;
+}
 
 .precio-contenedor {
   margin-top: 15px;
@@ -108,10 +114,41 @@
   background-color: #f1f1f1;
   padding: 6px 14px;
   border-radius: 10px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .precio.gratis {
   background-color: #c8f7c5;
   color: #1a7f00;
+}
+
+.btn-volver{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+.volver-detalles {
+  
+  display: inline-block;
+  margin-top: 25px;
+  background: #1f1f1f;
+  color: #f0f0f0;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6),
+    -4px -4px 8px rgba(80, 80, 80, 0.2);
+}
+.volver-detalles:hover{
+   /* un poco más claro para el efecto */
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.7), -8px -8px 16px rgba(100, 100, 100, 0.25),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
