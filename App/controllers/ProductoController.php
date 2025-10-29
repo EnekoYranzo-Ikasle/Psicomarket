@@ -2,6 +2,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/ImagenModel.php';
+require_once __DIR__ . '/../models/ComercioModel.php';
 
 class ProductoController extends BaseController {
 
@@ -31,6 +32,7 @@ class ProductoController extends BaseController {
         echo json_encode($res);
         exit;
     }
+  
     public function getById() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -48,6 +50,7 @@ class ProductoController extends BaseController {
             die('Producto no encontrado');
         }
     }
+  
     private function contarImagenes($cantidad) {
         switch (true) {
             case ($cantidad < 2):
@@ -59,5 +62,19 @@ class ProductoController extends BaseController {
             default:
                 return 3;
         }
+    }
+  
+    public function gestionarProductos()
+    {
+        $productosComercio = ProductoModel::getByComercioId($_GET['id']);
+        $this->render('misProductos.view.php', ['navFile' => $this->navFile, 'productosComercio' => $productosComercio]);
+    }
+
+    public function obtenerProductos()
+    {
+        header('Content-Type: application/json');
+        $productosComercio = ProductoModel::getByComercioId($_GET['comercioid']);
+        echo json_encode($productosComercio);
+        exit;
     }
 }

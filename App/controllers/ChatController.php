@@ -11,6 +11,7 @@ class ChatController extends BaseController {
     public function getMessagesList() {
         $userID = $_SESSION['user_id'];
         $userType = AccountModel::getUserRol($userID);
+        $listaChats = [];
 
         if ($userType['tipo'] == 'usuario') {
             $listaChats = ChatModel::getUserChatsList($userID);
@@ -19,8 +20,14 @@ class ChatController extends BaseController {
         }
 
         header('Content-Type: application/json');
-        echo json_encode($listaChats);
-        exit;
+
+        if ($listaChats) {
+            echo json_encode(['success' => true, 'message' => 'Lista de chat cargada correctamente', 'lista' => $listaChats]);
+            exit;
+        } else {
+            echo json_encode(['success' => false, 'message' => 'No hay conversaciones']);
+            exit;
+        }
     }
 
     public function loadConversation($chatID) {
