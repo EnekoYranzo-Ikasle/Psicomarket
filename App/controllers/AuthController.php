@@ -25,11 +25,11 @@ class AuthController extends BaseController {
     }
 
     public function showLogin() {
-        $this->render('login.view.php', ['navFile' => $this->navFile]);
+        $this->render('login.view.php');
     }
 
     public function showRegister() {
-        $this->render('register.view.php', ['navFile' => $this->navFile]);
+        $this->render('register.view.php');
     }
 
     public function createAccount() {

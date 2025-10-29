@@ -15,6 +15,13 @@ class AccountController extends BaseController {
         exit;
     }
 
+    public function getUserProfileImage($userID) {
+        header('Content-Type: application/json');
+        $imagePath = AccountModel::getUserProfileImage($userID);
+        echo json_encode($imagePath);
+        exit;
+    }
+
     public function loadAdminTable() {
         $userList = AccountModel::getUserList();
         header('Content-Type: application/json');

@@ -6,30 +6,37 @@ class BaseController {
     protected $navFile = 'navAnonimo';
 
     protected function render($view, $data = []) {
-        extract($data);
-
         if (isset($_SESSION['user_id'])) {
+            $userProfileImage = AccountModel::getUserProfileImage($_SESSION['user_id']) ?? 'assets/images/icons/userLogo.png';
+
+            // Determinar menú de navegacion según el rol del usuario actual
             $rol = AccountModel::getUserRol($_SESSION['user_id']);
             switch ($rol['tipo']) {
                 case 'usuario':
-                    $this->navFile = 'navUsuario';
+                    $navFile = 'navUsuario';
                     break;
                 case 'comerciante':
-                    $this->navFile = 'navComerciante';
+                    $navFile = 'navComerciante';
                     break;
                 case 'administrador':
-                    $this->navFile = 'navAdministrador';
+                    $navFile = 'navAdministrador';
                     break;
+                default:
+                    $navFile = 'navAnonimo';
             }
         } else {
-            $this->navFile = 'navAnonimo';
+            $userProfileImage = 'assets/images/icons/userLogo.png';
+            $navFile = 'navAnonimo';
         }
 
-        // actualizar la variable que ya fue extraída: re-defínela
-        $navFile = $this->navFile;
+        $data['navFile'] = $navFile;
+        $data['userProfileImage'] = $userProfileImage;
+
+        extract($data);
 
         require __DIR__ . "/../views/{$view}";
     }
+
 
     protected function redirect($url) {
         header("Location: {$url}");

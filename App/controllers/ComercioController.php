@@ -5,11 +5,9 @@ require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/CategoriaModel.php';
 require_once __DIR__ . '/../models/ValoracionModel.php';
 
-class ComercioController extends BaseController
-{
+class ComercioController extends BaseController {
 
-    public function index()
-    {
+    public function index() {
         $comerciosPatrocinados = ComercioModel::getAllPatrocinated();
         $comerciosAnunciados = ComercioModel::getAll();
         $comercioSeleccionado = $this->seleccionarComercio();
@@ -27,8 +25,7 @@ class ComercioController extends BaseController
         );
     }
 
-    public function seleccionarComercio()
-    {
+    public function seleccionarComercio() {
         $comercioSeleccionado = null;
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = (int) $_GET['id'];
@@ -39,8 +36,7 @@ class ComercioController extends BaseController
     }
 
 
-    public function info()
-    {
+    public function info() {
         if (!isset($_GET['id']) || empty($_GET['id'])) {
             die(" Falta el ID del comercio.");
         }
@@ -60,8 +56,7 @@ class ComercioController extends BaseController
         ]);
     }
 
-    public function getCoords()
-    {
+    public function getCoords() {
         $comerciosCoords = ComercioModel::getCoords();
 
         header('Content-Type: application/json');
@@ -70,8 +65,7 @@ class ComercioController extends BaseController
     }
 
 
-    public function apiGetComercios()
-    {
+    public function apiGetComercios() {
         header('Content-Type: application/json');
 
         $busqueda = $_GET['busqueda'] ?? null;
@@ -89,8 +83,7 @@ class ComercioController extends BaseController
         echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
         exit;
     }
-    public function eliminarAnuncio()
-    {
+    public function eliminarAnuncio() {
         header('Content-Type: application/json');
         $anuncio = $_GET['id'];
         $comerciante = $_SESSION['user_id'];
@@ -106,8 +99,7 @@ class ComercioController extends BaseController
         exit;
     }
 
-    public function editarAnuncio()
-    {
+    public function editarAnuncio() {
         header('Content-Type: application/json');
         $input = file_get_contents("php://input");
         $datos = json_decode($input, true);
@@ -122,8 +114,7 @@ class ComercioController extends BaseController
     }
 
 
-    public function añadirAnuncio()
-    {
+    public function añadirAnuncio() {
         $nombre = $_POST['nombreAnuncio'];
         $descripcion = $_POST['descripcionAnuncio'];
         $lat = $_POST['lat'];
@@ -159,19 +150,15 @@ class ComercioController extends BaseController
     }
 
 
-    public function show()
-    {
+    public function show() {
     }
 
-    public function store()
-    {
+    public function store() {
     }
 
-    public function destroy()
-    {
+    public function destroy() {
     }
 
-    public function destroyAll()
-    {
+    public function destroyAll() {
     }
 }
