@@ -39,6 +39,15 @@
                 </div>
             </a>
         </div>
+        <?php if (!empty($_SESSION['user_id'])): ?>
+            <a href="index.php?controller=AccountController" title="Ir a tu perfil">
+                <img src="<?= $userProfileImage['UserImagePath'] ?? 'assets/images/icons/userLogo.png' ?>" id="headerUserImage">
+            </a>
+        <?php else: ?>
+            <a href="index.php?controller=AuthController" title="Inicia sesión">
+                <img src="<?= $userProfileImage['UserImagePath'] ?? 'assets/images/icons/userLogo.png' ?>" id="headerUserImage">
+            </a>
+        <?php endif ?>
         <div class="buttons">
             <form method="post" class="icon">
                 <?php if (!empty($_SESSION['user_id'])): ?>
