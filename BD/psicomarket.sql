@@ -36,7 +36,6 @@ CREATE TABLE productos (
   id INT NOT NULL AUTO_INCREMENT,
   Nombre VARCHAR(50) NOT NULL,
   Descripcion VARCHAR(100) NOT NULL,
-  Estado VARCHAR(20) NOT NULL,
   id_comercio INT NOT NULL,
   Precio FLOAT NOT NULL,
   id_categoria INT NOT NULL,
@@ -60,7 +59,7 @@ CREATE TABLE favoritos (
   id_usuario INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE chat (

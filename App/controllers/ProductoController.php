@@ -75,4 +75,20 @@ class ProductoController extends BaseController {
         echo json_encode($productosComercio);
         exit;
     }
+
+    public function eliminar(){
+        header('Content-Type: application/json');
+        $productoID = $_GET['id'];
+
+        $res = ProductoModel::eliminarProducto($productoID);
+        echo json_encode($res);
+        exit;
+    }
+    public function show() {}
+
+    public function store() {}
+
+    public function destroy() {}
+
+    public function destroyAll() {}
 }

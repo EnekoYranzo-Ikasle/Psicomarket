@@ -16,9 +16,7 @@
 
             <?php if(!empty($productosDelComercio)): ?>
                 <?php foreach ($productosDelComercio as $producto):?>
-                    <a href="index.php?controller=ProductoController&accion=getById&id=<?=$producto['id']?>">
                         <?php  include('views/components/Productos/producto.php'); ?>
-                    </a>
                 <?php endforeach?>
             <?php else: ?>
                 <p>Este comercio no tiene productos actualmente</p>

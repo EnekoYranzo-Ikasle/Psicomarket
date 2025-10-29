@@ -109,6 +109,23 @@ async function eliminarAnuncio(idComercio) {
   }
 }
 
+async function eliminarProducto(idProducto) {
+  try {
+    const res = await fetch(
+      'index.php?controller=ProductoController&accion=eliminar&id=' + idProducto
+    );
+    if (!res.ok) {
+      throw new Error('Error al eliminar el producto');
+    }
+    const data = await res.json();
+    if (data) {
+      window.location.reload();
+    }
+  } catch (error) {
+    console.error('Error al eliminar el producto:', error);
+  }
+}
+
 async function editarAnuncio(idComercio, nuevosDatos) {
   try {
     const res = await fetch(
