@@ -32,7 +32,7 @@ class ProductoController extends BaseController {
         echo json_encode($res);
         exit;
     }
-  
+
     public function getById() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -50,7 +50,7 @@ class ProductoController extends BaseController {
             die('Producto no encontrado');
         }
     }
-  
+
     private function contarImagenes($cantidad) {
         switch (true) {
             case ($cantidad < 2):
@@ -63,15 +63,13 @@ class ProductoController extends BaseController {
                 return 3;
         }
     }
-  
-    public function gestionarProductos()
-    {
+
+    public function gestionarProductos() {
         $productosComercio = ProductoModel::getByComercioId($_GET['id']);
-        $this->render('misProductos.view.php', ['navFile' => $this->navFile, 'productosComercio' => $productosComercio]);
+        $this->render('misProductos.view.php', ['productosComercio' => $productosComercio]);
     }
 
-    public function obtenerProductos()
-    {
+    public function obtenerProductos() {
         header('Content-Type: application/json');
         $productosComercio = ProductoModel::getByComercioId($_GET['comercioid']);
         echo json_encode($productosComercio);
