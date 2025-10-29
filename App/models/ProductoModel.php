@@ -111,6 +111,17 @@ class ProductoModel
         error_log("Deleted rows: " . var_export($idProducto,true) . "\n",3,"./debug.log");
         return $stmt->rowCount() > 0;
     }
+    public static function getCategoria($id){
+        $con= Database::getConnection();
+        $sql= "SELECT c.nombre AS nombre
+                FROM categorias c JOIN productos p
+                ON c.id=p.id_categoria
+                WHERE p.id= :id_producto";
+        $stmt = $con->prepare($sql);
+        $dato=['id_producto'=>$id];
+        $stmt->execute($dato);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     public static function create($datos)
     {
