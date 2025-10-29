@@ -3,7 +3,6 @@
 <main>
   <div class="producto-detalles">
     <?php if (count($imagenes) <= 1): ?>
-      <!-- ===== CASE 0: 0 o 1 imagen ===== -->
       <div class="layout-una">
         <div class="imagen">
           <?php if (!empty($imagenes)): ?>
@@ -32,14 +31,24 @@
       </div>
 
     <?php else: ?>
-      <!-- ===== CASE >1 imagen ===== -->
+     
       <div class="layout-una">
         <div class="imagen">
+            <div class="botones-detalles">
+            <div class="btn-volver">
+              <a class="volver-detalles" href="index.php?controller=ComercioController&accion=info&id=<?= $comercio['id'] ?>">Volver</a>
+            </div>
+            <div class="btn-reviews">
+              <button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar</button>
+            </div>
+          </div>
+
+        
           <div class="imagen-principal">
             <img id="imagen-activa" src="<?= $imagenes[0]['Ruta_imagen_producto'] ?>" alt="">
           </div>
 
-          <!-- Miniaturas debajo -->
+     
           <div class="thumbnails">
             <?php foreach ($imagenes as $index => $imagen): ?>
               <img
@@ -49,17 +58,14 @@
                 alt="">
             <?php endforeach; ?>
           </div>
-          <div class="btn-volver">
-            <a class="volver-detalles" href="index.php?controller=ComercioController&accion=info&id=<?= $comercio['id'] ?>">Volver al comercio</a>
-          </div>
         </div>
 
+    
         <div class="descripcion">
           <fieldset class="descripcion-fieldset">
             <legend><?= $producto['Nombre'] ?></legend>
             <p class="texto-categoria"><?= $categoria['nombre'] ?></p>
             <p class="texto"><?= $producto['Descripcion'] ?></p>
-
 
             <div class="precio-contenedor">
               <?php if (!empty($producto['Precio']) && $producto['Precio'] > 0): ?>
@@ -74,7 +80,24 @@
     <?php endif; ?>
   </div>
 
+  <div class="estrellas" id="contenedor-estrellas">
+    <form action="" class="form-valoracion">
+      <fieldset class="descripcion-fieldset">
+        <legend><?= $producto['Nombre'] ?></legend>
+        <p>
+           Valoración:
+           <img src="assets/images/icons/review-star.png" alt="estrella" class="estrella">
+           <img src="assets/images/icons/review-star.png" alt="estrella" class="estrella">
+           <img src="assets/images/icons/review-star.png" alt="estrella" class="estrella">
+           <img src="assets/images/icons/review-star.png" alt="estrella" class="estrella">
+           <img src="assets/images/icons/review-star.png" alt="estrella" class="estrella">
+        </p>
+        <textarea name="" placeholder="Escriba su reseña aqui"></textarea>
+        <button type="submit"> Enviar</button>
+      </fieldset>
+    </form>
+  </div>
 </main>
-<?php require_once('layout/footer.php'); ?>
 
+<?php require_once('layout/footer.php'); ?>
 <script src="assets/scripts/productoDetalles.js"></script>
