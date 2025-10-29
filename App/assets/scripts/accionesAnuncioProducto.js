@@ -48,7 +48,7 @@ function inicializarAcciones() {
   accionesProducto.forEach((accion) => {
     accion.addEventListener('click', (e) => {
       console.log(e.currentTarget.classList[2]);
-      
+
       let id = e.currentTarget.classList[2];
       switch (e.currentTarget.classList[1]) {
         case "editarProducto":
@@ -89,7 +89,7 @@ function inicializarAcciones() {
           break;
       }
     });
-  });   
+  });
 }
 
 async function eliminarAnuncio(idComercio) {
@@ -132,4 +132,3 @@ async function editarAnuncio(idComercio, nuevosDatos) {
     showError('Error al editar el anuncio:', error);
   }
 }
-
