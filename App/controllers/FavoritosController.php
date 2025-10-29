@@ -6,25 +6,12 @@ class FavoritosController extends BaseController {
 
     public function index() {
         $favoritos = FavoritoModel::getAll($_SESSION['user_id']);
-        $this->render('misFavoritos.view.php', ['favoritos' => $favoritos,'navFile' => $this->navFile]);
+        $this->render('misFavoritos.view.php', ['favoritos' => $favoritos]);
     }
 
-    public function apiGetFavoritos()
-    {
+    public function apiGetFavoritos() {
         header('Content-Type: application/json');
         echo FavoritoModel::getAll($_SESSION['user_id']); // Devuelve JSON
         exit;
-    }
-    
-    public function show() {
-    }
-
-    public function store() {
-    }
-
-    public function destroy() {
-    }
-
-    public function destroyAll() {
     }
 }
