@@ -84,6 +84,33 @@ class ProductoController extends BaseController {
         echo json_encode($res);
         exit;
     }
+
+    public function obtenerCategorias(){
+        header('Content-Type: application/json');
+        $nombre = $_GET['nombre'] ?? '';
+
+        $res = ProductoModel::obtenerCategorias($nombre);
+
+        echo json_encode($res);
+        exit;
+    }
+
+    public function añadirProducto(){
+        $datos = [
+            'nombreProducto' => $_POST['nombreProducto'],
+            'descripcionProducto' => $_POST['descripcionProducto'],
+            'precioProducto' => $_POST['precioProducto'],
+            'id_comercio' => 15,
+            'id_categoria' => $_POST['categoriaID']
+        ];
+
+        error_log(var_export($datos, true),3,"./debug.log");
+
+        $res = ProductoModel::añadirProducto($datos);
+        
+            header('Location: index.php?controller=ProductoController&accion=gestionarProductos&id='.$datos['id_comercio']);
+    }
+
     public function show() {}
 
     public function store() {}

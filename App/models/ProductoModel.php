@@ -96,7 +96,7 @@ class ProductoModel
         GROUP BY p.id, c.nombre");
 
         $stmt->execute(['id_producto' => $id]);
-       return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 
 
     }
@@ -110,17 +110,38 @@ class ProductoModel
 
         return $stmt->rowCount() > 0;
     }
-    public static function getCategoria($id){
-        $con= Database::getConnection();
-        $sql= "SELECT c.nombre AS nombre
+    public static function getCategoria($id)
+    {
+        $con = Database::getConnection();
+        $sql = "SELECT c.nombre AS nombre
                 FROM categorias c JOIN productos p
                 ON c.id=p.id_categoria
                 WHERE p.id= :id_producto";
         $stmt = $con->prepare($sql);
-        $dato=['id_producto'=>$id];
+        $dato = ['id_producto' => $id];
         $stmt->execute($dato);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public static function obtenerCategorias($nombre)
+    {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            "SELECT * FROM categorias WHERE :nombre = '' OR nombre LIKE :like"
+        );
+        $stmt->execute([':nombre' => $nombre, ':like' => "%$nombre%"]);
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+    public static function añadirProducto($datos){
+        $db = Database::getConnection();
+        $stmt = $db->prepare("INSERT INTO productos (Nombre,Descripcion,Precio,id_comercio,id_categoria) VALUES (:nombreProducto,:descripcionProducto,:precioProducto,:id_comercio,:id_categoria)");
+        $stmt->execute($datos);
+        return $stmt->rowCount() > 0;
+    }
+
+
 
     public static function create($datos)
     {
