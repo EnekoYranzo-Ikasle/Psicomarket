@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/ChatModel.php';
 class ChatController extends BaseController {
 
     public function index() {
-        $this->render('chat.view.php', ['navFile' => $this->navFile]);
+        $this->render('chat.view.php');
     }
 
     public function getMessagesList() {

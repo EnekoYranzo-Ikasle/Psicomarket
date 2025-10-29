@@ -19,8 +19,7 @@ class ComercioController extends BaseController {
                 'comerciosPatrocinados' => $comerciosPatrocinados,
                 'comerciosAnunciados' => $comerciosAnunciados,
                 'comercioSeleccionado' => $comercioSeleccionado,
-                'categorias' => $categorias,
-                'navFile' => $this->navFile
+                'categorias' => $categorias
             ]
         );
     }
@@ -52,7 +51,6 @@ class ComercioController extends BaseController {
         $this->render('infoComercio.view.php', [
             'comercio' => $comercio,
             'productosDelComercio' => $productosDelComercio,
-            'navFile' => $this->navFile
         ]);
     }
 
@@ -83,6 +81,7 @@ class ComercioController extends BaseController {
         echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
         exit;
     }
+
     public function eliminarAnuncio() {
         header('Content-Type: application/json');
         $anuncio = $_GET['id'];
@@ -147,18 +146,5 @@ class ComercioController extends BaseController {
         } else {
             die("Error al añadir el anuncio.");
         }
-    }
-
-
-    public function show() {
-    }
-
-    public function store() {
-    }
-
-    public function destroy() {
-    }
-
-    public function destroyAll() {
     }
 }

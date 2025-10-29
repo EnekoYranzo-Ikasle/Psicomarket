@@ -9,8 +9,7 @@ class ComercianteController extends BaseController {
     public function index() {
         $comercios = ComercioModel::getAllMine();
         $this->render('misComercios.view.php', [
-            'misComercios' => $comercios,
-            'navFile' => $this->navFile
+            'misComercios' => $comercios
         ]);
     }
 
@@ -38,13 +37,11 @@ class ComercianteController extends BaseController {
         }
 
         $this->render('infoComercio.view.php', [
-            'comercio' => $comercio,
-            'navFile' => $this->navFile
+            'comercio' => $comercio
         ]);
     }
 
-    public function getCoordsMiComercio()
-    {
+    public function getCoordsMiComercio() {
         $user = $_SESSION['user_id'];
         $comerciosCoords = ComercioModel::getCoordsMiComercio($user);
 
@@ -53,25 +50,10 @@ class ComercianteController extends BaseController {
         exit;
     }
 
-        public function apiGetMisComercios()
-    {
+    public function apiGetMisComercios() {
         header('Content-Type: application/json');
         $comercios = ComercioModel::getAllMine();
         echo json_encode($comercios, JSON_UNESCAPED_UNICODE);
         exit;
-    }
-
-
-
-    public function show() {
-    }
-
-    public function store() {
-    }
-
-    public function destroy() {
-    }
-
-    public function destroyAll() {
     }
 }

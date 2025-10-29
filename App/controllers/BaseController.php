@@ -2,9 +2,6 @@
 require_once __DIR__ . '/../models/AccountModel.php';
 
 class BaseController {
-
-    protected $navFile = 'navAnonimo';
-
     protected function render($view, $data = []) {
         if (isset($_SESSION['user_id'])) {
             $userProfileImage = AccountModel::getUserProfileImage($_SESSION['user_id']) ?? 'assets/images/icons/userLogo.png';

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/AccountModel.php';
 class AccountController extends BaseController {
 
     public function index() {
-        $this->render('account.view.php', ['navFile' => $this->navFile]);
+        $this->render('account.view.php');
     }
 
     public function loadUserInfo($userID) {

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../models/AuthModel.php';
 class AuthController extends BaseController {
 
     public function index() {
-        $this->render('login.view.php', ['navFile' => $this->navFile]);
+        $this->render('login.view.php');
     }
 
     public function userLogin() {
