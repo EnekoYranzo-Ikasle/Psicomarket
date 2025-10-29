@@ -8,27 +8,27 @@
       <div class="formInputs">
         <div class="inputs">
           <div class="inputGroup">
-            <input type="text" name="Name" id="NameInput" placeholder="" required>
+            <input type="text" name="Name" id="NameInput" placeholder="" required value="<?= $_POST['Name']?>">
             <label for="NameInput">Nombre</label>
           </div>
 
           <div class="inputGroup">
-            <input type="text" name="LastName" id="LastNameInput" placeholder="" required>
+            <input type="text" name="LastName" id="LastNameInput" placeholder="" required value="<?= $_POST['LastName']?>">
             <label for="LastNameInput">Apellidos</label>
           </div>
 
           <div class="inputGroup">
-            <input type="tel" name="PhoneNumber" id="PhoneNumberInput" placeholder="" required>
+            <input type="tel" name="PhoneNumber" id="PhoneNumberInput" placeholder="" required value="<?= $_POST['PhoneNumber']?>">
             <label for="PhoneNumberInput">Teléfono</label>
           </div>
 
           <div class="inputGroup">
-            <input type="email" name="Email" id="EmailInput" placeholder="" required>
+            <input type="email" name="Email" id="EmailInput" placeholder="" required value="<?= $_POST['Email']?>">
             <label for="EmailInput">Email</label>
           </div>
 
           <div class="inputGroup">
-            <input type="password" name="Passwd" id="PasswdInput" placeholder="" required>
+            <input type="password" name="Passwd" id="PasswdInput" placeholder="" required value="<?= $_POST['Passwd']?>">
             <label for="PasswdInput">Contraseña</label>
           </div>
           <div class="inputGroup">
