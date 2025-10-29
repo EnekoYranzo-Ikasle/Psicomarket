@@ -41,7 +41,7 @@
         </div>
         <?php if (!empty($_SESSION['user_id'])): ?>
             <a href="index.php?controller=AccountController" title="Ir a tu perfil">
-                <img src="<?= $userProfileImage['UserImagePath'] ?? 'assets/images/icons/userLogo.png' ?>" id="headerUserImage">
+                <img src="<?= $userProfileImage['UserImagePath'] ? $userProfileImage['UserImagePath'] : 'assets/images/icons/userLogo.png' ?>" id="headerUserImage">
             </a>
         <?php else: ?>
             <a href="index.php?controller=AuthController" title="Inicia sesión">
