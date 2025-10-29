@@ -23,7 +23,7 @@ CREATE TABLE comercios (
   Ruta_imagen_comercio VARCHAR(255) NOT NULL,
   id_usuario INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE categorias (

@@ -78,8 +78,27 @@ class ProductoModel
     }
 
 
+
     public static function getById($id)
     {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare("SELECT
+            p.*,
+            c.nombre AS Categoria,
+            GROUP_CONCAT(i.Ruta_imagen_producto SEPARATOR ',') AS rutas_imagenes
+        FROM productos p
+        LEFT JOIN categorias c
+            ON c.id = p.id_categoria
+        LEFT JOIN imagenes i
+            ON i.id_producto = p.id
+        WHERE p.id = :id_producto
+        GROUP BY p.id, c.nombre");
+
+        $stmt->execute(['id_producto' => $id]);
+       return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        
     }
 
     public static function create($datos)

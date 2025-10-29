@@ -3,23 +3,28 @@ async function loadMessagesList() {
   try {
     const chatList = document.getElementById('chatList');
     const response = await fetch('index.php?controller=ChatController&accion=getMessagesList');
-    const chats = await response.json();
-    chatList.innerHTML = chats.length
-      ? chats
-          .map(
-            (chat) => `
-                    <button class="item" chatid="${chat.id}">
-                        <span></span>
-                        <h4>${chat.nombreChat}</h4>
-                    </button>
-                    `
-          )
-          .join('')
-      : '<p>No hay conversaciones</p>';
 
-    loadConversation();
+    if (!response.ok) {
+      throw new Error('Error en la respuesta del servidor');
+    }
 
-    if (chats.length > 0) {
+    const data = await response.json();
+
+    if (data.success) {
+      chats = data.lista;
+      chatList.innerHTML = chats
+        .map(
+          (chat) => `
+            <button class="item" chatid="${chat.id}">
+                <span></span>
+                <h4>${chat.nombreChat}</h4>
+            </button>
+          `
+        )
+        .join('');
+
+      await loadConversation();
+
       const primerChat = document.querySelector('.item');
       if (primerChat) {
         seleccionarChat(primerChat);
@@ -28,9 +33,11 @@ async function loadMessagesList() {
         if (window.refreshInterval) clearInterval(window.refreshInterval);
         window.refreshInterval = setInterval(actualizarMensajes, 30000);
       }
+    } else {
+      chatList.innerHTML = '<p>No hay conversaciones</p>';
     }
   } catch (error) {
-    showError(error);
+    showError('Error al cargar las conversaciones');
     chatList.innerHTML = '<p>Error al cargar las conversaciones</p>';
   }
 }

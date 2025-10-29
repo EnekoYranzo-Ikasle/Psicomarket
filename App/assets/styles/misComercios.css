@@ -16,3 +16,14 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .tituloAñadirAnuncio{
+        justify-content: space-around;
+    }
+    .tituloAñadirAnuncio h2{
+        font-size: 35px;
+      
+    }
+    
+}
