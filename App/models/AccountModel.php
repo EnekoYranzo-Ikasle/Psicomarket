@@ -27,6 +27,17 @@ class AccountModel {
         return $accountInfo;
     }
 
+    public static function getUserProfileImage($userId) {
+        $con = Database::getConnection();
+        $sql = "SELECT UserImagePath FROM usuarios WHERE id = :userID";
+        $stmt = $con->prepare($sql);
+        $dato = ['userID' => $userId];
+        $stmt->execute($dato);
+
+        $userImagePath = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $userImagePath;
+    }
+
     public static function getUserList() {
         $con = Database::getConnection();
         $sql = "SELECT id, Nombre, Apellidos, Email, num_Tel, Tipo

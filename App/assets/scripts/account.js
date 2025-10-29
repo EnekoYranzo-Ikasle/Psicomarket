@@ -65,6 +65,7 @@ async function saveUserImage() {
     } else {
       if (data.imageUrl) {
         document.getElementById('userImage').src = data.imageUrl;
+        const headerImage = document.getElementById('headerUserImage');
       }
     }
   } catch (error) {

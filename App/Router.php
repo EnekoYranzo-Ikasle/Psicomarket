@@ -19,7 +19,6 @@ class Router {
         $params = $_GET;
         unset($params['controller'], $params['accion']);
 
-        // Llamar al método con los parámetros restantes
         $controller->$action(...array_values($params));
     }
 }

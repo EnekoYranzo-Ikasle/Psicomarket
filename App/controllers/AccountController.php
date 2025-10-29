@@ -5,13 +5,20 @@ require_once __DIR__ . '/../models/AccountModel.php';
 class AccountController extends BaseController {
 
     public function index() {
-        $this->render('account.view.php', ['navFile' => $this->navFile]);
+        $this->render('account.view.php');
     }
 
     public function loadUserInfo($userID) {
         $accountInfo = AccountModel::getAccountInfo($userID);
         header('Content-Type: application/json');
         echo json_encode($accountInfo);
+        exit;
+    }
+
+    public function getUserProfileImage($userID) {
+        header('Content-Type: application/json');
+        $imagePath = AccountModel::getUserProfileImage($userID);
+        echo json_encode($imagePath);
         exit;
     }
 

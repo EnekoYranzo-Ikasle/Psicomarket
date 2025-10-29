@@ -5,18 +5,6 @@ require_once __DIR__ . '/../models/ImagenModel.php';
 class ImagenController extends BaseController {
 
     public function index() {
-        $this->render('index.view.php',['navFile' => $this->navFile]);
-    }
-
-    public function show() {
-    }
-
-    public function store() {
-    }
-
-    public function destroy() {
-    }
-
-    public function destroyAll() {
+        $this->render('index.view.php');
     }
 }
