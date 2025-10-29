@@ -56,7 +56,19 @@ class ProductoController extends BaseController
     }
 
 
+    public function gestionarProductos()
+    {
+        $productosComercio = ProductoModel::getByComercioId($_GET['id']);
+        $this->render('misProductos.view.php', ['navFile' => $this->navFile, 'productosComercio' => $productosComercio]);
+    }
 
+    public function obtenerProductos()
+    {
+        header('Content-Type: application/json');
+        $productosComercio = ProductoModel::getByComercioId($_GET['comercioid']);
+        echo json_encode($productosComercio);
+        exit;
+    }
     public function show() {}
 
     public function store() {}

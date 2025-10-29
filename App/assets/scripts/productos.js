@@ -11,7 +11,7 @@ function moverCarrusel(btn, dir) {
   track.dataset.index = idx;
 }
 
-const svgs = document.querySelectorAll('path');
+const svgs = document.querySelectorAll('.añadirFavoritoSVG');
 svgs.forEach((svg) => {
   agregarClaseFavorito(svg);
   svg.addEventListener('click', async () => {
@@ -37,11 +37,6 @@ async function añadirFavoritoEliminar(IDproducto, esFavorito) {
     if (!res.ok) {
       throw new Error('Error al añadir o eliminar favorito');
     }
-
-    const data = await res.json();
-
-    console.log(data);
-
     const esPaginaFavoritos = window.location.href.includes('FavoritosController');
     if (esFavorito && esPaginaFavoritos) {
       window.location.reload();
