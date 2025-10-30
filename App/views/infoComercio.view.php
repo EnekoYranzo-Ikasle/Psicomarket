@@ -10,14 +10,13 @@
       <p><?= $comercio['Descripcion'] ?></p>
     </div>
   </article>
-  <article>
+  <article class="buttonGroup">
     <?php if (isset($_SESSION['user_id'])): ?>
-      <a href="index.php?controller=ChatController&accion=newChat&ComercioID=<?= $comercioID ?>" class="openChat" id="<?= $comercioID ?>">Contactar<img src="assets/images/icons/send-white.png"></a>
-      <div class="btn-reviews">
-        <button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar Comercio</button>
-      </div>
-    <?php endif?> 
-    </article>
+      <button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar Comercio</button>
+      <a href="index.php?controller=ChatController&accion=newChat&ComercioID=<?= $comercioID ?>" class="openChat" id="<?= $comercioID ?>">Contactar<img src="assets/images/icons/send-white.png">
+      </a>
+    <?php endif ?>
+  </article>
   <article class="listaProductos">
     <h4>Nuestros productos</h4>
     <div class="products">
@@ -46,16 +45,13 @@
             <input type="hidden" name="valoracion">
           </div>
 
-
           <div>
             <button type="submit" class="enviar-review">Enviar</button>
           </div>
         </div>
-
       </fieldset>
     </form>
-
-  </div> 
+  </div>
 </main>
 <?php require_once('layout/footer.php'); ?>
 <script src="assets/scripts/productos.js"></script>
