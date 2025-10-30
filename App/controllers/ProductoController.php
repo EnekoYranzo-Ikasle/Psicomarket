@@ -148,6 +148,24 @@ class ProductoController extends BaseController
         header('Location: index.php?controller=ProductoController&accion=gestionarProductos&id=' . $datos['idComercio']);
     }
 
+    public function editarProducto()
+    {
+        header('Content-Type: application/json');
+        $input = file_get_contents("php://input");
+        $datos = json_decode($input, true);
+
+        $datos = [
+            'idProducto' => $_GET['id'],
+            'nombre' => $datos['nombre'],
+            'descripcion' => $datos['descripcion'],
+            'precio' => $datos['precio']
+        ];
+        $resultado = ProductoModel::editarProducto($datos);
+        echo json_encode($resultado);
+
+        exit;
+    }
+
     public function show() {}
 
     public function store() {}
