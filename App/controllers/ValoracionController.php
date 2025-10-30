@@ -15,43 +15,39 @@ class ValoracionController extends BaseController
     {
         header('Content-Type: application/json');
         
-        if (!isset($_SESSION['user_id'])) {
-            echo json_encode(['error' => 'Debes iniciar sesión para valorar']);
-            return;
-        }
-        
         $idUsuario = $_SESSION['user_id'];
         $idComercio = $_POST['idComercio'] ?? null;
         $estrellas = $_POST['estrellas'] ?? null;
         
-        // Validar que existan los datos necesarios
+       
         if (!$idComercio || !$estrellas) {
             echo json_encode(['error' => 'Faltan datos necesarios']);
             return;
         }
         
-        // Verificar si ya valoró este comercio
+       
         if (ValoracionModel::yaValorado($idUsuario, $idComercio)) {
             echo json_encode(['error' => 'Ya has valorado este comercio']);
             return;
         }
 
-        // Verificar que el comercio existe
+       
         $comercio = ComercioModel::getById($idComercio);
         if (!$comercio) {
             echo json_encode(['error' => 'El comercio no existe']);
             return;
         }
         
-        // Verificar que no es el dueño del comercio
+        
         if ($comercio['id_usuario'] === $idUsuario) {
             echo json_encode(['error' => 'No puedes valorar tu propio comercio']);
             return;
         }
         
-        // Insertar la valoración
-        $resultado = ValoracionModel::create($estrellas, $idUsuario, $idComercio);
+       
+        ValoracionModel::create($estrellas, $idUsuario, $idComercio);
         
+         echo json_encode(['success' => '¡Gracias por tu valoración!']);
         exit;
     }
 }

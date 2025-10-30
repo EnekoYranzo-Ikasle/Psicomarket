@@ -94,7 +94,6 @@ async function enviarValoracion(e) {
     }
   } catch (error) {
     console.error("Error al enviar valoración:", error);
-    alert("Error al enviar la valoración. Inténtalo de nuevo.");
   }
 }
 
