@@ -26,8 +26,8 @@ if (isset($_POST['comercio'])) {
   <?php endif; ?>
   <div class="overlay">
     <div class="editarAnuncioForm">
-      <input type="text" name="nombre" placeholder="Nuevo nombre">
-      <input type="text" name="descripcion" placeholder="Nueva descripción">
+      <input type="text" name="nombre" placeholder="Nuevo nombre" value="<?=$comercio['Nombre_comercio']?>">
+      <textarea class="descripcionAnuncio" maxlength="380"><?= $comercio['Descripcion']?></textarea>
       <div class="botones">
         <button class="confirmarEditarAnuncio">Guardar cambios</button>
         <button class="cancelarEditarAnuncio">Cancelar</button>

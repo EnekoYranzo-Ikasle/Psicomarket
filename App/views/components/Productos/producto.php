@@ -47,8 +47,8 @@ if (isset($_POST['producto'])) {
   <div class="overlay">
     <div class="editarProductoForm">
       <input type="text" name="nombre" placeholder="Nuevo nombre" value="<?= $producto['Nombre']?>">
-      <textarea class="descripcionProducto"><?= $producto['Descripcion']?></textarea>
-      <input type="number" id="precioProducto" name="precioProducto" step="0.01" min="0" required value=<?=(int) $producto['Precio']?>>
+      <textarea class="descripcionProducto" maxlength="380"><?= $producto['Descripcion']?></textarea>
+      <input type="number" id="precioProducto" name="precioProducto" step="0.01" min="0" required value=<?=$producto['Precio']?>>
 
       <div class="botones">
         <button class="confirmarEditarProducto">Guardar cambios</button>
