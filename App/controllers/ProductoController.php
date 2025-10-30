@@ -155,13 +155,12 @@ class ProductoController extends BaseController
         $datos = json_decode($input, true);
 
         $datos = [
-        'idProducto' => $_GET['id'],
-        'nombre' => $datos['nombre'],
-        'descripcion' => $datos['descripcion'],
-        'precio' => $datos['precio']
+            'idProducto' => $_GET['id'],
+            'nombre' => $datos['nombre'],
+            'descripcion' => $datos['descripcion'],
+            'precio' => $datos['precio']
         ];
-
-        error_log("datos: ". var_export($datos,true),3,"./debug.log");
+        
         $resultado = ProductoModel::editarProducto($datos);
         echo json_encode($resultado);
 
