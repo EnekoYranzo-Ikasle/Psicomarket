@@ -105,7 +105,7 @@ async function eliminarAnuncio(idComercio) {
       window.location.reload();
     }
   } catch (error) {
-    showError('Error al eliminar el anuncio:', error);
+    console.error('Error al eliminar el anuncio:', error);
   }
 }
 
@@ -149,3 +149,4 @@ async function editarAnuncio(idComercio, nuevosDatos) {
     showError('Error al editar el anuncio:', error);
   }
 }
+

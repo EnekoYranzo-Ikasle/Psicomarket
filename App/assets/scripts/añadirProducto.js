@@ -3,16 +3,16 @@ let btnCancelar = document.querySelector(".btn-cancelar");
 let btnGuardar = document.querySelector(".btn-guardar");
 let cantidadLetras = document.querySelector(".cantidadLetras");
 
-cantidadLetras.textContent = "0 / 1000";
+cantidadLetras.textContent = "0 / 380";
 document
   .getElementById("descripcionProducto")
   .addEventListener("input", function () {
     let longitudActual = this.value.length;
-    cantidadLetras.textContent = `${longitudActual} / 1000`;
-    if (longitudActual > 1000) {
-      this.value = this.value.slice(0, 1000);
+    cantidadLetras.textContent = `${longitudActual} / 380`;
+    if (longitudActual > 380) {
+      this.value = this.value.slice(0, 380);
     }
-    if (longitudActual === 1000) {
+    if (longitudActual === 380) {
       cantidadLetras.style.color = "red";
     } else {
       cantidadLetras.style.color = "#1a56db";
@@ -30,6 +30,55 @@ btnCancelar.addEventListener("click", () => {
   limpiarFormulario();
   formulario.style.display = "none";
   document.body.style.overflow = "auto";
+});
+
+btnGuardar.addEventListener("click", async () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const idComercio = params.get("id");
+
+    let datos = new FormData();
+    datos.append("idComercio", idComercio);
+    datos.append(
+      "nombreProducto",
+      document.getElementById("nombreProducto").value
+    );
+    datos.append(
+      "descripcionProducto",
+      document.getElementById("descripcionProducto").value
+    );
+    datos.append(
+      "precioProducto",
+      document.getElementById("precioProducto").value
+    );
+    datos.append(
+      "id_categoria",
+      document.getElementById("listaCategorias").value
+    );
+    document.querySelectorAll("input[type='file']").forEach((inputFile) => {
+      for (let i = 0; i < inputFile.files.length; i++) {
+        datos.append("imagenes[]", inputFile.files[i]);
+      }
+    });
+
+    const response = await fetch(
+      "index.php?controller=ProductoController&accion=añadirProducto",
+      {
+        method: "POST",
+        body: datos,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error en la petición: " + response.status);
+    }
+
+    formulario.style.display = "none";
+    document.body.style.overflow = "auto";
+    window.location.reload(true);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 });
 
 document.querySelector(".añadirProducto").addEventListener("click", () => {
@@ -77,67 +126,59 @@ async function obtenerCategoriasDisponibles(categoriaInput) {
   }
 }
 
-document.getElementById("listaCategorias").addEventListener("change", () => {
-  document.getElementById("categoriaID").value =
-    document.getElementById("listaCategorias").value;
-});
-
-const imagenesContainer = document.querySelector('.imagenes-container');
-const btnAgregarImagen = document.getElementById('btnAgregarImagen');
+const imagenesContainer = document.querySelector(".imagenes-container");
+const btnAgregarImagen = document.getElementById("btnAgregarImagen");
 
 let contadorImagenes = 1;
 const MAX_IMAGENES = 5;
 
 // Función para actualizar la visibilidad del botón
 function actualizarBoton() {
-    btnAgregarImagen.style.display = (contadorImagenes >= MAX_IMAGENES) ? 'none' : 'inline-block';
+  btnAgregarImagen.style.display =
+    contadorImagenes >= MAX_IMAGENES ? "none" : "inline-block";
 }
 
 // Función para crear un nuevo input de imagen con botón eliminar
 function crearImagen(nombreIndex) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('imagenEliminar');
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("imagenEliminar");
 
-    const inputImagen = document.createElement('input');
-    inputImagen.type = 'file';
-    inputImagen.name = `imagen${nombreIndex}`;
-    inputImagen.accept = 'image/*';
-    inputImagen.required = true;
-    inputImagen.classList.add('input-imagen');
+  const inputImagen = document.createElement("input");
+  inputImagen.type = "file";
+  inputImagen.name = `imagen${nombreIndex}`;
+  inputImagen.accept = "image/*";
+  inputImagen.required = true;
+  inputImagen.classList.add("input-imagen");
 
-    const btnEliminar = document.createElement('button');
-    btnEliminar.type = 'button';
-    btnEliminar.textContent = '✖';
-    btnEliminar.classList.add('btn-eliminar');
+  const btnEliminar = document.createElement("button");
+  btnEliminar.type = "button";
+  btnEliminar.textContent = "✖";
+  btnEliminar.classList.add("btn-eliminar");
 
-    btnEliminar.addEventListener('click', () => {
-        wrapper.remove();
-        contadorImagenes--;
-        actualizarBoton();
-    });
-
-    wrapper.appendChild(inputImagen);
-    wrapper.appendChild(btnEliminar);
-    imagenesContainer.appendChild(wrapper);
-}
-
-// Botón para añadir nuevas imágenes
-btnAgregarImagen.addEventListener('click', () => {
-    if (contadorImagenes >= MAX_IMAGENES) return;
-    contadorImagenes++;
-    crearImagen(contadorImagenes);
-    actualizarBoton();
-});
-
-// Inicializar estado del botón
-actualizarBoton();
-
-// Inicializar botón eliminar del primer input
-const primerBtnEliminar = imagenesContainer.querySelector('.btn-eliminar');
-primerBtnEliminar.addEventListener('click', () => {
-    const primerWrapper = primerBtnEliminar.parentElement;
-    primerWrapper.remove();
+  btnEliminar.addEventListener("click", () => {
+    wrapper.remove();
     contadorImagenes--;
     actualizarBoton();
+  });
+
+  wrapper.appendChild(inputImagen);
+  wrapper.appendChild(btnEliminar);
+  imagenesContainer.appendChild(wrapper);
+}
+
+btnAgregarImagen.addEventListener("click", () => {
+  if (contadorImagenes >= MAX_IMAGENES) return;
+  contadorImagenes++;
+  crearImagen(contadorImagenes);
+  actualizarBoton();
 });
 
+actualizarBoton();
+
+const primerBtnEliminar = imagenesContainer.querySelector(".btn-eliminar");
+primerBtnEliminar.addEventListener("click", () => {
+  const primerWrapper = primerBtnEliminar.parentElement;
+  primerWrapper.remove();
+  contadorImagenes--;
+  actualizarBoton();
+});

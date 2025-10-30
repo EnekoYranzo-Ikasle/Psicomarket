@@ -363,7 +363,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.editarAnuncioForm input[type="text"], .editarProductoForm input[type="text"]{
+.editarAnuncioForm input[type="text"], .editarProductoForm input[type="text"],.editarAnuncioForm input[type="number"], .editarProductoForm input[type="number"],.editarAnuncioForm textarea, .editarProductoForm textarea{
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 15px;
@@ -371,6 +371,11 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea{
+  resize: none;
+  field-sizing: content;
 }
 
 .editarAnuncioForm input[type="text"]:focus, .editarProductoForm input[type="text"]:focus {

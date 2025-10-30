@@ -36,8 +36,7 @@
 </main>
 
 <div class="formularioAñadirProducto">
-    <form action="index.php?controller=ProductoController&accion=añadirProducto" method="POST">
-
+    <div class="form">
         <label for="nombreProducto">
             Nombre del producto:
             <input type="text" id="nombreProducto" name="nombreProducto" required>
@@ -45,7 +44,7 @@
 
         <label for="descripcionProducto" class="descripcionLabel">
             Descripción:
-            <textarea name="descripcionProducto" id="descripcionProducto" maxlength="1000" required></textarea>
+            <textarea name="descripcionProducto" id="descripcionProducto" maxlength="380" required></textarea>
             <span class="cantidadLetras"></span>
         </label>
 
@@ -71,10 +70,10 @@
 
 
         <div class="formulario-buttons">
-            <button type="submit" class="btn-guardar">Guardar</button>
+            <button type="button" class="btn-guardar">Guardar</button>
             <button type="button" class="btn-cancelar">Cancelar</button>
         </div>
-    </form>
+    </div>
 </div>
 
 <script src="assets/scripts/añadirProducto.js"></script>

@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 
-.formularioAñadirProducto form {
+.formularioAñadirProducto .form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -20,6 +20,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 90%;
   max-width: 500px;
+
 }
 
 /* Labels */
@@ -137,7 +138,7 @@ input[type="file"]::file-selector-button {
     font-weight: 500;
     cursor: pointer;
     padding: 0.8rem 1.5rem;
-        
+
 }
 
 .imagenEliminar {

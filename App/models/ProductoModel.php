@@ -6,9 +6,7 @@ class ProductoModel
 {
 
 
-    public static function getAll()
-    {
-    }
+    public static function getAll() {}
     public static function getByComercioId($idComercio)
     {
         $db = Database::getConnection();
@@ -97,8 +95,6 @@ class ProductoModel
 
         $stmt->execute(['id_producto' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
-
-
     }
 
     public static function eliminarProducto($idProducto)
@@ -134,24 +130,43 @@ class ProductoModel
 
         return $resultados;
     }
-    public static function añadirProducto($datos){
+    public static function añadirProducto($datos)
+    {
         $db = Database::getConnection();
-        $stmt = $db->prepare("INSERT INTO productos (Nombre,Descripcion,Precio,id_comercio,id_categoria) VALUES (:nombreProducto,:descripcionProducto,:precioProducto,:id_comercio,:id_categoria)");
-        $stmt->execute($datos);
+
+        $stmt = $db->prepare(
+            "INSERT INTO productos
+        (Nombre, Descripcion, Precio, id_comercio, id_categoria)
+        VALUES (:nombreProducto, :descripcionProducto, :precioProducto, :idComercio, :id_categoria)"
+        );
+        $stmt->execute([
+            'nombreProducto' => $datos['nombreProducto'],
+            'descripcionProducto' => $datos['descripcionProducto'],
+            'precioProducto' => $datos['precioProducto'],
+            'idComercio' => $datos['idComercio'],
+            'id_categoria' => $datos['id_categoria']
+        ]);
+
+        $idProducto = $db->lastInsertId();
+
+        $stmt3 = $db->prepare(
+            "INSERT INTO imagenes (Ruta_imagen_producto, id_producto)
+        VALUES (:ruta, :id_producto)");
+
+        foreach ($datos['imagenes'] as $imagen) {
+            $stmt3->execute([
+                'ruta' => $imagen,
+                'id_producto' => $idProducto
+            ]);
+        }
+
         return $stmt->rowCount() > 0;
     }
 
 
+    public static function create($datos) {}
 
-    public static function create($datos)
-    {
-    }
+    public static function deleteById($id) {}
 
-    public static function deleteById($id)
-    {
-    }
-
-    public static function deleteAll()
-    {
-    }
+    public static function deleteAll() {}
 }
