@@ -1,0 +1,49 @@
+array (
+  'nombreProducto' => 'fdsf',
+  'descripcionProducto' => 'sdfsd',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '1',
+)array (
+  'nombreProducto' => 'fdsf',
+  'descripcionProducto' => 'sdfsd',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '1',
+)array (
+  'nombreProducto' => 'adas',
+  'descripcionProducto' => 'dasd',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '1',
+)array (
+  'nombreProducto' => 'vz',
+  'descripcionProducto' => 'vsdsdg',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '23',
+)array (
+  'nombreProducto' => 'dasddasdasdas',
+  'descripcionProducto' => 'asdas',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '23',
+)array (
+  'nombreProducto' => 'fwef',
+  'descripcionProducto' => 'we',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '48',
+)array (
+  'nombreProducto' => 'sdf',
+  'descripcionProducto' => 'fgsd',
+  'precioProducto' => '0',
+  'id_comercio' => 15,
+  'id_categoria' => '29',
+)array (
+  'nombreProducto' => 'Prueba',
+  'descripcionProducto' => 'Esto es una prueba',
+  'precioProducto' => '12.99',
+  'id_comercio' => 15,
+  'id_categoria' => '19',
+)

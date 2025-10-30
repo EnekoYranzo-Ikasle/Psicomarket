@@ -297,7 +297,7 @@
   border-radius: 20px;
 }
 
-.validarEliminarAnuncio, .editarAnuncioForm, .validarEliminarProducto, .editarProducto {
+.validarEliminarAnuncio, .editarAnuncioForm, .validarEliminarProducto, .editarProductoForm {
   padding: 25px 30px;
   border-radius: 12px;
   background-color: #ffffff;
@@ -330,7 +330,7 @@
   background-color: rgb(197, 197, 197);
 }
 
-.validarEliminarAnuncio button,.editarAnuncioForm button, .validarEliminarProducto button,.editarProducto button {
+.validarEliminarAnuncio button,.editarAnuncioForm button, .validarEliminarProducto button,.editarProductoForm button {
   padding: 10px 20px;
   border-radius: 8px;
   border: none;
@@ -363,7 +363,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.editarAnuncioForm input[type="text"], .editarProducto input[type="text"]{
+.editarAnuncioForm input[type="text"], .editarProductoForm input[type="text"]{
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 15px;
@@ -373,13 +373,13 @@
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-.editarAnuncioForm input[type="text"]:focus, .editarProducto input[type="text"]:focus {
+.editarAnuncioForm input[type="text"]:focus, .editarProductoForm input[type="text"]:focus {
   border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
   outline: none;
 }
 
-.editarAnuncioForm .botones, .editarProducto .botones {
+.editarAnuncioForm .botones, .editarProductoForm .botones {
   display: flex;
   justify-content: space-around;
   gap: 15px;
@@ -394,23 +394,23 @@
 }
 
 
-.editarAnuncioForm .confirmarEditarAnuncio, .editarProducto .confirmarEditarProducto {
+.editarAnuncioForm .confirmarEditarAnuncio, .editarProductoForm .confirmarEditarProducto {
   background-color: #4caf50;
   color: #ffffff;
 }
 
-.editarAnuncioForm .confirmarEditarAnuncio:hover, .editarProducto .confirmarEditarProducto:hover {
+.editarAnuncioForm .confirmarEditarAnuncio:hover, .editarProductoForm .confirmarEditarProducto:hover {
   background-color: #388e3c;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.editarAnuncioForm .cancelarEditarAnuncio, .editarProducto .cancelarEditarProducto {
+.editarAnuncioForm .cancelarEditarAnuncio, .editarProductoForm .cancelarEditarProducto {
   background-color: #e0e0e0;
   color: #333333;
 }
 
-.editarAnuncioForm .cancelarEditarAnuncio:hover, .editarProducto .cancelarEditarProducto:hover {
+.editarAnuncioForm .cancelarEditarAnuncio:hover, .editarProductoForm .cancelarEditarProducto:hover {
   background-color: #bdbdbd;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
