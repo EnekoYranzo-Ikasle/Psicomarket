@@ -160,7 +160,6 @@ class ProductoController extends BaseController
             'descripcion' => $datos['descripcion'],
             'precio' => $datos['precio']
         ];
-        
         $resultado = ProductoModel::editarProducto($datos);
         echo json_encode($resultado);
 
