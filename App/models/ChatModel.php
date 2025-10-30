@@ -63,4 +63,26 @@ class ChatModel {
         $dato = ['mensaje' => $mensaje, 'fecha' => $fecha, 'userID' => $userID, 'chatID' => $chatID];
         $stmt->execute($dato);
     }
+
+    public static function chatExiste($userID, $comercioID) {
+        $con = Database::getConnection();
+        $sql = "SELECT * FROM chat
+            WHERE usuarioID = :userID AND comercioID = :comercioID
+            LIMIT 1
+        ";
+        $stmt = $con->prepare($sql);
+        $dato = ['userID' => $userID, 'comercioID' => $comercioID];
+        $stmt->execute($dato);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function newChat($userID, $comercioID) {
+        $con = Database::getConnection();
+        $sql = "INSERT INTO chat (comercioID, usuarioID)
+                    VALUES (:comercioID, :userID)
+        ";
+        $stmt = $con->prepare($sql);
+        $dato = ['comercioID' => $comercioID, 'userID' => $userID];
+        $stmt->execute($dato);
+    }
 }

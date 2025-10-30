@@ -1,41 +1,36 @@
 <?php require_once('layout/header.php'); ?>
+<link rel="stylesheet" href="assets/styles/infoComercio.css">
 <link rel="stylesheet" href="assets/styles/productos.css">
 <main>
-   <div class="datos-comercio">
-  <h2><?= $comercio['Nombre_comercio'] ?></h2>
+  <article class="datos-comercio">
+    <h2><?= $comercio['Nombre_comercio'] ?></h2>
 
-  <div class="descripcion-comercio">
-    <fieldset>
-      <legend>Descripción</legend>
+    <div class="descripcion-comercio">
+      <h4>Descripción</h4>
       <p><?= $comercio['Descripcion'] ?></p>
-    </fieldset>
-  </div>
-</div>
-<?php if (isset($_SESSION['user_id'])): ?>
-<div class="btn-reviews">
-<button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar Comercio</button>
-</div>
-<?php endif?>
-
-
-
-    <div class="productosComercio">
-        <div class="products">
-
-            <?php if(!empty($productosDelComercio)): ?>
-                <?php foreach ($productosDelComercio as $producto):?>
-                        <?php  include('views/components/Productos/producto.php'); ?>
-                <?php endforeach?>
-            <?php else: ?>
-                <p>Este comercio no tiene productos actualmente</p>
-            <?php endif?>
-
-        </div>
-
-        <a href="index.php" class="moreInfo">Volver</a>
     </div>
-
-<div class="estrellas" id="contenedor-estrellas">
+  </article>
+  <article>
+    <?php if (isset($_SESSION['user_id'])): ?>
+      <a href="index.php?controller=ChatController&accion=newChat&ComercioID=<?= $comercioID ?>" class="openChat" id="<?= $comercioID ?>">Contactar<img src="assets/images/icons/send-white.png"></a>
+      <div class="btn-reviews">
+        <button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar Comercio</button>
+      </div>
+    <?php endif?> 
+    </article>
+  <article class="listaProductos">
+    <h4>Nuestros productos</h4>
+    <div class="products">
+      <?php if (!empty($productosDelComercio)): ?>
+        <?php foreach ($productosDelComercio as $producto): ?>
+          <?php include('views/components/Productos/producto.php'); ?>
+        <?php endforeach ?>
+      <?php else: ?>
+        <p>Este comercio no tiene productos actualmente</p>
+      <?php endif ?>
+    </div>
+  </article>
+  <div class="estrellas" id="contenedor-estrellas">
     <form action="" class="form-valoracion">
       <button type="button" class="cerrar-review" aria-label="Cerrar">×</button>
       <fieldset class="descripcion-fieldset">

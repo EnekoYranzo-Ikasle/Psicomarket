@@ -63,7 +63,7 @@ CREATE TABLE favoritos (
 );
 
 CREATE TABLE chat (
-  id INT(11) NOT NULL,
+  id INT(11) NOT NULL AUTO_INCREMENT,
   comercioID INT(11) NOT NULL,
   usuarioID INT(11) NOT NULL,
   PRIMARY KEY (id)

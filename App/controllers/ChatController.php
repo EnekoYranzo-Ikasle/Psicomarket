@@ -46,4 +46,18 @@ class ChatController extends BaseController {
 
         ChatModel::sendMessage($mensaje, $fecha, $userID, $chatID);
     }
+
+    public function newChat($comercioID) {
+        $userID = $_SESSION['user_id'];
+
+        $chatExiste = ChatModel::chatExiste($userID, $comercioID);
+
+        if ($chatExiste) {
+            $this->redirect('index.php?controller=ChatController');
+        } else {
+            // Crear nuevo chat
+            $newChatID = ChatModel::newChat($userID, $comercioID);
+            $this->redirect('index.php?controller=ChatController');
+        }
+    }
 }

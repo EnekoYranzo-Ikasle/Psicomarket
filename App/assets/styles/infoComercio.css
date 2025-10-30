@@ -1,0 +1,44 @@
+main {
+  padding: 1rem;
+  padding-top: 70px;
+}
+
+article {
+  margin-bottom: 0.5rem;
+}
+
+article:last-child {
+  margin-bottom: 0;
+}
+
+h4 {
+  margin: 0.5em 0;
+}
+
+.descripcion-comercio {
+  max-width: 50%;
+}
+
+.openChat {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0.5em;
+  background-color: #1f1f1f;
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+  gap: 1em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.openChat:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7), -4px -4px 8px rgba(100, 100, 100, 0.25);
+}
+
+.listaProductos {
+  overflow: scroll;
+}
