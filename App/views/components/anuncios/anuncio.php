@@ -25,7 +25,7 @@ if (isset($_POST['comercio'])) {
     </div>
   <?php endif; ?>
   <div class="overlay">
-    <div class="editarAnuncio">
+    <div class="editarAnuncioForm">
       <input type="text" name="nombre" placeholder="Nuevo nombre">
       <input type="text" name="descripcion" placeholder="Nueva descripción">
       <div class="botones">

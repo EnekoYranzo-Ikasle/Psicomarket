@@ -54,7 +54,7 @@ CREATE TABLE imagenes (
 
 CREATE TABLE favoritos (
   id INT NOT NULL AUTO_INCREMENT,
-  Fecha DATE NOT NULL,
+  Fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
   id_producto INT NOT NULL,
   id_usuario INT NOT NULL,
   PRIMARY KEY (id),

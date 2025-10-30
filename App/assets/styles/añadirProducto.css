@@ -1,0 +1,183 @@
+.formularioAñadirProducto {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+}
+
+.formularioAñadirProducto .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+
+}
+
+/* Labels */
+.formularioAñadirProducto label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Inputs */
+.formularioAñadirProducto input,
+.formularioAñadirProducto textarea,
+.formularioAñadirProducto select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #bdbdbd;
+    font-size: 14px;
+    margin-top: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: #fafafa;
+}
+
+.formularioAñadirProducto input:focus,
+.formularioAñadirProducto textarea:focus,
+.formularioAñadirProducto select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+}
+
+
+.descripcionLabel {
+  position: relative;
+}
+.descripcionLabel textarea {
+    resize: none;
+    min-height: 100px;
+}
+.cantidadLetras {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 0.22rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  background: #f0f4ff;
+  color: #1a56db;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Contenedor búsqueda categorías */
+.categoria-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#listaCategorias {
+    margin-top: 5px;
+}
+
+/* Mensajes de estado */
+.msg {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #e63946;
+}
+
+/* Botones */
+.formulario-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-guardar,
+.btn-cancelar {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-guardar:hover {
+    background-color: #0056b3;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    background-color: #e53935;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #b71c1c;
+}
+input[type="file"]::file-selector-button {
+    background-color: #4c6baf;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+
+}
+
+.imagenEliminar {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.input-imagen {
+    margin-right: 10px;
+}
+
+.btn-eliminar {
+    background-color: #ff4d4f;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-eliminar:hover {
+    background-color: #d9363e;
+}
+
+#btnAgregarImagen {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1a56db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btnAgregarImagen:hover {
+    background-color: #1749a1;
+}
+

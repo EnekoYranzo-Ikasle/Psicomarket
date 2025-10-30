@@ -6,9 +6,7 @@ class ProductoModel
 {
 
 
-    public static function getAll()
-    {
-    }
+    public static function getAll() {}
     public static function getByComercioId($idComercio)
     {
         $db = Database::getConnection();
@@ -96,9 +94,7 @@ class ProductoModel
         GROUP BY p.id, c.nombre");
 
         $stmt->execute(['id_producto' => $id]);
-       return $stmt->fetch(PDO::FETCH_ASSOC);
-
-
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function eliminarProducto($idProducto)
@@ -108,30 +104,69 @@ class ProductoModel
         $stmt = $db->prepare("DELETE FROM productos WHERE id = :id_producto");
         $stmt->execute(['id_producto' => $idProducto]);
 
-        error_log("Deleted rows: " . var_export($idProducto,true) . "\n",3,"./debug.log");
         return $stmt->rowCount() > 0;
     }
-    public static function getCategoria($id){
-        $con= Database::getConnection();
-        $sql= "SELECT c.nombre AS nombre
+    public static function getCategoria($id)
+    {
+        $con = Database::getConnection();
+        $sql = "SELECT c.nombre AS nombre
                 FROM categorias c JOIN productos p
                 ON c.id=p.id_categoria
                 WHERE p.id= :id_producto";
         $stmt = $con->prepare($sql);
-        $dato=['id_producto'=>$id];
+        $dato = ['id_producto' => $id];
         $stmt->execute($dato);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function create($datos)
+    public static function obtenerCategorias($nombre)
     {
+        $db = Database::getConnection();
+        $stmt = $db->prepare(
+            "SELECT * FROM categorias WHERE :nombre = '' OR nombre LIKE :like"
+        );
+        $stmt->execute([':nombre' => $nombre, ':like' => "%$nombre%"]);
+        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+    public static function añadirProducto($datos)
+    {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare(
+            "INSERT INTO productos
+        (Nombre, Descripcion, Precio, id_comercio, id_categoria)
+        VALUES (:nombreProducto, :descripcionProducto, :precioProducto, :idComercio, :id_categoria)"
+        );
+        $stmt->execute([
+            'nombreProducto' => $datos['nombreProducto'],
+            'descripcionProducto' => $datos['descripcionProducto'],
+            'precioProducto' => $datos['precioProducto'],
+            'idComercio' => $datos['idComercio'],
+            'id_categoria' => $datos['id_categoria']
+        ]);
+
+        $idProducto = $db->lastInsertId();
+
+        $stmt3 = $db->prepare(
+            "INSERT INTO imagenes (Ruta_imagen_producto, id_producto)
+        VALUES (:ruta, :id_producto)");
+
+        foreach ($datos['imagenes'] as $imagen) {
+            $stmt3->execute([
+                'ruta' => $imagen,
+                'id_producto' => $idProducto
+            ]);
+        }
+
+        return $stmt->rowCount() > 0;
     }
 
-    public static function deleteById($id)
-    {
-    }
 
-    public static function deleteAll()
-    {
-    }
+    public static function create($datos) {}
+
+    public static function deleteById($id) {}
+
+    public static function deleteAll() {}
 }
