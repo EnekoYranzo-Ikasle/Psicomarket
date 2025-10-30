@@ -46,11 +46,13 @@ class ComercioController extends BaseController {
         if (!$comercio) {
             die(" Comercio no encontrado.");
         }
+        
         $productosDelComercio = ProductoModel::getByComercioId($id);
         // Renderizar la vista infoComercio
         $this->render('infoComercio.view.php', [
             'comercio' => $comercio,
             'productosDelComercio' => $productosDelComercio,
+            'comercioID' => $id
         ]);
     }
 
