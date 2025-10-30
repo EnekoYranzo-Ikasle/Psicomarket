@@ -23,21 +23,18 @@ INSERT INTO `usuarios` (`id`, `Nombre`, `Apellidos`, `Email`, `Contrasenna`, `nu
 -- ----------------------------
 -- Comercios
 -- ----------------------------
-INSERT INTO `comercios` (`id`, `Nombre_comercio`, `Descripcion`, `Patrocinado`, `Latitud`, `Longitud`, `Ruta_imagen_comercio`, `id_usuario`) VALUES
-(1,'La Buena Taza','Cafetería con gran variedad de cafés de especialidad',0,42.8467,-2.6727,'uploads/comercios/cafeteria1.jpg',2),  -- Centro
-(2,'Librería Norte','Librería independiente con selección de libros técnicos y literatura',0,42.8485,-2.6710,'uploads/comercios/libreria1.jpg',3),  -- Ensanche
-(3,'Taller Pedro','Taller de reparación de bicicletas y venta de componentes',1,42.8430,-2.6750,'uploads/comercios/taller1.jpg',8),  -- Judimendi
-(4,'Moda Clara','Tienda de ropa sostenible y accesorios',0,42.8400,-2.6810,'uploads/comercios/moda1.jpg',6),  -- Zaramaga
-(5,'ElectroVega','Electrónica y reparaciones rápidas',0,42.8610,-2.6720,'uploads/comercios/electro1.jpg',10),  -- Salburua
-(6,'Frutería La Huerta','Frutería con producto local y ecológico',0,42.8435,-2.6850,'uploads/comercios/fruteria1.jpg',3),  -- Adurza
-(7,'Joyería Central','Joyería y relojería con larga tradición',1,42.8490,-2.6760,'uploads/comercios/joyeria1.jpg',2),  -- Ensanche norte
-(8,'Papelería Sol','Papelería, material escolar y oficina',0,42.8315,-2.6670,'uploads/comercios/papeleria1.jpg',12),  -- Zabalgana
-(9,'PanaderíaArte','Panadería artesanal con horno propio',0,42.8475,-2.6610,'uploads/comercios/panaderia1.jpg',6),  -- Arriaga
-(10,'FitnessHub','Centro de entrenamiento y venta de suplementación',1,42.8540,-2.6590,'uploads/comercios/gym1.jpg',10),  -- El Pilar
-(11,'Mercado Verde','Tienda saludable con productos digestivos y suplementos',0,42.8555,-2.6680,'uploads/comercios/mercado1.jpg',12),  -- Salburua norte
-(12,'TécnicaPlus','Servicio técnico doméstico y venta de repuestos',0,42.8380,-2.6705,'uploads/comercios/tecnica1.jpg',8);  -- Lakua
-
-
+INSERT INTO `comercios`
+(`id`, `Nombre_comercio`, `Descripcion`, `Patrocinado`, `Latitud`, `Longitud`, `Ruta_imagen_comercio`, `id_usuario`) VALUES
+(1, 'Boulevard Vitoria', 'Centro comercial con moda, tecnología, ocio y restauración', 0, 42.8397, -2.6564, 'uploads/comercios/boulevard.jpg', 2),
+(2, 'Café La Blanca', 'Cafetería emblemática cerca de la Plaza de la Virgen Blanca', 0, 42.8466, -2.6701, 'uploads/comercios/cafe_la_blanca.jpg', 3),
+(3, 'Librería Mara-Mara', 'Librería independiente especializada en literatura y actividades culturales', 0, 42.8478, -2.6712, 'uploads/comercios/maramara.jpg', 6),
+(4, 'Armería Prieto', 'Tienda especializada en deportes, caza, montaña y aire libre', 0, 42.8515, -2.6725, 'uploads/comercios/armeria_prieto.jpg', 8),
+(5, 'Frutería Garmendia', 'Frutas y verduras frescas en el Barrio del Pilar', 0, 42.8558, -2.6594, 'uploads/comercios/garmendia.jpg', 10),
+(6, 'Bicicletas Mendiz', 'Tienda y taller oficial Mendiz con bicicletas de carretera y MTB', 1, 42.8534, -2.6761, 'uploads/comercios/mendiz.jpg', 12),
+(7, 'Panadería Artepan', 'Panadería y pastelería artesana muy reconocida en Vitoria', 0, 42.8439, -2.6718, 'uploads/comercios/artepan.jpg', 2),
+(8, 'Gasteiz Tattoo Studio', 'Estudio de tatuajes y piercings en el centro', 0, 42.8470, -2.6750, 'uploads/comercios/tattoo.jpg', 3),
+(9, 'Tienda Game Vitoria', 'Videojuegos, consolas y merchandising', 0, 42.8468, -2.6695, 'uploads/comercios/game_vitoria.jpg', 6),
+(10, 'Decathlon Boulevard', 'Deporte, ropa técnica y material para actividades de exterior', 1, 42.8396, -2.6568, 'uploads/comercios/decathlon.jpg', 8);
 -- ------------
 -- Categorias
 -- ------------
