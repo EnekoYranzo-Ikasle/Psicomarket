@@ -13,7 +13,7 @@ function inicializarAcciones() {
           overlay.querySelector(".confirmarEditarAnuncio").addEventListener("click", () => {
               const datos = {
                 nombre: overlay.querySelector("input[name='nombre']").value,
-                descripcion: overlay.querySelector("input[name='descripcion']").value
+                descripcion: overlay.querySelector("textarea").value
               }
               editarAnuncio(id, datos);
               overlay.style.display = "none";
@@ -60,7 +60,8 @@ function inicializarAcciones() {
           overlay.querySelector(".confirmarEditarProducto").addEventListener("click", () => {
               const datos = {
                 nombre: overlay.querySelector("input[name='nombre']").value,
-                descripcion: overlay.querySelector("input[name='descripcion']").value
+                descripcion: overlay.querySelector("textarea").value,
+                precio: overlay.querySelector("input[name='precioProducto']").value
               }
               editarProducto(id, datos);
               overlay.style.display = "none";
@@ -147,6 +148,31 @@ async function editarAnuncio(idComercio, nuevosDatos) {
     }
   } catch (error) {
     showError('Error al editar el anuncio:', error);
+  }
+}
+
+async function editarProducto(idproducto, nuevosDatos) {
+  console.log(nuevosDatos);
+  try {
+    const res = await fetch(
+      'index.php?controller=ProductoController&accion=editarProducto&id=' + idproducto,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(nuevosDatos),
+      }
+    );
+    if (!res.ok) {
+      throw new Error('Error al editar el producto');
+    }
+    const data = await res.json();
+    if (data) {
+      window.location.reload();
+    }
+  } catch (error) {
+    console.error('Error al editar el producto:', error);
   }
 }
 

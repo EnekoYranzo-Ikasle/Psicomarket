@@ -98,7 +98,7 @@ document.querySelector(".añadirProducto").addEventListener("click", () => {
 async function obtenerCategoriasDisponibles(categoriaInput) {
   try {
     let res = await fetch(
-      "/Psicomarket/App/index.php?controller=ProductoController&accion=obtenerCategorias&nombre=" +
+      "index.php?controller=ProductoController&accion=obtenerCategorias&nombre=" +
         categoriaInput
     );
     let datos = await res.json();

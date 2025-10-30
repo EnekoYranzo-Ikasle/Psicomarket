@@ -37,24 +37,24 @@ class ProductoController extends BaseController
         echo json_encode($res);
         exit;
     }
-    public function getById()
-    {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $producto = ProductoModel::getById($id);
-            $imagenes = ImagenModel::getByProductoId($id);
-            $comercio = ComercioModel::getById($producto['id_comercio']);
-            $categoria = ProductoModel::getCategoria($id);
-            $this->render('productoDetalles.view.php', [
-                'producto' => $producto,
-                'imagenes' => $imagenes,
-                'comercio' => $comercio,
-                'categoria' => $categoria,
-            ]);
-        } else {
-            die('Producto no encontrado');
+    public function getById(){
+        if(isset($_GET['id'])){
+        $id=$_GET['id'];
+        $producto=ProductoModel::getById($id);
+        $imagenes=ImagenModel::getByProductoId($id);
+        $comercio =ComercioModel::getById($producto['id_comercio']);
+        $categoria= ProductoModel::getCategoria($id);
+        $this->render('productoDetalles.view.php', [
+            'producto' =>$producto,
+            'imagenes' => $imagenes,
+            'comercio'=>$comercio,
+            'categoria'=>$categoria
+        ]);
+        } else{
+            die ('Producto no encontrado');
         }
     }
+    
 
     private function contarImagenes($cantidad)
     {
@@ -146,6 +146,24 @@ class ProductoController extends BaseController
         $res = ProductoModel::añadirProducto($datos);
 
         header('Location: index.php?controller=ProductoController&accion=gestionarProductos&id=' . $datos['idComercio']);
+    }
+
+    public function editarProducto()
+    {
+        header('Content-Type: application/json');
+        $input = file_get_contents("php://input");
+        $datos = json_decode($input, true);
+
+        $datos = [
+            'idProducto' => $_GET['id'],
+            'nombre' => $datos['nombre'],
+            'descripcion' => $datos['descripcion'],
+            'precio' => $datos['precio']
+        ];
+        $resultado = ProductoModel::editarProducto($datos);
+        echo json_encode($resultado);
+
+        exit;
     }
 
     public function show() {}

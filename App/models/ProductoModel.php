@@ -163,6 +163,16 @@ class ProductoModel
         return $stmt->rowCount() > 0;
     }
 
+    public static function editarProducto($datos)
+    {
+        $db = Database::getConnection();
+        $sql = "UPDATE productos SET Nombre = :nombre, Descripcion = :descripcion, Precio = :precio
+             WHERE id = :idProducto";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute($datos);
+        return $stmt->rowCount() > 0;
+    }
 
     public static function create($datos) {}
 

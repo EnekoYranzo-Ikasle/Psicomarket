@@ -24,7 +24,9 @@
     <div class="anuncios-container">
 
     </div>
-    <div id="map"></div>
+    <section class="mapa-comercios">
+        <div id="map"></div>
+    </section>
 
 </main>
 
