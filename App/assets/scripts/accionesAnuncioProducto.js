@@ -149,3 +149,4 @@ async function editarAnuncio(idComercio, nuevosDatos) {
     showError('Error al editar el anuncio:', error);
   }
 }
+

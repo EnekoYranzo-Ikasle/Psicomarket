@@ -44,7 +44,7 @@
 
         <label for="descripcionProducto" class="descripcionLabel">
             Descripción:
-            <textarea name="descripcionProducto" id="descripcionProducto" maxlength="1000" required></textarea>
+            <textarea name="descripcionProducto" id="descripcionProducto" maxlength="380" required></textarea>
             <span class="cantidadLetras"></span>
         </label>
 

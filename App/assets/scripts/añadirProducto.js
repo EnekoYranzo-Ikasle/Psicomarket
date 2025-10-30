@@ -3,16 +3,16 @@ let btnCancelar = document.querySelector(".btn-cancelar");
 let btnGuardar = document.querySelector(".btn-guardar");
 let cantidadLetras = document.querySelector(".cantidadLetras");
 
-cantidadLetras.textContent = "0 / 1000";
+cantidadLetras.textContent = "0 / 380";
 document
   .getElementById("descripcionProducto")
   .addEventListener("input", function () {
     let longitudActual = this.value.length;
-    cantidadLetras.textContent = `${longitudActual} / 1000`;
-    if (longitudActual > 1000) {
-      this.value = this.value.slice(0, 1000);
+    cantidadLetras.textContent = `${longitudActual} / 380`;
+    if (longitudActual > 380) {
+      this.value = this.value.slice(0, 380);
     }
-    if (longitudActual === 1000) {
+    if (longitudActual === 380) {
       cantidadLetras.style.color = "red";
     } else {
       cantidadLetras.style.color = "#1a56db";
