@@ -22,7 +22,6 @@ class ValoracionModel
 
     public static function create($estrellas, $idUsuario, $idComercio)
     {
-        try {
             $con = Database::getConnection();
             $sql = 'INSERT INTO valoraciones (estrellas, id_usuario, id_comercio)
                     VALUES (:estrellas, :idUsuario, :idComercio)';
@@ -34,13 +33,11 @@ class ValoracionModel
             ];
             $stmt->execute($datos);
             
-            // Retornar true si se insertó correctamente
-            return $stmt->rowCount() > 0;
-        } catch (PDOException $e) {
-            // En caso de error, retornar false
-            return false;
+            
+            
+       
         }
-    }
+    
 
     public static function yaValorado($idUsuario, $idComercio)
     {

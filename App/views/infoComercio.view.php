@@ -11,9 +11,11 @@
     </fieldset>
   </div>
 </div>
+<?php if (isset($_SESSION['user_id'])): ?>
 <div class="btn-reviews">
 <button id="btn-reviews-toggle" class="btn-reviews-toggle">Valorar Comercio</button>
 </div>
+<?php endif?>
 
 
 
