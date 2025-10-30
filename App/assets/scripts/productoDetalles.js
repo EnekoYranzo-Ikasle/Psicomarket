@@ -1,3 +1,4 @@
+// ==== CAMBIO DE IMAGEN PRINCIPAL ====
 function cambiarImagenes() {
   const thumbs = document.querySelectorAll(".thumb");
   const mainImage = document.getElementById("imagen-activa");
@@ -11,49 +12,65 @@ function cambiarImagenes() {
   });
 }
 
-// === POPUP reseña ===
+// ==== POPUP reseña ====
 function inicializarPopupResenna() {
   const botonValorar = document.getElementById("btn-reviews-toggle");
-  const contenedorEstrellas = document.getElementById("contenedor-estrellas");
+  const modal = document.getElementById("contenedor-estrellas");
 
+  if (!botonValorar || !modal) return;
 
-  if (!botonValorar || !contenedorEstrellas) return;
-
-  // Mostrar modal solo cuando se hace click en el botón
   botonValorar.addEventListener("click", () => {
-    contenedorEstrellas.style.display='flex';
+    modal.style.display = "flex";
   });
 
-  // Cerrar modal haciendo click fuera del formulario
-  contenedorEstrellas.addEventListener("click", (e) => {
-    if (e.target === contenedorEstrellas) {
-      contenedorEstrellas.classList.remove("activo");
-    }
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
   });
+  cerrarPopup(modal);
 }
-// === Efecto visual de estrellas ===
+
+
 function inicializarEstrellas() {
   const estrellas = document.querySelectorAll(".estrella");
+  const inputValoracion = document.getElementById("valoracion");
+  let valorSeleccionado = 0;
 
   estrellas.forEach((estrella, index) => {
     estrella.addEventListener("mouseover", () => {
       estrellas.forEach((e, i) => {
-        e.classList.toggle("activa", i <= index);
+        e.src = i <= index
+          ? "assets/images/icons/review-star-hover.png"
+          : "assets/images/icons/review-star.png";
       });
     });
 
     estrella.addEventListener("mouseout", () => {
-      estrellas.forEach(e => e.classList.remove("activa"));
+      estrellas.forEach((e, i) => {
+        e.src = i < valorSeleccionado
+          ? "assets/images/icons/review-star-hover.png"
+          : "assets/images/icons/review-star.png";
+      });
     });
 
     estrella.addEventListener("click", () => {
-      estrellas.forEach((e, i) => {
-        e.classList.toggle("seleccionada", i <= index);
-      });
+      valorSeleccionado = index + 1;
+      inputValoracion.value = valorSeleccionado; 
     });
   });
 }
 
 
-cambiarImagenes();
-inicializarPopupResenna();
+function cerrarPopup(modal) {
+  const cerrarBtn = modal.querySelector(".cerrar-review");
+  if (cerrarBtn) {
+    cerrarBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); 
+      modal.style.display = "none"; 
+    });
+  }
+}
+
+
+  cambiarImagenes();
+
+ 
