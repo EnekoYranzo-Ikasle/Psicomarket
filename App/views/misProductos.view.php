@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="assets/styles/misComercios.css">
 <link rel="stylesheet" href="assets/styles/accionesAnuncioProducto.css">
 <link rel="stylesheet" href="assets/styles/anuncios.css">
+<link rel="stylesheet" href="assets/styles/añadirProducto.css">
 
 
 <main>
@@ -27,10 +28,54 @@
             <div class="products">
 
             </div>
-            
+
         <?php endif; ?>
     </div>
     <script src="assets/scripts/misProductos.js"></script>
     <script src="assets/scripts/accionesAnuncioProducto.js"></script>
 </main>
+
+<div class="formularioAñadirProducto">
+    <div class="form">
+        <label for="nombreProducto">
+            Nombre del producto:
+            <input type="text" id="nombreProducto" name="nombreProducto" required>
+        </label>
+
+        <label for="descripcionProducto" class="descripcionLabel">
+            Descripción:
+            <textarea name="descripcionProducto" id="descripcionProducto" maxlength="380" required></textarea>
+            <span class="cantidadLetras"></span>
+        </label>
+
+        <label for="precioProducto">
+            Precio (€):
+            <input type="number" id="precioProducto" name="precioProducto" step="0.01" min="0" required value=0>
+        </label>
+
+        <div class="categoria-container">
+            <label for="categoriaInput">Categoría:</label>
+            <input type="text" id="categoriaInput" name="categoria" placeholder="Buscar categoría" autocomplete="off">
+            <select id="listaCategorias"></select>
+            <div id="categoriaMsg" class="msg"></div>
+            <input type="hidden" id="categoriaID" name="categoriaID">
+        </div>
+
+        <div class="imagenes-container">
+            <div class="imagenEliminar">
+                <input type="file" name="imagen1" accept="image/*" required class="input-imagen">
+            </div>
+        </div>
+        <button type="button" id="btnAgregarImagen">Añadir imagen</button>
+
+
+        <div class="formulario-buttons">
+            <button type="button" class="btn-guardar">Guardar</button>
+            <button type="button" class="btn-cancelar">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script src="assets/scripts/añadirProducto.js"></script>
+
 <?php require_once('layout/footer.php'); ?>

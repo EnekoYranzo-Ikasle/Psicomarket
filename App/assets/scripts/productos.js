@@ -16,12 +16,12 @@ svgs.forEach((svg) => {
   agregarClaseFavorito(svg);
   svg.addEventListener('click', async () => {
     const esFavorito = (await verificarProductoFavorito(svg.classList[0])) ? true : false;
-    añadirFavoritoEliminar(svg.classList[0], esFavorito);
     if (esFavorito) {
       svg.classList.remove('favorito');
     } else {
       svg.classList.add('favorito');
     }
+    añadirFavoritoEliminar(svg.classList[0], esFavorito);
   });
 });
 

@@ -34,12 +34,15 @@ function limpiarFormulario() {
 btnCancelar.addEventListener("click", () =>{
     limpiarFormulario();
     formulario.style.display = "none";
+    document.body.style.overflow = 'auto';
+
 });
 
 document.querySelector(".añadirAnuncio").addEventListener("click", () => {
     formulario.style.display = "flex";
     formulario.style.justifyContent = "center";
     formulario.style.alignItems = "center";
+    document.body.style.overflow = 'hidden';
 });
 
 function buscarCalle() {
