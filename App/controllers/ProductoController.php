@@ -43,13 +43,13 @@ class ProductoController extends BaseController {
             'producto' =>$producto,
             'imagenes' => $imagenes,
             'comercio'=>$comercio,
-            'categoria'=>$categoria,
-            'navFile' => $this->navFile
+            'categoria'=>$categoria
         ]);
         } else{
             die ('Producto no encontrado');
         }
     }
+    
 
     private function contarImagenes($cantidad) {
         switch (true) {

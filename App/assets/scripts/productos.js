@@ -68,3 +68,6 @@ async function agregarClaseFavorito(svg) {
   let esFavorito = await verificarProductoFavorito(svg.classList[0]);
   if (esFavorito === true) svg.classList.add('favorito');
 }
+
+
+
