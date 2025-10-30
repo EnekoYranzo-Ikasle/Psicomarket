@@ -166,5 +166,16 @@ class ComercioModel
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado ? $resultado['Ruta_imagen_comercio'] : null;
     }
+
+
+    public static function getImagenByProductoId($productoId)
+    {
+        $con = Database::getConnection();
+        $sql = "SELECT Ruta_imagen_producto FROM imagenes WHERE id_producto=:productoId";
+        $stmt = $con->prepare($sql);
+        $stmt->execute(['productoId' => $productoId]);
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
 }
 

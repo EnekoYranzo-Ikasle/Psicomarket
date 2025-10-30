@@ -4,20 +4,24 @@ require_once __DIR__ . '/../models/ProductoModel.php';
 require_once __DIR__ . '/../models/ImagenModel.php';
 require_once __DIR__ . '/../models/ComercioModel.php';
 
-class ProductoController extends BaseController {
+class ProductoController extends BaseController
+{
 
-    public function index() {
+    public function index()
+    {
         $this->render('index.view.php');
     }
 
-    public function verificarProductoFavorito() {
+    public function verificarProductoFavorito()
+    {
         header('Content-Type: application/json');
         $producto = ProductoModel::verificarProductoFavorito($_GET['idProducto'], $_SESSION['user_id']) ? true : false;
         echo json_encode($producto);
         exit;
     }
 
-    public function añadirEliminarFavorito() {
+    public function añadirEliminarFavorito()
+    {
         header('Content-Type: application/json');
 
         $usuario = $_SESSION['user_id'];
@@ -33,25 +37,27 @@ class ProductoController extends BaseController {
         echo json_encode($res);
         exit;
     }
-    public function getById(){
-        if(isset($_GET['id'])){
-        $id=$_GET['id'];
-        $producto=ProductoModel::getById($id);
-        $imagenes=ImagenModel::getByProductoId($id);
-        $comercio =ComercioModel::getById($producto['id_comercio']);
-        $categoria= ProductoModel::getCategoria($id);
-        $this->render('productoDetalles.view.php', [
-            'producto' =>$producto,
-            'imagenes' => $imagenes,
-            'comercio'=>$comercio,
-            'categoria'=>$categoria,
-        ]);
-        } else{
-            die ('Producto no encontrado');
+    public function getById()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $producto = ProductoModel::getById($id);
+            $imagenes = ImagenModel::getByProductoId($id);
+            $comercio = ComercioModel::getById($producto['id_comercio']);
+            $categoria = ProductoModel::getCategoria($id);
+            $this->render('productoDetalles.view.php', [
+                'producto' => $producto,
+                'imagenes' => $imagenes,
+                'comercio' => $comercio,
+                'categoria' => $categoria,
+            ]);
+        } else {
+            die('Producto no encontrado');
         }
     }
 
-    private function contarImagenes($cantidad) {
+    private function contarImagenes($cantidad)
+    {
         switch (true) {
             case ($cantidad < 2):
                 return 0;
@@ -64,28 +70,42 @@ class ProductoController extends BaseController {
         }
     }
 
-    public function gestionarProductos() {
+    public function gestionarProductos()
+    {
         $productosComercio = ProductoModel::getByComercioId($_GET['id']);
         $this->render('misProductos.view.php', ['productosComercio' => $productosComercio]);
     }
 
-    public function obtenerProductos() {
+    public function obtenerProductos()
+    {
         header('Content-Type: application/json');
         $productosComercio = ProductoModel::getByComercioId($_GET['comercioid']);
         echo json_encode($productosComercio);
         exit;
     }
 
-    public function eliminar(){
+    public function eliminar()
+    {
         header('Content-Type: application/json');
         $productoID = $_GET['id'];
 
+        $imagenProducto = ComercioModel::getImagenByProductoId($productoID);
         $res = ProductoModel::eliminarProducto($productoID);
+        if ($res) {
+            $rutaImagenes = $imagenProducto;
+            foreach ($rutaImagenes as $img) {
+                $ruta = $img['Ruta_imagen_producto'];
+                if (file_exists($ruta)) {
+                    unlink($ruta);
+                }
+            }
+        }
         echo json_encode($res);
         exit;
     }
 
-    public function obtenerCategorias(){
+    public function obtenerCategorias()
+    {
         header('Content-Type: application/json');
         $nombre = $_GET['nombre'] ?? '';
 
@@ -95,20 +115,37 @@ class ProductoController extends BaseController {
         exit;
     }
 
-    public function añadirProducto(){
+    public function añadirProducto()
+    {
         $datos = [
-            'nombreProducto' => $_POST['nombreProducto'],
-            'descripcionProducto' => $_POST['descripcionProducto'],
-            'precioProducto' => $_POST['precioProducto'],
-            'id_comercio' => 15,
-            'id_categoria' => $_POST['categoriaID']
+            'idComercio' => $_POST['idComercio'] ?? '',
+            'nombreProducto' => $_POST['nombreProducto'] ?? '',
+            'descripcionProducto' => $_POST['descripcionProducto'] ?? '',
+            'precioProducto' => $_POST['precioProducto'] ?? '',
+            'id_categoria' => $_POST['id_categoria'] ?? ''
         ];
 
-        error_log(var_export($datos, true),3,"./debug.log");
+        $totalImagenes = count($_FILES['imagenes']['name']);
+        for ($i = 0; $i < $totalImagenes; $i++) {
+            $nombreTmp = $_FILES['imagenes']['tmp_name'][$i];
+            $nombreArchivo = $_FILES['imagenes']['name'][$i];
+
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+
+            $carpeta = "uploads/productos/";
+
+            $nombreArchivoFinal = uniqid('img_', true) . '.' . $extension;
+            $rutaFinal = $carpeta . $nombreArchivoFinal;
+
+            if (!move_uploaded_file($nombreTmp, $rutaFinal)) {
+                die("Error al guardar la imagen.");
+            }
+            $datos['imagenes'][] = $rutaFinal;
+        }
 
         $res = ProductoModel::añadirProducto($datos);
-        
-            header('Location: index.php?controller=ProductoController&accion=gestionarProductos&id='.$datos['id_comercio']);
+
+        header('Location: index.php?controller=ProductoController&accion=gestionarProductos&id=' . $datos['idComercio']);
     }
 
     public function show() {}
